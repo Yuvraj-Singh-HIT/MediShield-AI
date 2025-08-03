@@ -630,29 +630,28 @@
       </div>
   </footer>
   <script>
-  // Enhanced Weather App - Fixed API Issues
-    class QuantumWeatherApp {
-        constructor() {
-            this.apiKey = 'a5209dbd92b54dfd175e25925ee470aa';
-            this.baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-            this.isLoading = false;
-            this.init();
-        }
+        // Enhanced Weather App - Fixed API Issues
+            class QuantumWeatherApp {
+                constructor() {
+                    this.baseUrl = 'http://localhost:3000/weather'; // Backend route
+                    this.isLoading = false;
+                    this.init();
+                }
 
-        init() {
-            this.bindEvents();
-            this.createParticleSystem();
-        }
+                init() {
+                    this.bindEvents();
+                    this.createParticleSystem();
+                }
 
-        bindEvents() {
-            const searchButton = document.getElementById('search-button');
-            const locationInput = document.getElementById('location-input');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+                bindEvents() {
+                    const searchButton = document.getElementById('search-button');
+                    const locationInput = document.getElementById('location-input');
+                    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                    const mobileMenu = document.getElementById('mobile-menu');
 
-            searchButton.addEventListener('click', () => this.searchWeather());
-            locationInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') this.searchWeather();
+                    searchButton.addEventListener('click', () => this.searchWeather());
+                    locationInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') this.searchWeather();
             });
 
             // Mobile menu toggle
