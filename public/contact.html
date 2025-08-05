@@ -706,17 +706,16 @@
   </main>
 
   <script>
-      // Enhanced Contact Form with EmailJS Integration
       class QuantumContactApp {
           constructor() {
               // 🔥 EMAILJS CONFIGURATION - REPLACE WITH YOUR DETAILS 🔥
               this.emailConfig = {
                   serviceID: 'service_iiorza2',  
-                  templateID: 'template_8l4uj7m',  
+                  templateID: 'template_0x9wakr',  
                   publicKey: 'aRpDFgsXPZ1EGQ_qA'
               };
               
-              this.recipientEmail = 'arijit.sarkar7156@gmail.com'; 
+              this.recipientEmail = 'arijit.sarkar7156@gmail.com'; // 🔥 REPLACE WITH YOUR EMAIL 🔥
               this.isLoading = false;
               this.init();
           }
@@ -866,13 +865,18 @@
 
           async sendEmail(formData) {
               try {
+                  // Prepare template parameters for EmailJS
                   const templateParams = {
                       from_name: formData.user_name,
                       from_email: formData.user_email,
-                      subject: formData.message_subject,
+                      subject: `[CLIMABOT CONTACT] ${formData.message_subject}`,
                       message: formData.message,
-                      to_email: this.recipientEmail, 
-                      reply_to: formData.user_email
+                      to_email: this.recipientEmail, // Your email address
+                      reply_to: formData.user_email,
+                      // Additional fields for better email formatting
+                      user_name: formData.user_name,
+                      user_email: formData.user_email,
+                      message_subject: formData.message_subject
                   };
 
                   console.log('Sending email with params:', templateParams);
@@ -995,7 +999,6 @@
                   }, 400);
               }, type === 'success' ? 5000 : 4000);
           }
-
           createParticleSystem() {
               setInterval(() => {
                   this.createRandomParticle();
