@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Climabot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700;800&display=swap');
+      
+      :root {
+          --primary-glow: #6366f1;
+          --secondary-glow: #a855f7;
+          --accent-glow: #ec4899;
+          --cyber-blue: #00d4ff;
+          --neon-green: #39ff14;
+          --electric-purple: #bf00ff;
+      }
+
+      body {
+          font-family: 'Space Grotesk', sans-serif;
+          background: #000000;
+          color: #ffffff;
+          overflow-x: hidden;
+          cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIgZmlsbD0iIzAwZDRmZiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+'), auto;
+      }
+
+      /* Advanced animated background */
+      .cyber-bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -3;
+          background: 
+              radial-gradient(circle at 25% 35%, rgba(0, 212, 255, 0.4) 0%, transparent 30%),
+              radial-gradient(circle at 75% 85%, rgba(99, 102, 241, 0.5) 0%, transparent 40%),
+              radial-gradient(circle at 55% 10%, rgba(168, 85, 247, 0.3) 0%, transparent 35%),
+              radial-gradient(circle at 15% 90%, rgba(57, 255, 20, 0.3) 0%, transparent 30%),
+              linear-gradient(135deg, #000000 0%, #0d1117 25%, #161b22 50%, #0d1117 75%, #000000 100%);
+          animation: cosmic-drift 25s ease-in-out infinite alternate;
+      }
+
+      @keyframes cosmic-drift {
+          0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+          50% { transform: scale(1.08) rotate(0.8deg); filter: hue-rotate(120deg); }
+          100% { transform: scale(1.05) rotate(-0.5deg); filter: hue-rotate(240deg); }
+      }
+
+      /* Floating shapes */
+      .floating-shapes {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: -2;
+      }
+
+      .shape {
+          position: absolute;
+          opacity: 0.08;
+          filter: blur(1px);
+      }
+
+      .shape:nth-child(1) { 
+          width: 120px; height: 120px; 
+          top: 15%; left: 8%; 
+          background: linear-gradient(45deg, var(--cyber-blue), var(--primary-glow));
+          border-radius: 50%;
+          animation: float-1 22s infinite linear;
+      }
+      .shape:nth-child(2) { 
+          width: 80px; height: 80px; 
+          top: 65%; left: 85%; 
+          background: linear-gradient(135deg, var(--neon-green), var(--secondary-glow));
+          transform: rotate(45deg);
+          animation: float-2 28s infinite linear;
+      }
+      .shape:nth-child(3) { 
+          width: 100px; height: 100px; 
+          top: 80%; left: 25%; 
+          background: linear-gradient(90deg, var(--accent-glow), var(--electric-purple));
+          border-radius: 20px;
+          animation: float-3 35s infinite linear;
+      }
+
+      @keyframes float-1 {
+          0% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
+          50% { transform: translateY(-40vh) rotate(180deg); opacity: 0.15; }
+          100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+      }
+      @keyframes float-2 {
+          0% { transform: translateY(0px) rotate(45deg); opacity: 0.06; }
+          50% { transform: translateY(-45vh) rotate(225deg); opacity: 0.16; }
+          100% { transform: translateY(-100vh) rotate(405deg); opacity: 0; }
+      }
+      @keyframes float-3 {
+          0% { transform: translateY(0px) rotate(0deg); opacity: 0.07; }
+          50% { transform: translateY(-35vh) rotate(270deg); opacity: 0.14; }
+          100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+      }
+
+      /* Ultra-modern gradient text */
+      .ultra-gradient {
+          background: linear-gradient(135deg, 
+              #00d4ff 0%, 
+              #6366f1 25%, 
+              #a855f7 50%, 
+              #ec4899 75%, 
+              #39ff14 100%);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: rainbow-shift 4s ease-in-out infinite;
+          filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+      }
+
+      @keyframes rainbow-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+      }
+       /* Nav links */
+      .nav-link {
+          position: relative;
+          transition: all 0.3s ease;
+          padding: 8px 0;
+      }
+
+      .nav-link::before {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+          border-radius: 1px;
+      }
+
+      .nav-link:hover::before {
+          width: 100%;
+      }
+
+      .nav-link:hover {
+          transform: translateY(-2px);
+          text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+      }
+
+      /* Quantum card design */
+      .quantum-card {
+          background: linear-gradient(135deg, 
+              rgba(0, 0, 0, 0.95) 0%, 
+              rgba(13, 17, 23, 0.9) 50%,
+              rgba(0, 0, 0, 0.95) 100%);
+          backdrop-filter: blur(30px) saturate(200%);
+          border-radius: 2rem;
+          border: 2px solid transparent;
+          background-clip: padding-box;
+          box-shadow: 
+              0 25px 50px rgba(0, 0, 0, 0.9),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              0 0 0 1px rgba(0, 212, 255, 0.3);
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .quantum-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+          transition: left 0.8s ease;
+          z-index: 1;
+      }
+
+      .quantum-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: 
+              0 40px 80px rgba(0, 0, 0, 0.95),
+              0 0 100px rgba(0, 212, 255, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+          border-color: rgba(0, 212, 255, 0.6);
+      }
+
+      .quantum-card:hover::before {
+          left: 100%;
+      }
+
+      /* Holographic text effects */
+      .holo-text {
+          background: linear-gradient(135deg, 
+              rgba(0, 212, 255, 0.95) 0%, 
+              rgba(255, 255, 255, 1) 50%,
+              rgba(57, 255, 20, 0.95) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+          animation: holo-shimmer 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes holo-shimmer {
+          0% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+          100% { filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.7)); }
+      }
+
+      /* Team member cards */
+      .team-card {
+          background: linear-gradient(135deg, 
+              rgba(0, 0, 0, 0.9) 0%, 
+              rgba(21, 32, 43, 0.8) 50%,
+              rgba(0, 0, 0, 0.9) 100%);
+          backdrop-filter: blur(20px) saturate(200%);
+          border: 2px solid rgba(0, 212, 255, 0.4);
+          border-radius: 1.5rem;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .team-card::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: conic-gradient(
+              transparent, 
+              rgba(0, 212, 255, 0.1), 
+              transparent, 
+              rgba(57, 255, 20, 0.1), 
+              transparent);
+          animation: hologram-rotate 10s linear infinite;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+      }
+
+      .team-card:hover::before {
+          opacity: 1;
+      }
+
+      .team-card:hover {
+          transform: translateY(-15px) scale(1.05);
+          box-shadow: 
+              0 30px 60px rgba(0, 0, 0, 0.9),
+              0 0 80px rgba(0, 212, 255, 0.3);
+          border-color: rgba(57, 255, 20, 0.6);
+      }
+
+      @keyframes hologram-rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+
+      /* Feature icons */
+      .feature-icon {
+          font-size: 4rem;
+          filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+          animation: icon-float 3s ease-in-out infinite alternate;
+          transition: all 0.3s ease;
+      }
+
+      .feature-icon:hover {
+          transform: scale(1.2) rotate(10deg);
+          filter: drop-shadow(0 0 25px rgba(57, 255, 20, 0.8));
+      }
+
+      @keyframes icon-float {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-15px) rotate(5deg); }
+      }
+
+      /* Smooth animations */
+      .ultra-smooth {
+          animation: ultra-fade-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      @keyframes ultra-fade-in {
+          from { opacity: 0; transform: translateY(30px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      /* Timeline styles */
+      .timeline-item {
+          position: relative;
+          padding-left: 3rem;
+      }
+
+      .timeline-item::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: linear-gradient(to bottom, var(--cyber-blue), var(--neon-green), var(--accent-glow));
+      }
+
+      .timeline-item::after {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: 1rem;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: linear-gradient(45deg, var(--cyber-blue), var(--neon-green));
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+          animation: pulse-glow 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+          50% { box-shadow: 0 0 30px rgba(57, 255, 20, 1); }
+      }
+
+      /* Stats counter animation */
+      .stat-number {
+          background: linear-gradient(135deg, var(--cyber-blue), var(--neon-green));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 900;
+          filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+          .hero-title { font-size: 3rem; }
+          .quantum-card { padding: 1.5rem; margin: 1rem; }
+          .team-card { padding: 1rem; }
+          .feature-icon { font-size: 3rem; }
+      }
+
+      /* Parallax sections */
+      .parallax-section {
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      /* Glitch effect for special elements */
+      .glitch-text {
+          position: relative;
+          animation: glitch-main 3s infinite;
+      }
+
+      .glitch-text::before,
+      .glitch-text::after {
+          content: attr(data-text);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+
+      .glitch-text::before {
+          animation: glitch-1 0.5s infinite;
+          color: #ff0040;
+          z-index: -1;
+      }
+
+      .glitch-text::after {
+          animation: glitch-2 0.5s infinite;
+          color: #00ffff;
+          z-index: -2;
+      }
+
+      @keyframes glitch-main {
+          0%, 98% { transform: translate(0); }
+          99% { transform: translate(-2px, 2px); }
+          100% { transform: translate(0); }
+      }
+
+      @keyframes glitch-1 {
+          0%, 78% { transform: translate(0); }
+          79% { transform: translate(-2px, 0); }
+          80% { transform: translate(2px, -2px); }
+          81% { transform: translate(0); }
+      }
+
+      @keyframes glitch-2 {
+          0%, 88% { transform: translate(0); }
+          89% { transform: translate(2px, 0); }
+          90% { transform: translate(-2px, 2px); }
+          91% { transform: translate(0); }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.8);
+      }
+      ::-webkit-scrollbar-thumb {
+          background: linear-gradient(135deg, var(--cyber-blue), var(--neon-green));
+          border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(135deg, var(--neon-green), var(--accent-glow));
+      }
+      /* Holographic navbar */
+      .holo-nav {
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(25px) saturate(200%);
+          border-bottom: 2px solid transparent;
+          background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                           linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          position: relative;
+      }
+
+      .holo-nav::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent 0%, var(--cyber-blue) 50%, transparent 100%);
+          animation: scan-line 3s ease-in-out infinite;
+      }
+
+      @keyframes scan-line {
+          0%, 100% { opacity: 0; transform: scaleX(0); }
+          50% { opacity: 1; transform: scaleX(1); }
+      }
+
+      /* Ultra-modern gradient text */
+      .ultra-gradient {
+          background: linear-gradient(135deg, 
+              #00d4ff 0%, 
+              #6366f1 25%, 
+              #a855f7 50%, 
+              #ec4899 75%, 
+              #39ff14 100%);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: rainbow-shift 4s ease-in-out infinite;
+          filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+      }
+
+      @keyframes rainbow-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+      }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Advanced background -->
+  <div class="cyber-bg"></div>
+  
+  <!-- Floating geometric shapes -->
+  <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+  </div>
+
+   <!-- Holographic Navbar -->
+  <nav class="holo-nav py-6 px-6 md:px-13 flex justify-between items-center sticky top-0 z-50">
+      <div class="flex items-center space-x-4">
+          <div class="logo-quantum">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M36 20C36 16.6863 33.3137 14 30 14C29.3372 14 28.7142 14.1431 28.1538 14.4016C27.1507 12.0648 24.8082 10.5 22.08 10.5C18.6994 10.5 15.9 13.2994 15.9 16.68" fill="url(#quantumGradient1)"/>
+                  <path d="M24 29L19 37H24L22.5 42L28.5 34H23L24 29Z" fill="url(#quantumGradient2)"/>
+                  <circle cx="12" cy="15" r="1.5" fill="url(#quantumGradient3)" opacity="0.8"/>
+                  <circle cx="38" cy="25" r="1" fill="url(#quantumGradient3)" opacity="0.6"/>
+                  <defs>
+                      <linearGradient id="quantumGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+                      </linearGradient>
+                      <linearGradient id="quantumGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                      </linearGradient>
+                      <linearGradient id="quantumGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                      </linearGradient>
+                  </defs>
+              </svg>
+          </div>
+          <span class="text-2xl font-black holo-text tracking-wider">CLIMABOT</span>
+      </div>
+      <div class="hidden md:flex space-x-8 pr-4">
+          <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
+          <a href="#weather" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">WEATHER</a>
+          <a href="#chatbot" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
+          <a href="about.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">ABOUT</a>
+          <a href="about.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">CONTACT US</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-cyan-400 focus:outline-none transition-all duration-300 transform hover:scale-110">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+      </button>
+  </nav>
+
+  <!-- Hero Section -->
+    <section class="py-16 px-4 relative mt-10">
+    <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl md:text-8xl font-black leading-tight mb-6 ultra-smooth">
+        ABOUT <span class="ultra-gradient glitch-text" data-text="CLIMABOT">CLIMABOT</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed ultra-smooth font-medium">
+        🚀 Pioneering the future of <span class="holo-text font-bold">meteorological intelligence</span> through quantum-powered AI systems
+        </p>
+    </div>
+    </section>
+
+    <!-- OUR QUANTUM MISSION -->
+    <section class="py-6 px-4 relative mt-0" id="mission">
+      <div class="max-w-7xl mx-auto">
+          <div class="quantum-card p-12 ultra-smooth">
+              <div class="text-center mb-16">
+                  <h2 class="text-5xl md:text-6xl font-black mb-8">
+                      OUR <span class="ultra-gradient">QUANTUM MISSION</span>
+                  </h2>
+                  <div class="feature-icon mb-8">🌍</div>
+              </div>
+              
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div class="space-y-8">
+                      <h3 class="text-3xl font-bold holo-text">Revolutionizing Weather Intelligence</h3>
+                      <p class="text-lg text-gray-300 leading-relaxed">
+                          At Climabot, we believe that weather data should be more than just numbers and forecasts. Our mission is to transform raw meteorological information into actionable intelligence that empowers individuals, businesses, and communities to make informed decisions.
+                      </p>
+                      <p class="text-lg text-gray-300 leading-relaxed">
+                          Through cutting-edge AI algorithms and quantum-inspired processing, we deliver hyper-accurate, real-time weather insights that adapt to your specific needs and location.
+                      </p>
+                      <div class="flex flex-wrap gap-4">
+                          <span class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full text-sm font-bold">REAL-TIME DATA</span>
+                          <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-sm font-bold">AI POWERED</span>
+                          <span class="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-sm font-bold">GLOBAL COVERAGE</span>
+                      </div>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-6">
+                      <div class="team-card p-6 text-center">
+                          <div class="stat-number text-4xl font-black mb-2">99.9%</div>
+                          <p class="text-sm text-gray-400 uppercase tracking-wider">ACCURACY</p>
+                      </div>
+                      <div class="team-card p-6 text-center">
+                          <div class="stat-number text-4xl font-black mb-2">24/7</div>
+                          <p class="text-sm text-gray-400 uppercase tracking-wider">MONITORING</p>
+                      </div>
+                      <div class="team-card p-6 text-center">
+                          <div class="stat-number text-4xl font-black mb-2">195</div>
+                          <p class="text-sm text-gray-400 uppercase tracking-wider">COUNTRIES</p>
+                      </div>
+                      <div class="team-card p-6 text-center">
+                          <div class="stat-number text-4xl font-black mb-2">1M+</div>
+                          <p class="text-sm text-gray-400 uppercase tracking-wider">USERS</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 px-4 relative">
+      <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-20">
+              <h2 class="text-5xl md:text-6xl font-black mb-8">
+                  QUANTUM <span class="ultra-gradient">FEATURES</span>
+              </h2>
+              <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                  Experience weather intelligence like never before with our advanced technology stack
+              </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">🤖</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">AI-Powered Analysis</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Advanced machine learning algorithms process millions of data points to deliver unprecedented accuracy in weather predictions.
+                  </p>
+              </div>
+              
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">⚡</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">Real-Time Updates</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Lightning-fast data processing ensures you receive the most current weather information within seconds of changes.
+                  </p>
+              </div>
+              
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">🌐</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">Global Network</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Connected to weather stations worldwide, providing comprehensive coverage for any location on Earth.
+                  </p>
+              </div>
+              
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">📱</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">Cross-Platform</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Seamlessly access weather data across all devices with our responsive, quantum-inspired interface design.
+                  </p>
+              </div>
+              
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">🔒</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">Secure & Private</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Enterprise-grade security ensures your location data and preferences remain completely private and protected.
+                  </p>
+              </div>
+              
+              <div class="quantum-card p-8 text-center ultra-smooth">
+                  <div class="feature-icon mb-6">🎯</div>
+                  <h3 class="text-2xl font-bold holo-text mb-4">Hyper-Local Precision</h3>
+                  <p class="text-gray-300 leading-relaxed">
+                      Neighborhood-level accuracy with micro-climate analysis for the most relevant weather insights.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-10 px-4 relative">
+      <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-20">
+              <h2 class="text-5xl md:text-6xl font-black mb-8">
+                  OUR <span class="ultra-gradient">JOURNEY</span>
+              </h2>
+              <p class="text-xl text-gray-300">
+                  From concept to quantum reality - the evolution of Climabot
+              </p>
+          </div>
+          
+          <div class="space-y-12">
+              <div class="timeline-item ultra-smooth">
+                  <div class="quantum-card p-8">
+                      <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                          <div class="text-4xl font-black ultra-gradient">2024</div>
+                          <div>
+                              <h3 class="text-2xl font-bold holo-text mb-3">Quantum Genesis</h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Climabot was born from a vision to revolutionize weather intelligence. Our founding team of meteorologists, AI specialists, and quantum computing experts came together to create something unprecedented.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="timeline-item ultra-smooth">
+                  <div class="quantum-card p-8">
+                      <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                          <div class="text-4xl font-black ultra-gradient">2024</div>
+                          <div>
+                              <h3 class="text-2xl font-bold holo-text mb-3">AI Integration</h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Successfully integrated advanced machine learning algorithms with real-time weather data processing, achieving 99.9% accuracy in short-term forecasts across major global cities.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="timeline-item ultra-smooth">
+                  <div class="quantum-card p-8">
+                      <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                          <div class="text-4xl font-black ultra-gradient">2025</div>
+                          <div>
+                              <h3 class="text-2xl font-bold holo-text mb-3">Global Expansion</h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Expanded coverage to 195+ countries with hyper-local precision. Launched quantum-inspired UI design and reached over 1 million active users worldwide.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="timeline-item ultra-smooth">
+                  <div class="quantum-card p-8">
+                      <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                          <div class="text-4xl font-black ultra-gradient">FUTURE</div>
+                          <div>
+                              <h3 class="text-2xl font-bold holo-text mb-3">Next Generation</h3>
+                              <p class="text-gray-300 leading-relaxed">
+                                  Developing quantum weather modeling, predictive climate intelligence, and next-gen conversational AI for personalized weather experiences.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      // Enhanced About Page Interactions
+      document.addEventListener('DOMContentLoaded', function() {
+          // Particle system
+          createParticleSystem();
+          
+          // Animated counters for stats
+          animateCounters();
+          
+          // Intersection Observer for animations
+          setupScrollAnimations();
+          
+          // Team card interactions
+          setupTeamCardEffects();
+          
+          // Mobile menu functionality
+          setupMobileMenu();
+          
+          // Smooth scrolling for anchor links
+          setupSmoothScrolling();
+      });
+
+      function createParticleSystem() {
+          // Create particles every 2.5 seconds
+          setInterval(() => {
+              createRandomParticle();
+          }, 2500);
+          
+          // Create initial particles
+          for (let i = 0; i < 3; i++) {
+              setTimeout(() => createRandomParticle(), i * 800);
+          }
+      }
+
+      function createRandomParticle() {
+          const shapes = document.querySelector('.floating-shapes');
+          if (!shapes) return;
+
+          const particle = document.createElement('div');
+          particle.className = 'shape';
+          
+          const size = Math.random() * 8 + 4; // 4-12px
+          const colors = [
+              'rgba(0, 212, 255, 0.9)',
+              'rgba(57, 255, 20, 0.9)',
+              'rgba(236, 72, 153, 0.9)',
+              'rgba(168, 85, 247, 0.9)',
+              'rgba(99, 102, 241, 0.9)'
+          ];
+          
+          particle.style.cssText = `
+              position: absolute;
+              width: ${size}px;
+              height: ${size}px;
+              background: ${colors[Math.floor(Math.random() * colors.length)]};
+              border-radius: 50%;
+              left: ${Math.random() * 100}%;
+              top: 100%;
+              opacity: 0.7;
+              animation: float-particle ${Math.random() * 4 + 6}s linear forwards;
+              filter: blur(${Math.random() * 2}px);
+          `;
+          
+          shapes.appendChild(particle);
+          
+          // Remove particle after animation
+          setTimeout(() => {
+              if (particle.parentNode) {
+                  particle.remove();
+              }
+          }, 10000);
+      }
+
+      function animateCounters() {
+          const counters = document.querySelectorAll('.stat-number');
+          
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      const counter = entry.target;
+                      const text = counter.textContent;
+                      const isPercentage = text.includes('%');
+                      const hasPlus = text.includes('+');
+                      const isSlash = text.includes('/');
+                      
+                      let number;
+                      if (isSlash) {
+                          number = 24; // For 24/7
+                      } else {
+                          number = parseFloat(text.replace(/[^\d.]/g, '')) || 0;
+                      }
+                      
+                      animateNumber(counter, 0, number, 2000, isPercentage, hasPlus, isSlash);
+                      observer.unobserve(counter);
+                  }
+              });
+          }, { threshold: 0.3 });
+          
+          counters.forEach(counter => observer.observe(counter));
+      }
+
+      function animateNumber(element, start, end, duration, isPercentage = false, hasPlus = false, isSlash = false) {
+          const startTime = performance.now();
+          
+          function update(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+              const current = start + (end - start) * easeOutCubic;
+              
+              let displayValue = Math.floor(current);
+              if (end < 10 && !isSlash) {
+                  displayValue = current.toFixed(1);
+              }
+              
+              let suffix = '';
+              if (isPercentage) suffix = '%';
+              else if (hasPlus) suffix = '+';
+              else if (isSlash) suffix = '/7';
+              
+              element.textContent = displayValue + suffix;
+              
+              if (progress < 1) {
+                  requestAnimationFrame(update);
+              }
+          }
+          
+          requestAnimationFrame(update);
+      }
+
+      function setupScrollAnimations() {
+          const animatedElements = document.querySelectorAll('.ultra-smooth');
+          
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.style.animation = 'ultra-fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                      entry.target.style.opacity = '1';
+                  }
+              });
+          }, { threshold: 0.1 });
+          
+          animatedElements.forEach(el => {
+              el.style.opacity = '0';
+              observer.observe(el);
+          });
+      }
+
+      function setupTeamCardEffects() {
+          const teamCards = document.querySelectorAll('.team-card');
+          
+          teamCards.forEach(card => {
+              card.addEventListener('mouseenter', () => {
+                  card.style.transform = 'translateY(-15px) scale(1.05) rotateY(5deg)';
+                  card.style.zIndex = '10';
+              });
+              
+              card.addEventListener('mouseleave', () => {
+                  card.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+                  card.style.zIndex = '1';
+              });
+          });
+      }
+
+      // Complete the setupMobileMenu function
+    function setupMobileMenu() {
+        const mobileMenuButton = document.querySelector('nav button');
+        const navLinks = document.querySelector('nav .hidden');
+        
+        if (mobileMenuButton && navLinks) {
+            mobileMenuButton.addEventListener('click', () => {
+                navLinks.classList.toggle('hidden');
+                navLinks.classList.toggle('flex');
+                navLinks.classList.toggle('flex-col');
+                navLinks.classList.toggle('absolute');
+                navLinks.classList.toggle('top-full');
+                navLinks.classList.toggle('left-0');
+                navLinks.classList.toggle('right-0');
+                navLinks.classList.toggle('bg-black/95');
+                navLinks.classList.toggle('backdrop-blur-20');
+                navLinks.classList.toggle('border-t');
+                navLinks.classList.toggle('border-cyan-500/30');
+                navLinks.classList.toggle('p-6');
+                navLinks.classList.toggle('space-y-4');
+                navLinks.classList.toggle('z-50');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuButton.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-black/95', 'backdrop-blur-20', 'border-t', 'border-cyan-500/30', 'p-6', 'space-y-4', 'z-50');
+                }
+            });
+        }
+    }
+
+    function setupSmoothScrolling() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 100; // Account for fixed navbar
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    // Additional interactive features
+    function setupAdvancedEffects() {
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            const heroSection = document.querySelector('section:first-of-type');
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${rate}px)`;
+            }
+        });
+        
+        // Dynamic background color changes based on scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionIndex = Array.from(sections).indexOf(entry.target);
+                    updateBackgroundGradient(sectionIndex);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        sections.forEach(section => observer.observe(section));
+    }
+
+    function updateBackgroundGradient(index) {
+        const cyberBg = document.querySelector('.cyber-bg');
+        if (!cyberBg) return;
+        
+        const gradients = [
+            'radial-gradient(circle at 25% 35%, rgba(0, 212, 255, 0.4) 0%, transparent 30%), radial-gradient(circle at 75% 85%, rgba(99, 102, 241, 0.5) 0%, transparent 40%)',
+            'radial-gradient(circle at 45% 25%, rgba(168, 85, 247, 0.4) 0%, transparent 35%), radial-gradient(circle at 15% 75%, rgba(236, 72, 153, 0.3) 0%, transparent 30%)',
+            'radial-gradient(circle at 75% 15%, rgba(57, 255, 20, 0.3) 0%, transparent 30%), radial-gradient(circle at 25% 85%, rgba(0, 212, 255, 0.4) 0%, transparent 35%)',
+            'radial-gradient(circle at 15% 45%, rgba(99, 102, 241, 0.5) 0%, transparent 40%), radial-gradient(circle at 85% 25%, rgba(168, 85, 247, 0.3) 0%, transparent 30%)'
+        ];
+        
+        const baseGradient = 'linear-gradient(135deg, #000000 0%, #0d1117 25%, #161b22 50%, #0d1117 75%, #000000 100%)';
+        const selectedGradient = gradients[index % gradients.length];
+        
+        cyberBg.style.background = `${selectedGradient}, ${baseGradient}`;
+    }
+
+    // Advanced cursor effects
+    function setupCursorEffects() {
+        const cursor = document.createElement('div');
+        cursor.className = 'quantum-cursor';
+        cursor.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        `;
+        document.body.appendChild(cursor);
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+        
+        // Cursor interactions with interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .quantum-card, .team-card');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+                cursor.style.background = 'radial-gradient(circle, rgba(57, 255, 20, 0.8) 0%, transparent 70%)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'radial-gradient(circle, rgba(0, 212, 255, 0.8) 0%, transparent 70%)';
+            });
+        });
+    }
+
+    // Quantum card hover effects enhancement
+    function enhanceQuantumCards() {
+        const quantumCards = document.querySelectorAll('.quantum-card');
+        
+        quantumCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            });
+        });
+    }
+
+    // Dynamic text effects
+    function setupDynamicTextEffects() {
+        const glitchTexts = document.querySelectorAll('.glitch-text');
+        
+        glitchTexts.forEach(text => {
+            text.setAttribute('data-text', text.textContent);
+            
+            // Random glitch effect
+            setInterval(() => {
+                if (Math.random() < 0.1) { // 10% chance every interval
+                    text.style.animation = 'none';
+                    setTimeout(() => {
+                        text.style.animation = 'glitch-main 3s infinite';
+                    }, 50);
+                }
+            }, 3000);
+        });
+    }
+
+    // Performance optimization
+    function optimizePerformance() {
+        // Throttle scroll events
+        let ticking = false;
+        
+        function updateOnScroll() {
+            // Add any scroll-based updates here
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        });
+        
+        // Lazy load animations
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+        
+        document.querySelectorAll('.quantum-card, .team-card').forEach(el => {
+            animationObserver.observe(el);
+        });
+    }
+
+    // Initialize all advanced features
+    document.addEventListener('DOMContentLoaded', function() {
+        // Existing functions
+        createParticleSystem();
+        animateCounters();
+        setupScrollAnimations();
+        setupTeamCardEffects();
+        setupMobileMenu();
+        setupSmoothScrolling();
+        
+        // New advanced features
+        setupAdvancedEffects();
+        setupCursorEffects();
+        enhanceQuantumCards();
+        setupDynamicTextEffects();
+        optimizePerformance();
+        
+        // Add loading animation
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 1s ease-in-out';
+            document.body.style.opacity = '1';
+        }, 100);
+    });
+
+    // Add keyboard navigation support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            // Close mobile menu if open
+            const navLinks = document.querySelector('nav .flex');
+            if (navLinks && !navLinks.classList.contains('hidden')) {
+                navLinks.classList.add('hidden');
+                navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-black/95', 'backdrop-blur-20', 'border-t', 'border-cyan-500/30', 'p-6', 'space-y-4', 'z-50');
+            }
+        }
+    });
+
+     // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            new QuantumWeatherApp();
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+    // Add resize handler for responsive adjustments
+    window.addEventListener('resize', () => {
+        // Recalculate animations and positions on resize
+        const quantumCards = document.querySelectorAll('.quantum-card');
+        quantumCards.forEach(card => {
+            card.style.transform = 'none';
+        });
+    });
+
+    // Error handling for missing elements
+    function safeQuerySelector(selector, callback) {
+        const element = document.querySelector(selector);
+        if (element && callback) {
+            callback(element);
+        }
+        return element;
+    }
+
+    // Console easter egg
+    console.log(`
+    ⚡ CLIMABOT QUANTUM SYSTEM INITIALIZED ⚡
+    🌍 Weather intelligence powered by quantum algorithms
+    🤖 Advanced AI meteorological assistant active
+    ⚛️  Next-generation atmospheric data processing online
+
+    Welcome to the future of weather technology!
+    `);
