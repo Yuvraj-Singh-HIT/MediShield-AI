@@ -642,7 +642,7 @@
                   <div class="chat-input-wrapper">
                       <textarea
                           id="chat-input"
-                          placeholder="What would you like to know about the weather in your area?"
+                          placeholder="Ask me about weather, climate, forecasts..."
                           class="holo-input"
                           rows="1"
                           maxlength="2000"
@@ -853,39 +853,28 @@
               let welcomeText = `
                   <div class="text-center">
                       <div class="text-4xl mb-4">🤖</div>
-                      <h3 class="text-2xl font-bold mb-4 ultra-gradient">Hello! I'm Climabot AI</h3>
+                      <h3 class="text-2xl font-bold mb-4 ultra-gradient">Welcome to Climabot AI!</h3>
+                      <p class="text-lg mb-4 text-gray-300">I'm your intelligent weather assistant powered by advanced AI.</p>
               `;
 
               if (this.currentWeatherData) {
                   welcomeText += `
-                      <p class="text-lg mb-4 text-gray-300">I can see you've been checking the weather for <span class="text-cyan-400 font-semibold">${this.currentWeatherData.location}</span>!</p>
-                      <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-4 mb-4 backdrop-filter backdrop-blur-sm">
-                          <div class="flex items-center justify-center space-x-6 mb-3">
-                              <div class="text-3xl">${this.getWeatherEmoji(this.currentWeatherData.condition)}</div>
-                              <div class="text-center">
-                                  <div class="text-2xl font-bold text-white">${this.currentWeatherData.temperature}°C</div>
-                                  <div class="text-cyan-300 font-medium">${this.currentWeatherData.condition}</div>
-                              </div>
+                      <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4 mb-4 backdrop-filter backdrop-blur-sm">
+                          <p class="text-cyan-300 font-semibold mb-2">📍 Current Context</p>
+                          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm">
+                              <div><span class="text-gray-400">Location:</span> <span class="text-white">${this.currentWeatherData.location}</span></div>
+                              <div><span class="text-gray-400">Temperature:</span> <span class="text-white">${this.currentWeatherData.temperature}°C</span></div>
+                              <div><span class="text-gray-400">Conditions:</span> <span class="text-white">${this.currentWeatherData.condition}</span></div>
                           </div>
-                          <p class="text-center text-gray-300 text-sm">📍 ${this.currentWeatherData.location}</p>
                       </div>
-                      <p class="text-green-400 font-medium mb-4">Perfect! I have all the context I need about ${this.currentWeatherData.location}'s current weather.</p>
-                      <p class="text-gray-300 mb-4">Feel free to ask me anything about:</p>
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm mb-4">
-                          <div class="text-left">• Detailed forecast for ${this.currentWeatherData.location}</div>
-                          <div class="text-left">• Weather trends and patterns</div>
-                          <div class="text-left">• What to expect in the coming days</div>
-                          <div class="text-left">• Weather comparisons with other cities</div>
-                      </div>
+                      <p class="text-green-400 font-medium">I can provide detailed insights about this location's weather and answer any weather-related questions!</p>
                   `;
               } else {
                   welcomeText += `
-                      <p class="text-lg mb-4 text-gray-300">I'm your intelligent weather assistant powered by advanced AI.</p>
                       <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 mb-4 backdrop-filter backdrop-blur-sm">
                           <p class="text-purple-300 font-semibold mb-2">💡 Pro Tip</p>
-                          <p class="text-gray-300 text-sm">Check the weather on the main page first, and I'll have full context about your location!</p>
+                          <p class="text-gray-300 text-sm">Check the weather on the main page first for context-aware responses!</p>
                       </div>
-                      <p class="text-gray-300 mb-4">I can help you with:</p>
                   `;
               }
 
