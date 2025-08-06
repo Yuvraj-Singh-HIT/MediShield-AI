@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Details - Climabot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --primary-glow: #6366f1;
+            --secondary-glow: #a855f7;
+            --accent-glow: #ec4899;
+            --cyber-blue: #00d4ff;
+            --neon-green: #39ff14;
+            --electric-purple: #bf00ff;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Advanced animated background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(0, 212, 255, 0.4) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(99, 102, 241, 0.5) 0%, transparent 40%),
+                radial-gradient(circle at 45% 60%, rgba(168, 85, 247, 0.3) 0%, transparent 35%),
+                radial-gradient(circle at 10% 80%, rgba(57, 255, 20, 0.3) 0%, transparent 30%),
+                linear-gradient(135deg, #000000 0%, #0d1117 25%, #161b22 50%, #0d1117 75%, #000000 100%);
+            animation: cosmic-drift 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes cosmic-drift {
+            0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+            50% { transform: scale(1.05) rotate(0.5deg); filter: hue-rotate(180deg); }
+            100% { transform: scale(1.02) rotate(-0.3deg); filter: hue-rotate(360deg); }
+        }
+
+        /* Floating shapes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            filter: blur(1px);
+        }
+
+        .shape:nth-child(1) { 
+            width: 100px; height: 100px; 
+            top: 20%; left: 10%; 
+            background: linear-gradient(45deg, var(--cyber-blue), var(--primary-glow));
+            border-radius: 50%;
+            animation: float-1 20s infinite linear;
+        }
+        .shape:nth-child(2) { 
+            width: 60px; height: 60px; 
+            top: 70%; left: 80%; 
+            background: linear-gradient(135deg, var(--neon-green), var(--secondary-glow));
+            transform: rotate(45deg);
+            animation: float-2 25s infinite linear;
+        }
+        .shape:nth-child(3) { 
+            width: 80px; height: 80px; 
+            top: 85%; left: 20%; 
+            background: linear-gradient(90deg, var(--accent-glow), var(--electric-purple));
+            border-radius: 20px;
+            animation: float-3 30s infinite linear;
+        }
+
+        @keyframes float-1 {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-30vh) rotate(180deg); opacity: 0.12; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes float-2 {
+            0% { transform: translateY(0px) rotate(45deg); opacity: 0.06; }
+            50% { transform: translateY(-35vh) rotate(225deg); opacity: 0.14; }
+            100% { transform: translateY(-100vh) rotate(405deg); opacity: 0; }
+        }
+        @keyframes float-3 {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.07; }
+            50% { transform: translateY(-25vh) rotate(270deg); opacity: 0.13; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Ultra-modern gradient text */
+        .ultra-gradient {
+            background: linear-gradient(135deg, 
+                #00d4ff 0%, 
+                #6366f1 25%, 
+                #a855f7 50%, 
+                #ec4899 75%, 
+                #39ff14 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow-shift 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+        }
+
+        @keyframes rainbow-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Quantum card design */
+        .quantum-card {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(13, 17, 23, 0.9) 50%,
+                rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 2rem;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.9),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 0 1px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .quantum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            transition: left 0.8s ease;
+            z-index: 1;
+        }
+
+        .quantum-card:hover::before {
+            left: 100%;
+        }
+
+        /* Weather cards */
+        .weather-holo {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.85) 0%, 
+                rgba(21, 32, 43, 0.7) 50%,
+                rgba(0, 0, 0, 0.85) 100%);
+            backdrop-filter: blur(20px) saturate(200%);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weather-holo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent, 
+                rgba(0, 212, 255, 0.1), 
+                transparent, 
+                rgba(57, 255, 20, 0.1), 
+                transparent);
+            animation: hologram-rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .weather-holo:hover::before {
+            opacity: 1;
+        }
+
+        .weather-holo:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(0, 212, 255, 0.3);
+            border-color: rgba(57, 255, 20, 0.6);
+        }
+
+        @keyframes hologram-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Holographic text effects */
+        .holo-text {
+            background: linear-gradient(135deg, 
+                rgba(0, 212, 255, 0.95) 0%, 
+                rgba(255, 255, 255, 1) 50%,
+                rgba(57, 255, 20, 0.95) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+            animation: holo-shimmer 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes holo-shimmer {
+            0% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            100% { filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.7)); }
+        }
+
+        /* Loading animation */
+        .quantum-loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid var(--neon-green);
+            animation: quantum-spin 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.8));
+        }
+
+        @keyframes quantum-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Smooth animations */
+        .ultra-smooth {
+            animation: ultra-fade-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes ultra-fade-in {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Weather icons */
+        .weather-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+            animation: icon-float 3s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+        }
+
+        .weather-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.8));
+        }
+
+        @keyframes icon-float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-5px) rotate(2deg); }
+        }
+
+        /* Chart container */
+        .chart-container {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(13, 17, 23, 0.8) 50%,
+                rgba(0, 0, 0, 0.9) 100%);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Hourly forecast scroll */
+        .hourly-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 212, 255, 0.5) rgba(0, 0, 0, 0.3);
+        }
+
+        .hourly-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .hourly-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .hourly-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
+            border-radius: 3px;
+        }
+
+        /* AQI indicators */
+        .aqi-good { border-color: rgba(34, 197, 94, 0.6); background: rgba(34, 197, 94, 0.1); }
+        .aqi-moderate { border-color: rgba(251, 191, 36, 0.6); background: rgba(251, 191, 36, 0.1); }
+        .aqi-unhealthy { border-color: rgba(239, 68, 68, 0.6); background: rgba(239, 68, 68, 0.1); }
+        .aqi-hazardous { border-color: rgba(147, 51, 234, 0.6); background: rgba(147, 51, 234, 0.1); }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .weather-section { padding: 1rem; }
+            .quantum-card { padding: 1.5rem; margin: 0.5rem; }
+            .weather-holo { padding: 1rem; margin: 0.5rem 0; }
+            .weather-icon { font-size: 2rem; }
+        }
+
+        /* Error states */
+        .error-holo {
+            background: rgba(220, 38, 38, 0.15);
+            border: 2px solid rgba(220, 38, 38, 0.6);
+            backdrop-filter: blur(15px);
+            animation: error-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes error-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.8); }
+        }
+        /* Holographic navbar */
+      .holo-nav {
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(25px) saturate(200%);
+          border-bottom: 2px solid transparent;
+          background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                           linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          position: relative;
+      }
+
+      .holo-nav::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent 0%, var(--cyber-blue) 50%, transparent 100%);
+          animation: scan-line 3s ease-in-out infinite;
+      }
+
+      @keyframes scan-line {
+          0%, 100% { opacity: 0; transform: scaleX(0); }
+          50% { opacity: 1; transform: scaleX(1); }
+      }
+      /* Nav links */
+      .nav-link {
+          position: relative;
+          transition: all 0.3s ease;
+          padding: 8px 0;
+      }
+
+      .nav-link::before {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+          border-radius: 1px;
+      }
+
+      .nav-link:hover::before {
+          width: 100%;
+      }
+
+      .nav-link:hover {
+          transform: translateY(-2px);
+          text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+      }
+
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Advanced background -->
+    <div class="cyber-bg"></div>
+    
+    <!-- Floating geometric shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Holographic Navbar -->
+    <nav class="holo-nav py-6 px-6 md:px-13 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center space-x-4">
+            <div class="logo-quantum">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M36 20C36 16.6863 33.3137 14 30 14C29.3372 14 28.7142 14.1431 28.1538 14.4016C27.1507 12.0648 24.8082 10.5 22.08 10.5C18.6994 10.5 15.9 13.2994 15.9 16.68" fill="url(#quantumGradient1)"/>
+                    <path d="M24 29L19 37H24L22.5 42L28.5 34H23L24 29Z" fill="url(#quantumGradient2)"/>
+                    <circle cx="12" cy="15" r="1.5" fill="url(#quantumGradient3)" opacity="0.8"/>
+                    <circle cx="38" cy="25" r="1" fill="url(#quantumGradient3)" opacity="0.6"/>
+                    <defs>
+                        <linearGradient id="quantumGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="quantumGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="quantumGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="text-2xl font-black holo-text tracking-wider">CLIMABOT</span>
+        </div>
+        <div class="hidden md:flex space-x-8 pr-4">
+            <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
+            <a href="weather.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">WEATHER</a>
+            <a href="chatbot.html" onclick="app.navigateToChat(); return false;" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
+            <a href="about.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">ABOUT</a>
+            <a href="contact.html" class="nav-link text-gray-300 hover:text-blue-400 font-bold text-lg">CONTACT</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-cyan-400 focus:outline-none transition-all duration-300 transform hover:scale-110">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Weather Details Section -->
+    <main class="weather-section py-12 px-4 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <!-- Location Header -->
+            <div class="text-center mb-12 ultra-smooth">
+                <h1 class="text-5xl md:text-7xl font-black mb-4">
+                    <span class="ultra-gradient" id="location-title">LOADING LOCATION...</span>
+                </h1>
+                <p class="text-xl text-gray-300 font-medium" id="current-time">
+                    📍 Quantum Weather Analysis in Progress...
+                </p>
+            </div>
+
+            <!-- Current Weather Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Main Weather Card -->
+                <div class="lg:col-span-2 quantum-card p-8 ultra-smooth">
+                    <div class="flex flex-col lg:flex-row items-center justify-between">
+                        <div class="text-center lg:text-left mb-6 lg:mb-0">
+                            <div class="weather-icon text-8xl mb-4" id="main-weather-icon">⚡</div>
+                            <h2 class="text-6xl font-black holo-text mb-2" id="main-temperature">--°</h2>
+                            <p class="text-2xl font-bold text-gray-300 mb-1" id="main-condition">Loading...</p>
+                            <p class="text-lg text-gray-400" id="feels-like-temp">Feels like --°</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6 text-center">
+                            <div class="weather-holo p-4">
+                                <div class="text-cyan-400 text-sm font-bold mb-1">HUMIDITY</div>
+                                <div class="text-2xl font-black holo-text" id="humidity-value">--%</div>
+                            </div>
+                            <div class="weather-holo p-4">
+                                <div class="text-purple-400 text-sm font-bold mb-1">PRESSURE</div>
+                                <div class="text-2xl font-black holo-text" id="pressure-value">-- hPa</div>
+                            </div>
+                            <div class="weather-holo p-4">
+                                <div class="text-pink-400 text-sm font-bold mb-1">WIND</div>
+                                <div class="text-2xl font-black holo-text" id="wind-value">-- km/h</div>
+                            </div>
+                            <div class="weather-holo p-4">
+                                <div class="text-green-400 text-sm font-bold mb-1">VISIBILITY</div>
+                                <div class="text-2xl font-black holo-text" id="visibility-value">-- km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sun Times Card -->
+                <div class="quantum-card p-8 ultra-smooth">
+                    <h3 class="text-2xl font-black holo-text mb-6 text-center">🌅 SUN & MOON</h3>
+                    <div class="space-y-6">
+                        <div class="weather-holo p-4 text-center">
+                            <div class="text-yellow-400 text-lg font-bold mb-2">☀️ SUNRISE</div>
+                            <div class="text-xl font-black text-gray-200" id="sunrise-time">--:--</div>
+                            <div class="text-sm text-gray-400" id="sunrise-local">Local Time</div>
+                        </div>
+                        <div class="weather-holo p-4 text-center">
+                            <div class="text-orange-400 text-lg font-bold mb-2">🌅 SUNSET</div>
+                            <div class="text-xl font-black text-gray-200" id="sunset-time">--:--</div>
+                            <div class="text-sm text-gray-400" id="sunset-local">Local Time</div>
+                        </div>
+                        <div class="weather-holo p-4 text-center">
+                            <div class="text-blue-400 text-lg font-bold mb-2">🌙 MOON PHASE</div>
+                            <div class="text-xl font-black text-gray-200" id="moon-phase">🌕</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hourly Forecast -->
+            <div class="quantum-card p-8 mb-12 ultra-smooth">
+                <h3 class="text-3xl font-black holo-text mb-8 text-center">⏰ 24-HOUR QUANTUM FORECAST</h3>
+                <div class="hourly-scroll overflow-x-auto pb-4">
+                    <div class="flex space-x-4 min-w-max" id="hourly-forecast">
+                        <!-- Loading states -->
+                        <div class="weather-holo p-4 text-center min-w-[120px]">
+                            <div class="quantum-loading mx-auto mb-3"></div>
+                            <div class="text-sm text-gray-400">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7-Day Forecast -->
+            <div class="quantum-card p-8 mb-12 ultra-smooth">
+                <h3 class="text-3xl font-black holo-text mb-8 text-center">📅 7-DAY WEATHER TREND</h3>
+                <div class="space-y-4" id="weekly-forecast">
+                    <!-- Loading state -->
+                    <div class="weather-holo p-6 flex items-center justify-between">
+                        <div class="quantum-loading"></div>
+                        <div class="text-gray-400">Loading weekly forecast...</div>
+                        <div class="quantum-loading"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Air Quality Index -->
+            <div class="quantum-card p-8 mb-12 ultra-smooth">
+                <h3 class="text-3xl font-black holo-text mb-8 text-center">🌬️ AIR QUALITY INDEX</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="weather-holo p-6 text-center" id="aqi-main">
+                        <div class="text-cyan-400 text-lg font-bold mb-2">AQI INDEX</div>
+                        <div class="text-4xl font-black holo-text mb-2" id="aqi-value">--</div>
+                        <div class="text-sm font-bold" id="aqi-status">Loading...</div>
+                    </div>
+                    <div class="weather-holo p-6 text-center">
+                        <div class="text-red-400 text-lg font-bold mb-2">PM2.5</div>
+                        <div class="text-2xl font-black text-gray-200" id="pm25-value">-- μg/m³</div>
+                    </div>
+                    <div class="weather-holo p-6 text-center">
+                        <div class="text-yellow-400 text-lg font-bold mb-2">PM10</div>
+                        <div class="text-2xl font-black text-gray-200" id="pm10-value">-- μg/m³</div>
+                    </div>
+                    <div class="weather-holo p-6 text-center">
+                        <div class="text-green-400 text-lg font-bold mb-2">O3</div>
+                        <div class="text-2xl font-black text-gray-200" id="o3-value">-- μg/m³</div>
+                    </div>
+                </div>
+                <div class="mt-6 weather-holo p-4">
+                    <div class="text-center text-gray-300" id="aqi-description">
+                        Loading air quality analysis...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Display -->
+            <div id="error-container" class="hidden">
+                <div class="error-holo p-8 rounded-2xl text-center">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h3 class="text-2xl font-bold text-red-400 mb-2">QUANTUM INTERFERENCE DETECTED</h3>
+                    <p class="text-gray-300" id="error-message">Unable to fetch weather data. Please try again.</p>
+                    <button onclick="location.reload()" class="mt-4 px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold transition-all">
+                        🔄 RETRY SCAN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+    class WeatherAPIService {
+        constructor() {
+            // Replace with your actual API keys
+            this.OPENWEATHER_API_KEY = 'YOUR_OPENWEATHER_API_KEY';
+            this.OPENWEATHER_BASE_URL = 'https://api.openweathermap.org/data/2.5';
+            this.OPENWEATHER_ONECALL_URL = 'https://api.openweathermap.org/data/3.0/onecall';
+            this.AIR_QUALITY_URL = 'https://api.openweathermap.org/data/2.5/air_pollution';
+            this.location = null;
+            this.lat = null;
+            this.lon = null;
+        }
+
+        async fetchCurrentWeather() {
+            try {
+                const response = await fetch(
+                    `${this.OPENWEATHER_BASE_URL}/weather?q=${encodeURIComponent(this.location)}&appid=${this.OPENWEATHER_API_KEY}&units=metric`
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Store coordinates for other API calls
+                this.lat = data.coord.lat;
+                this.lon = data.coord.lon;
+                
+                return data;
+            } catch (error) {
+                console.error('Current weather fetch error:', error);
+                throw error;
+            }
+        }
+
+        async fetchDetailedForecast() {
+            try {
+                if (!this.lat || !this.lon) {
+                    throw new Error('Coordinates not available');
+                }
+
+                const response = await fetch(
+                    `${this.OPENWEATHER_ONECALL_URL}?lat=${this.lat}&lon=${this.lon}&appid=${this.OPENWEATHER_API_KEY}&units=metric&exclude=minutely,alerts`
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                return {
+                    hourly: this.processHourlyData(data.hourly),
+                    daily: this.processDailyData(data.daily),
+                    timezone: data.timezone,
+                    timezone_offset: data.timezone_offset
+                };
+            } catch (error) {
+                console.error('Detailed forecast fetch error:', error);
+                throw error;
+            }
+        }
+
+        async fetchAirQuality() {
+            try {
+                if (!this.lat || !this.lon) {
+                    throw new Error('Coordinates not available');
+                }
+
+                const response = await fetch(
+                    `${this.AIR_QUALITY_URL}?lat=${this.lat}&lon=${this.lon}&appid=${this.OPENWEATHER_API_KEY}`
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                return this.processAirQualityData(data);
+            } catch (error) {
+                console.error('Air quality fetch error:', error);
+                throw error;
+            }
+        }
+
+        processHourlyData(hourlyData) {
+            return hourlyData.slice(0, 24).map(hour => ({
+                time: new Date(hour.dt * 1000).getHours(),
+                temp: Math.round(hour.temp),
+                condition: hour.weather[0].main,
+                icon: this.getWeatherIcon(hour.weather[0].main),
+                humidity: hour.humidity,
+                windSpeed: Math.round(hour.wind_speed * 3.6), // Convert m/s to km/h
+                pop: Math.round(hour.pop * 100) // Probability of precipitation
+            }));
+        }
+
+        processDailyData(dailyData) {
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            
+            return dailyData.slice(0, 7).map((day, index) => {
+                const date = new Date(day.dt * 1000);
+                return {
+                    day: index === 0 ? 'Today' : dayNames[date.getDay()],
+                    date: date.toLocaleDateString(),
+                    condition: day.weather[0].main,
+                    icon: this.getWeatherIcon(day.weather[0].main),
+                    high: Math.round(day.temp.max),
+                    low: Math.round(day.temp.min),
+                    humidity: day.humidity,
+                    windSpeed: Math.round(day.wind_speed * 3.6),
+                    pop: Math.round(day.pop * 100),
+                    sunrise: new Date(day.sunrise * 1000),
+                    sunset: new Date(day.sunset * 1000),
+                    description: day.weather[0].description
+                };
+            });
+        }
+
+        processAirQualityData(data) {
+            const current = data.list[0];
+            const components = current.components;
+            const aqi = current.main.aqi;
+            
+            let status, statusColor, description;
+            
+            switch (aqi) {
+                case 1:
+                    status = 'GOOD';
+                    statusColor = 'text-green-400';
+                    description = 'Air quality is excellent. Perfect for outdoor activities and exercise.';
+                    break;
+                case 2:
+                    status = 'FAIR';
+                    statusColor = 'text-yellow-400';
+                    description = 'Air quality is acceptable for most people. Enjoy outdoor activities.';
+                    break;
+                case 3:
+                    status = 'MODERATE';
+                    statusColor = 'text-orange-400';
+                    description = 'Air quality is moderate. Sensitive individuals should consider limiting prolonged outdoor exertion.';
+                    break;
+                case 4:
+                    status = 'POOR';
+                    statusColor = 'text-red-400';
+                    description = 'Air quality is poor. Everyone may experience health effects; sensitive groups may experience more serious effects.';
+                    break;
+                case 5:
+                    status = 'VERY POOR';
+                    statusColor = 'text-purple-400';
+                    description = 'Health warnings of emergency conditions. Everyone is more likely to be affected.';
+                    break;
+                default:
+                    status = 'UNKNOWN';
+                    statusColor = 'text-gray-400';
+                    description = 'Air quality data is not available.';
+            }
+            
+            return {
+                aqi: aqi,
+                status,
+                statusColor,
+                description,
+                pm25: components.pm2_5 ? Math.round(components.pm2_5) : 0,
+                pm10: components.pm10 ? Math.round(components.pm10) : 0,
+                o3: components.o3 ? Math.round(components.o3) : 0,
+                no2: components.no2 ? Math.round(components.no2) : 0,
+                so2: components.so2 ? Math.round(components.so2) : 0,
+                co: components.co ? (components.co / 1000).toFixed(1) : 0
+            };
+        }
+
+        getWeatherIcon(condition) {
+            const iconMap = {
+                'Clear': '☀️',
+                'Clouds': '☁️',
+                'Rain': '🌧️',
+                'Drizzle': '🌦️',
+                'Thunderstorm': '⛈️',
+                'Snow': '❄️',
+                'Mist': '🌫️',
+                'Fog': '🌫️',
+                'Haze': '🌫️',
+                'Dust': '🌪️',
+                'Sand': '🌪️',
+                'Ash': '🌋',
+                'Squall': '💨',
+                'Tornado': '🌪️'
+            };
+            return iconMap[condition] || '☁️';
+        }
+
+        formatLocalTime(timestamp, timezoneOffset) {
+            const date = new Date((timestamp + timezoneOffset) * 1000);
+            return date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        }
+
+        calculateMoonPhase(date = new Date()) {
+            // Simplified moon phase calculation
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            const day = date.getDate();
+            
+            let c, e, jd, b;
+            
+            if (month < 3) {
+                year--;
+                month += 12;
+            }
+            
+            ++month;
+            c = 365.25 * year;
+            e = 30.6 * month;
+            jd = c + e + day - 694039.09;
+            jd /= 29.5305882;
+            b = parseInt(jd);
+            jd -= b;
+            b = Math.round(jd * 8);
+            
+            if (b >= 8) {
+                b = 0;
+            }
+            
+            const phases = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+            return phases[b];
+        }
+    }
+
+    class WeatherPageApp {
+        constructor() {
+            this.location = null;
+            this.weatherData = null;
+            this.apiService = new WeatherAPIService();
+            this.init();
+        }
+
+        init() {
+            // Get location from URL parameters or localStorage
+            this.getLocationFromParams();
+            if (this.location) {
+                this.loadWeatherData();
+            } else {
+                this.showError('No location specified. Please return to the home page.');
+            }
+        }
+
+      getLocationFromParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const locationParam = urlParams.get('location');
+        
+        if (locationParam) {
+            this.location = decodeURIComponent(locationParam);
+            console.log('Location from URL:', this.location); // Debug log
+        } else {
+            // Only use localStorage if no URL parameter exists
+            try {
+                const savedData = localStorage.getItem('climabot_weather_data');
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    this.location = data.location || data.name;
+                    console.log('Location from localStorage:', this.location); // Debug log
+                }
+            } catch (error) {
+                console.warn('localStorage not available, using fallback');
+                this.location = null;
+            }
+        }
+    }
+
+       async loadWeatherData() {
+            try {
+                // Set location for API service
+                this.apiService.location = this.location;           
+                // Load current weather first to get coordinates and proper city name
+                const currentWeather = await this.apiService.fetchCurrentWeather();
+                this.displayCurrentWeather(currentWeather); // This will now set the correct location title
+
+                // Rest of your existing code remains the same...
+                const [forecastResult, airQualityResult] = await Promise.allSettled([
+                    this.apiService.fetchDetailedForecast(),
+                    this.apiService.fetchAirQuality()
+                ]);
+
+                if (forecastResult.status === 'fulfilled') {
+                    this.displayHourlyForecast(forecastResult.value.hourly);
+                    this.displayWeeklyForecast(forecastResult.value.daily);
+                    this.updateSunTimesWithTimezone(currentWeather, forecastResult.value);
+                } else {
+                    console.warn('Forecast data failed to load:', forecastResult.reason);
+                    this.displayHourlyForecast(this.generateHourlyForecast());
+                    this.displayWeeklyForecast(this.generateWeeklyForecast());
+                    this.updateSunTimes(currentWeather);
+                }
+
+                if (airQualityResult.status === 'fulfilled') {
+                    this.displayAirQuality(airQualityResult.value);
+                } else {
+                    console.warn('Air quality data failed to load:', airQualityResult.reason);
+                    this.displayAirQuality(this.generateAirQualityData());
+                }
+
+            } catch (error) {
+                console.error('Error loading weather data:', error);
+                console.warn('Using fallback demo data due to API error');
+                
+                // For demo data, use the original location input
+                const demoData = this.generateDemoCurrentWeather();
+                demoData.name = this.location; // Ensure demo data uses the correct location name
+                this.displayCurrentWeather(demoData);
+                this.displayHourlyForecast(this.generateHourlyForecast());
+                this.displayWeeklyForecast(this.generateWeeklyForecast());
+                this.displayAirQuality(this.generateAirQualityData());
+                this.updateDemoSunTimes();
+            }
+        }
+
+        displayCurrentWeather(data) {
+            // Update main weather display
+            document.getElementById('main-temperature').textContent = `${Math.round(data.main.temp)}°C`;
+            document.getElementById('main-condition').textContent = data.weather[0].description.toUpperCase();
+            document.getElementById('feels-like-temp').textContent = `Feels like ${Math.round(data.main.feels_like)}°C`;
+            document.getElementById('main-weather-icon').textContent = this.apiService.getWeatherIcon(data.weather[0].main);
+
+            // Update detailed metrics
+            document.getElementById('humidity-value').textContent = `${data.main.humidity}%`;
+            document.getElementById('pressure-value').textContent = `${data.main.pressure} hPa`;
+            document.getElementById('wind-value').textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
+            document.getElementById('visibility-value').textContent = `${(data.visibility / 1000).toFixed(1)} km`;
+
+            // Fix: Update location title with the actual city name from API response
+            const locationTitle = document.getElementById('location-title');
+            if (locationTitle) {
+                locationTitle.textContent = data.name.toUpperCase();
+            }
+
+            // Update current time with proper location name
+            document.getElementById('current-time').textContent = 
+                `📍 ${data.name} • ${new Date().toLocaleString()}`;
+        }
+
+        updateSunTimes(data) {
+            const sunrise = new Date(data.sys.sunrise * 1000);
+            const sunset = new Date(data.sys.sunset * 1000);
+            
+            document.getElementById('sunrise-time').textContent = 
+                sunrise.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            document.getElementById('sunset-time').textContent = 
+                sunset.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            
+            // Calculate moon phase (simplified)
+            const moonPhases = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+            const moonPhaseIndex = Math.floor((Date.now() / (1000 * 60 * 60 * 24)) % 29.53) / 29.53 * 8;
+            document.getElementById('moon-phase').textContent = moonPhases[Math.floor(moonPhaseIndex)];
+        }
+
+        updateSunTimesWithTimezone(weatherData, forecastData) {
+            const timezoneOffset = forecastData.timezone_offset || 0;
+            const sunrise = new Date((weatherData.sys.sunrise + timezoneOffset) * 1000);
+            const sunset = new Date((weatherData.sys.sunset + timezoneOffset) * 1000);
+            
+            document.getElementById('sunrise-time').textContent = 
+                sunrise.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            document.getElementById('sunset-time').textContent = 
+                sunset.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            
+            // Calculate and display moon phase
+            document.getElementById('moon-phase').textContent = 
+                this.apiService.calculateMoonPhase();
+            
+            // Update current time with timezone
+            const localTime = new Date(Date.now() + (timezoneOffset * 1000));
+            document.getElementById('current-time').textContent = 
+                `📍 ${weatherData.name} • ${localTime.toLocaleString()} (${forecastData.timezone || 'UTC'})`;
+        }
+
+        generateHourlyForecast() {
+            const hours = [];
+            const baseTemp = 20;
+            const conditions = ['Clear', 'Clouds', 'Rain', 'Snow'];
+            
+            for (let i = 0; i < 24; i++) {
+                const date = new Date();
+                date.setHours(date.getHours() + i);
+                
+                hours.push({
+                    time: date.getHours(),
+                    temp: Math.round(baseTemp + Math.random() * 10 - 5),
+                    condition: conditions[Math.floor(Math.random() * conditions.length)],
+                    icon: this.apiService.getWeatherIcon(conditions[Math.floor(Math.random() * conditions.length)])
+                });
+            }
+            return hours;
+        }
+
+        displayHourlyForecast(hourlyData) {
+            const container = document.getElementById('hourly-forecast');
+            container.innerHTML = '';
+            
+            hourlyData.forEach(hour => {
+                const hourCard = document.createElement('div');
+                hourCard.className = 'weather-holo p-4 text-center min-w-[120px] flex-shrink-0';
+                hourCard.innerHTML = `
+                    <div class="text-sm text-gray-400 mb-2">${hour.time}:00</div>
+                    <div class="weather-icon text-2xl mb-2">${hour.icon}</div>
+                    <div class="text-lg font-black holo-text mb-1">${hour.temp}°</div>
+                    <div class="text-xs text-gray-400">${hour.condition}</div>
+                `;
+                container.appendChild(hourCard);
+            });
+        }
+
+        generateWeeklyForecast() {
+            const days = [];
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const conditions = ['Clear', 'Clouds', 'Rain', 'Thunderstorm', 'Snow', 'Mist'];
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date();
+                date.setDate(date.getDate() + i);
+                
+                const baseTemp = 22;
+                const condition = conditions[Math.floor(Math.random() * conditions.length)];
+                
+                days.push({
+                    day: i === 0 ? 'Today' : dayNames[date.getDay()],
+                    date: date.toLocaleDateString(),
+                    condition: condition,
+                    icon: this.apiService.getWeatherIcon(condition),
+                    high: Math.round(baseTemp + Math.random() * 8),
+                    low: Math.round(baseTemp - Math.random() * 8),
+                    humidity: Math.round(40 + Math.random() * 40),
+                    windSpeed: Math.round(5 + Math.random() * 15)
+                });
+            }
+            return days;
+        }
+
+        displayWeeklyForecast(weeklyData) {
+            const container = document.getElementById('weekly-forecast');
+            container.innerHTML = '';
+            
+            weeklyData.forEach(day => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'weather-holo p-6 flex items-center justify-between hover:scale-[1.02] transition-all';
+                dayCard.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <div class="weather-icon text-3xl">${day.icon}</div>
+                        <div>
+                            <div class="text-lg font-bold text-gray-200">${day.day}</div>
+                            <div class="text-sm text-gray-400">${day.date}</div>
+                            <div class="text-sm text-cyan-400">${day.condition}</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-black holo-text">${day.high}° / ${day.low}°</div>
+                        <div class="text-xs text-gray-400 mt-1">💧 ${day.humidity}% • 💨 ${day.windSpeed} km/h</div>
+                    </div>
+                `;
+                container.appendChild(dayCard);
+            });
+        }
+
+        generateAirQualityData() {
+            const aqiValue = Math.floor(Math.random() * 200) + 1;
+            let status, statusColor, description;
+            
+            if (aqiValue <= 50) {
+                status = 'GOOD';
+                statusColor = 'text-green-400';
+                description = 'Air quality is excellent. Perfect for outdoor activities.';
+            } else if (aqiValue <= 100) {
+                status = 'MODERATE';
+                statusColor = 'text-yellow-400';
+                description = 'Air quality is acceptable for most people.';
+            } else if (aqiValue <= 150) {
+                status = 'UNHEALTHY FOR SENSITIVE';
+                statusColor = 'text-orange-400';
+                description = 'Sensitive groups should limit outdoor exposure.';
+            } else {
+                status = 'UNHEALTHY';
+                statusColor = 'text-red-400';
+                description = 'Health warnings of emergency conditions. Avoid outdoor activities.';
+            }
+            
+            return {
+                aqi: aqiValue,
+                status,
+                statusColor,
+                description,
+                pm25: Math.floor(Math.random() * 50) + 5,
+                pm10: Math.floor(Math.random() * 80) + 10,
+                o3: Math.floor(Math.random() * 100) + 20,
+                no2: Math.floor(Math.random() * 60) + 10,
+                so2: Math.floor(Math.random() * 30) + 5,
+                co: (Math.random() * 2 + 0.5).toFixed(1)
+            };
+        }
+
+        displayAirQuality(aqiData) {
+            document.getElementById('aqi-value').textContent = aqiData.aqi;
+            document.getElementById('aqi-status').textContent = aqiData.status;
+            document.getElementById('aqi-status').className = `text-sm font-bold ${aqiData.statusColor}`;
+            
+            document.getElementById('pm25-value').textContent = `${aqiData.pm25} μg/m³`;
+            document.getElementById('pm10-value').textContent = `${aqiData.pm10} μg/m³`;
+            document.getElementById('o3-value').textContent = `${aqiData.o3} μg/m³`;
+            document.getElementById('aqi-description').textContent = aqiData.description;
+            
+            // Update AQI card color based on status
+            const aqiCard = document.getElementById('aqi-main');
+            aqiCard.classList.remove('aqi-good', 'aqi-moderate', 'aqi-unhealthy', 'aqi-hazardous');
+            
+            if (aqiData.aqi <= 50) {
+                aqiCard.classList.add('aqi-good');
+            } else if (aqiData.aqi <= 100) {
+                aqiCard.classList.add('aqi-moderate');
+            } else if (aqiData.aqi <= 150) {
+                aqiCard.classList.add('aqi-unhealthy');
+            } else {
+                aqiCard.classList.add('aqi-hazardous');
+            }
+        }
+
+        showError(message, showRetry = false) {
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('error-container').classList.remove('hidden');
+            
+            if (showRetry) {
+                const errorContainer = document.getElementById('error-container');
+                const retryButton = errorContainer.querySelector('button');
+                if (retryButton) {
+                    retryButton.onclick = () => {
+                        errorContainer.classList.add('hidden');
+                        this.loadWeatherData();
+                    };
+                }
+            }
+        }
+
+        generateDemoCurrentWeather() {
+            return {
+                name: this.location,
+                main: {
+                    temp: 25 + Math.random() * 10,
+                    feels_like: 28 + Math.random() * 8,
+                    humidity: 60 + Math.random() * 20,
+                    pressure: 1010 + Math.random() * 20
+                },
+                weather: [{
+                    main: 'Clear',
+                    description: 'clear sky'
+                }],
+                wind: { speed: 5 + Math.random() * 10 },
+                visibility: 8000 + Math.random() * 2000,
+                sys: {
+                    sunrise: Date.now() / 1000 - 3600 * 2,
+                    sunset: Date.now() / 1000 + 3600 * 8
+                }
+            };
+        }
+
+        updateDemoSunTimes() {
+            const now = new Date();
+            const sunrise = new Date(now.getTime() - 2 * 60 * 60 * 1000);
+            const sunset = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+            
+            document.getElementById('sunrise-time').textContent = 
+                sunrise.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            document.getElementById('sunset-time').textContent = 
+                sunset.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            
+            const moonPhases = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+            const moonPhaseIndex = Math.floor((Date.now() / (1000 * 60 * 60 * 24)) % 29.53) / 29.53 * 8;
+            document.getElementById('moon-phase').textContent = moonPhases[Math.floor(moonPhaseIndex)];
+            
+            document.getElementById('current-time').textContent = 
+                `📍 ${this.location} • ${new Date().toLocaleString()}`;
+        }
+
+        createParticleSystem() {
+            setInterval(() => {
+                this.createRandomParticle();
+            }, 3000);
+        }
+
+        createRandomParticle() {
+            const shapes = document.querySelector('.floating-shapes');
+            if (!shapes) return;
+
+            const particle = document.createElement('div');
+            particle.className = 'shape';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: ${this.getRandomColor()};
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: 100%;
+                opacity: 0.6;
+                animation: float-particle 6s linear forwards;
+            `;
+            
+            shapes.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.remove();
+                }
+            }, 6000);
+        }
+
+        getRandomColor() {
+            const colors = [
+                'rgba(0, 212, 255, 0.8)',
+                'rgba(57, 255, 20, 0.8)',
+                'rgba(236, 72, 153, 0.8)',
+                'rgba(168, 85, 247, 0.8)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    }
+
+    // Add particle animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float-particle {
+            0% { transform: translateY(0px) scale(0); opacity: 0; }
+            10% { opacity: 0.6; transform: translateY(-10vh) scale(1); }
+            90% { opacity: 0.3; transform: translateY(-90vh) scale(0.8); }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize the weather page app
+    let weatherApp;
+    document.addEventListener('DOMContentLoaded', () => {
+        weatherApp = new WeatherPageApp();
+        
+        // Add smooth scroll behavior for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
