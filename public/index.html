@@ -528,7 +528,7 @@
       <div class="hidden md:flex space-x-8 pr-4">
           <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
           <a href="#weather" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">WEATHER</a>
-          <a href="chatbot.html" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
+          <a href="chatbot.html" onclick="app.navigateToChat(); return false;" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
           <a href="about.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">ABOUT</a>
           <a href="contact.html" class="nav-link text-gray-300 hover:text-green-400 font-bold text-lg">CONTACT</a>
       </div>
@@ -543,7 +543,7 @@
   <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-20 right-6 z-40 p-6 space-y-4">
       <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
       <a href="#weather" class="block text-gray-300 hover:text-cyan-400 font-bold">WEATHER</a>
-      <a href="chatbot.html" class="block text-gray-300 hover:text-purple-400 font-bold">CHATBOT</a>
+      <a href="#" onclick="app.navigateToChat(); return false;" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
       <a href="about.html" class="block text-gray-300 hover:text-pink-400 font-bold">ABOUT</a>
       <a href="contact.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">CONTACT</a>
   </div>
@@ -682,6 +682,23 @@
                 locationInput.addEventListener('focus', () => {
                     this.addGlitchEffect(locationInput);
                 });
+            }
+
+            navigateToChat() {
+                // Store current weather data in localStorage for chatbot access
+                if (this.currentWeatherData) {
+                    localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
+                    
+                    // Also pass via URL parameters as backup
+                    const params = new URLSearchParams({
+                        location: this.currentWeatherData.location || this.currentWeatherData.name,
+                        temp: this.currentWeatherData.temperature || Math.round(this.currentWeatherData.main?.temp || 0),
+                        condition: this.currentWeatherData.condition || this.currentWeatherData.weather?.[0]?.main || 'Clear'
+                    });
+                    window.location.href = `chatbot.html?${params.toString()}`;
+                } else {
+                    window.location.href = 'chatbot.html';
+                }
             }
 
             createParticleSystem() {
@@ -863,6 +880,17 @@
             }
 
             displayWeather(data) {
+                // Store the complete weather data for chatbot access
+                this.currentWeatherData = {
+                    location: data.name || 'Unknown Location',
+                    name: data.name || 'Unknown Location',
+                    temperature: Math.round(data.main?.temp || 0),
+                    condition: data.weather?.[0]?.main || 'Clear',
+                    timestamp: new Date().toISOString(),
+                    main: data.main,
+                    weather: data.weather
+                };
+
                 // Update location
                 const locationName = data.name || 'Unknown Location';
                 const locationElement = document.getElementById('display-location');
@@ -892,6 +920,24 @@
 
                 // Add animation effects
                 this.animateWeatherCards();
+                
+                // Add chat button after weather is displayed
+                this.addChatButton();
+            }
+
+            // Add this new function to add the chat button
+            addChatButton() {
+                const resultsContainer = document.getElementById('weather-results');
+                if (resultsContainer && !document.querySelector('.chat-button-container')) {
+                    const chatButton = document.createElement('div');
+                    chatButton.className = 'text-center mt-8 chat-button-container';
+                    chatButton.innerHTML = `
+                        <button onclick="app.navigateToChat()" class="quantum-btn text-black font-black py-4 px-8 rounded-xl transition-all duration-400 text-lg shadow-2xl">
+                            🤖 ASK CLIMABOT AI ABOUT THIS WEATHER
+                        </button>
+                    `;
+                    resultsContainer.appendChild(chatButton);
+                }
             }
 
             updateElement(id, value) {
@@ -1048,8 +1094,9 @@
         document.head.appendChild(style);
 
         // Initialize the app
+        let app
         document.addEventListener('DOMContentLoaded', () => {
-            new QuantumWeatherApp();
+            app=new QuantumWeatherApp();
             
             // Smooth scrolling for navigation
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
