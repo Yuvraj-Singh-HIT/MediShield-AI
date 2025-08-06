@@ -46,9 +46,15 @@ Built using **HTML**, **Tailwind CSS**, and **JavaScript**, and deployed seamles
 ```bash
 climabot/
 ├── public/
-│   └── index.html              # Main frontend HTML + JS
+│   ├── index.html              # Main frontend HTML + JS
+│   ├── chatbot.html            # Chatbot UI page
+│   ├── about.html              # About page
+│   └── contact.html            # Contact page
+│
 ├── api/
-│   └── weather.js              # Serverless function for weather fetch
+│   ├── weather.js              # Serverless function for weather fetch
+│   └── chat.js                 # Serverless function for chatbot backend
+│
 ├── .env                        # API key (not pushed to GitHub)
 ├── package.json                # Project metadata and dependencies
 ├── README.md                   # Project documentation
