@@ -719,11 +719,27 @@
                     this.addGlitchEffect(locationInput);
                 });
             }
+            // Add this updated function to your QuantumWeatherApp class in index.html:
+
             navigateToWeatherDetails() {
                 if (this.currentWeatherData) {
+                    const location = this.currentWeatherData.location || this.currentWeatherData.name;
+                    
+                    // Store in multiple ways to ensure weather.html can find it
+                    try {
+                        localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
+                        localStorage.setItem('currentLocation', location);
+                        localStorage.setItem('weather_location', location);
+                        sessionStorage.setItem('lastSearchedLocation', location);
+                    } catch (error) {
+                        console.warn('Could not store weather data:', error);
+                    }
+                    
+                    // Navigate with URL parameter as backup
                     const params = new URLSearchParams({
-                        location: this.currentWeatherData.location || this.currentWeatherData.name
+                        location: location
                     });
+                    
                     window.location.href = `weather.html?${params.toString()}`;
                 } else {
                     this.showMessage('⚠️ Please search for weather first', 'error');
@@ -929,12 +945,14 @@
                 // Store the complete weather data for chatbot access
                 this.currentWeatherData = {
                     location: data.name || 'Unknown Location',
-                    name: data.name || 'Unknown Location',
+                    name: data.name || 'Unknown Location',  // Make sure both keys exist
                     temperature: Math.round(data.main?.temp || 0),
                     condition: data.weather?.[0]?.main || 'Clear',
                     timestamp: new Date().toISOString(),
                     main: data.main,
-                    weather: data.weather
+                    weather: data.weather,
+                    wind: data.wind,
+                    coord: data.coord
                 };
 
                 // Update location
@@ -974,6 +992,12 @@
                     if (detailsSection) {
                         detailsSection.style.display = 'block';
                         detailsSection.classList.add('ultra-smooth');
+                    }
+                     try {
+                        localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
+                        localStorage.setItem('currentLocation', this.currentWeatherData.location);
+                    } catch (error) {
+                        console.warn('Could not store weather data:', error);
                     }
             }
 
