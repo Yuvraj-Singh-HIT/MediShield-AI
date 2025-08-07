@@ -49,13 +49,15 @@ climabot/
 │   ├── index.html              # Main frontend HTML + JS
 │   ├── chatbot.html            # Chatbot UI page
 │   ├── about.html              # About page
-│   └── contact.html            # Contact page
+│   ├── contact.html            # Contact page
+│   └── weather.html            # NEW: Weather trends and air quality page
 │
 ├── api/
 │   ├── weather.js              # Serverless function for weather fetch
+│   ├── air-quality.js          # NEW: Serverless function for air quality index
 │   └── chat.js                 # Serverless function for chatbot backend
 │
-├── .env                        # API key (not pushed to GitHub)
+├── .env                        # API keys (OpenWeather, AirVisual, etc.)
 ├── package.json                # Project metadata and dependencies
 ├── README.md                   # Project documentation
 ```
