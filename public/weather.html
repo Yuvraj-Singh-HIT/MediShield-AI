@@ -652,12 +652,11 @@
         }
     }
     const city = getLocationFromSources();
-    const apiKey = "a5209dbd92b54dfd175e25925ee470aa"; 
+    // API key removed - now using serverless function
 
     class WeatherDataFetcher {
-        constructor(cityName, openWeatherApiKey) {
+        constructor(cityName) {
             this.city = cityName;
-            this.apiKey = openWeatherApiKey;
             this.lat = null;
             this.lon = null;
             this.weatherData = {
@@ -669,20 +668,18 @@
             };
         }
 
-        // Get coordinates from city name using OpenWeatherMap Geocoding API
+        // Get coordinates from city name using your serverless function
         async getCoordinates() {
             try {
-                const response = await fetch(
-                    `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(this.city)}&limit=1&appid=${this.apiKey}`
-                );
+                const response = await fetch(`/api/weather?q=${encodeURIComponent(this.city)}`);
                 const data = await response.json();
                 
-                if (data.length === 0) {
-                    throw new Error(`City "${this.city}" not found`);
+                if (!response.ok) {
+                    throw new Error(data.error || `City "${this.city}" not found`);
                 }
                 
-                this.lat = data[0].lat;
-                this.lon = data[0].lon;
+                this.lat = data.coord.lat;
+                this.lon = data.coord.lon;
                 
                 console.log(`Coordinates for ${this.city}: ${this.lat}, ${this.lon}`);
                 return { lat: this.lat, lon: this.lon };
@@ -692,25 +689,25 @@
             }
         }
 
-        // Fetch 24-hour hourly forecast using OpenWeatherMap 5-day/3-hour forecast
+        // Fetch 24-hour hourly forecast using Open-Meteo API (no key needed)
         async fetchHourlyForecast() {
             try {
                 const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}&units=metric`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto&forecast_hours=24`
                 );
                 const data = await response.json();
                 
                 // Take first 8 entries (24 hours worth of 3-hour intervals)
-                const hourlyData = data.list.slice(0, 8).map(item => ({
-                    time: new Date(item.dt * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
-                    temp: Math.round(item.main.temp),
-                    feelsLike: Math.round(item.main.feels_like),
-                    condition: item.weather[0].main,
-                    description: item.weather[0].description,
-                    icon: this.getWeatherIcon(item.weather[0].main),
-                    humidity: item.main.humidity,
-                    windSpeed: Math.round(item.wind.speed * 3.6), // m/s to km/h
-                    pop: Math.round(item.pop * 100) // probability of precipitation
+                const hourlyData = data.hourly.time.slice(0, 8).map((time, index) => ({
+                    time: new Date(time).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
+                    temp: Math.round(data.hourly.temperature_2m[index]),
+                    feelsLike: Math.round(data.hourly.temperature_2m[index]), // approximation
+                    condition: this.getWeatherConditionFromCode(data.hourly.weather_code[index]),
+                    description: this.getWeatherConditionFromCode(data.hourly.weather_code[index]),
+                    icon: this.getWeatherIconFromCode(data.hourly.weather_code[index]),
+                    humidity: data.hourly.relative_humidity_2m[index],
+                    windSpeed: Math.round(data.hourly.wind_speed_10m[index]),
+                    pop: 0 // Open-Meteo doesn't provide this in free tier
                 }));
                 
                 this.weatherData.hourly = hourlyData;
@@ -720,6 +717,174 @@
                 console.error('Error fetching hourly forecast:', error);
                 throw error;
             }
+        }
+
+        //fetchTimeZone()
+        async fetchTimezone() {
+            try {
+                // First, determine the timezone based on coordinates using a comprehensive mapping
+                const detectedTimezone = this.getTimezoneFromCoordinates(this.lat, this.lon);
+                
+                // Fetch the actual time for that timezone using WorldTimeAPI
+                const response = await fetch(
+                    `https://worldtimeapi.org/api/timezone/${detectedTimezone}`
+                );
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    const timezoneData = {
+                        timeZoneId: data.timezone,
+                        timeZoneName: data.timezone.split('/').pop().replace(/_/g, ' '), // e.g., "Los Angeles" from "America/Los_Angeles"
+                        dstOffset: data.dst ? 3600 : 0,
+                        rawOffset: data.raw_offset,
+                        localTime: new Date(data.datetime),
+                        utcOffset: data.utc_offset,
+                        abbreviation: data.abbreviation // e.g., "PST", "EST"
+                    };
+                    
+                    this.weatherData.timezone = timezoneData;
+                    console.log(`Timezone data for ${this.city} fetched from WorldTimeAPI:`, timezoneData);
+                    return timezoneData;
+                } else {
+                    throw new Error(`Failed to get timezone data for ${detectedTimezone}`);
+                }
+                
+            } catch (error) {
+                console.error('Error fetching timezone from WorldTimeAPI:', error);
+                
+                // Enhanced fallback: Try to estimate timezone from coordinates
+                try {
+                    const estimatedTimezone = this.getTimezoneFromCoordinates(this.lat, this.lon);
+                    
+                    // Calculate local time based on UTC offset estimation
+                    const utcOffsetHours = this.getUTCOffsetFromTimezone(estimatedTimezone);
+                    const now = new Date();
+                    const localTime = new Date(now.getTime() + (utcOffsetHours * 60 * 60 * 1000));
+                    
+                    this.weatherData.timezone = {
+                        timeZoneId: estimatedTimezone,
+                        timeZoneName: estimatedTimezone.split('/').pop().replace(/_/g, ' '),
+                        dstOffset: 0, // Cannot determine DST without API
+                        rawOffset: utcOffsetHours * 3600,
+                        localTime: localTime,
+                        utcOffset: `${utcOffsetHours >= 0 ? '+' : ''}${String(Math.floor(Math.abs(utcOffsetHours))).padStart(2, '0')}:00`,
+                        abbreviation: this.getTimezoneAbbreviation(estimatedTimezone)
+                    };
+                    
+                    console.log(`Using coordinate-based timezone for ${this.city}:`, this.weatherData.timezone);
+                    return this.weatherData.timezone;
+                    
+                } catch (fallbackError) {
+                    console.error('Coordinate-based fallback failed:', fallbackError);
+                    
+                    // Final fallback
+                    const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    const now = new Date();
+                    
+                    this.weatherData.timezone = {
+                        timeZoneId: browserTimezone,
+                        timeZoneName: browserTimezone.split('/').pop().replace(/_/g, ' '),
+                        dstOffset: 0,
+                        rawOffset: now.getTimezoneOffset() * -60,
+                        localTime: now,
+                        utcOffset: now.toTimeString().match(/GMT([+-]\d{4})/)?.[1] || '+0000',
+                        abbreviation: 'LOCAL'
+                    };
+                    
+                    console.log('Using browser timezone as final fallback:', this.weatherData.timezone);
+                    return this.weatherData.timezone;
+                }
+            }
+        }
+
+        // Helper method to determine timezone from coordinates
+        getTimezoneFromCoordinates(lat, lon) {
+            // Comprehensive timezone mapping based on coordinates
+            const timezoneMap = [
+                // North America
+                { name: 'America/Los_Angeles', bounds: { latMin: 32, latMax: 49, lonMin: -125, lonMax: -114 } }, // Pacific
+                { name: 'America/Denver', bounds: { latMin: 31, latMax: 49, lonMin: -114, lonMax: -104 } }, // Mountain
+                { name: 'America/Chicago', bounds: { latMin: 25, latMax: 49, lonMin: -104, lonMax: -87 } }, // Central
+                { name: 'America/New_York', bounds: { latMin: 25, latMax: 47, lonMin: -87, lonMax: -67 } }, // Eastern
+                { name: 'America/Anchorage', bounds: { latMin: 54, latMax: 72, lonMin: -180, lonMax: -130 } }, // Alaska
+                { name: 'Pacific/Honolulu', bounds: { latMin: 18, latMax: 23, lonMin: -162, lonMax: -154 } }, // Hawaii
+                
+                // South America
+                { name: 'America/Sao_Paulo', bounds: { latMin: -35, latMax: 5, lonMin: -75, lonMax: -30 } },
+                { name: 'America/Argentina/Buenos_Aires', bounds: { latMin: -55, latMax: -21, lonMin: -75, lonMax: -53 } },
+                
+                // Europe
+                { name: 'Europe/London', bounds: { latMin: 49, latMax: 61, lonMin: -11, lonMax: 2 } },
+                { name: 'Europe/Paris', bounds: { latMin: 42, latMax: 51, lonMin: -5, lonMax: 8 } },
+                { name: 'Europe/Berlin', bounds: { latMin: 47, latMax: 55, lonMin: 5, lonMax: 15 } },
+                { name: 'Europe/Rome', bounds: { latMin: 35, latMax: 47, lonMin: 6, lonMax: 19 } },
+                { name: 'Europe/Moscow', bounds: { latMin: 55, latMax: 68, lonMin: 27, lonMax: 180 } },
+                
+                // Asia
+                { name: 'Asia/Dubai', bounds: { latMin: 22, latMax: 27, lonMin: 51, lonMax: 57 } },
+                { name: 'Asia/Kolkata', bounds: { latMin: 6, latMax: 37, lonMin: 68, lonMax: 97 } },
+                { name: 'Asia/Shanghai', bounds: { latMin: 18, latMax: 54, lonMin: 97, lonMax: 125 } },
+                { name: 'Asia/Tokyo', bounds: { latMin: 30, latMax: 46, lonMin: 125, lonMax: 146 } },
+                { name: 'Asia/Seoul', bounds: { latMin: 33, latMax: 43, lonMin: 124, lonMax: 132 } },
+                
+                // Australia & Oceania
+                { name: 'Australia/Sydney', bounds: { latMin: -44, latMax: -10, lonMin: 140, lonMax: 180 } },
+                { name: 'Australia/Perth', bounds: { latMin: -35, latMax: -13, lonMin: 112, lonMax: 129 } },
+                { name: 'Pacific/Auckland', bounds: { latMin: -47, latMax: -34, lonMin: 166, lonMax: 179 } },
+                
+                // Africa
+                { name: 'Africa/Cairo', bounds: { latMin: 22, latMax: 32, lonMin: 24, lonMax: 37 } },
+                { name: 'Africa/Johannesburg', bounds: { latMin: -35, latMax: -22, lonMin: 16, lonMax: 33 } },
+            ];
+            
+            // Find matching timezone
+            for (const timezone of timezoneMap) {
+                const { bounds } = timezone;
+                if (lat >= bounds.latMin && lat <= bounds.latMax && 
+                    lon >= bounds.lonMin && lon <= bounds.lonMax) {
+                    return timezone.name;
+                }
+            }
+            
+            // Fallback: rough estimation based on longitude
+            if (lon >= -125 && lon < -114) return 'America/Los_Angeles';
+            if (lon >= -114 && lon < -104) return 'America/Denver';
+            if (lon >= -104 && lon < -87) return 'America/Chicago';
+            if (lon >= -87 && lon < -67) return 'America/New_York';
+            if (lon >= -11 && lon < 20) return 'Europe/London';
+            if (lon >= 20 && lon < 40) return 'Europe/Berlin';
+            if (lon >= 68 && lon < 97) return 'Asia/Kolkata';
+            if (lon >= 97 && lon < 125) return 'Asia/Shanghai';
+            if (lon >= 125 && lon <= 146) return 'Asia/Tokyo';
+            
+            return 'UTC'; // Ultimate fallback
+        }
+
+        // Helper method to get UTC offset from timezone
+        getUTCOffsetFromTimezone(timezone) {
+            const offsetMap = {
+                'America/Los_Angeles': -8, 'America/Denver': -7, 'America/Chicago': -6,
+                'America/New_York': -5, 'America/Sao_Paulo': -3, 'Europe/London': 0,
+                'Europe/Paris': 1, 'Europe/Berlin': 1, 'Europe/Rome': 1,
+                'Europe/Moscow': 3, 'Asia/Dubai': 4, 'Asia/Kolkata': 5.5,
+                'Asia/Shanghai': 8, 'Asia/Tokyo': 9, 'Australia/Sydney': 10,
+                'Pacific/Honolulu': -10, 'America/Anchorage': -9
+            };
+            return offsetMap[timezone] || 0;
+        }
+
+        // Helper method to get timezone abbreviation
+        getTimezoneAbbreviation(timezone) {
+            const abbrevMap = {
+                'America/Los_Angeles': 'PST', 'America/Denver': 'MST', 'America/Chicago': 'CST',
+                'America/New_York': 'EST', 'America/Sao_Paulo': 'BRT', 'Europe/London': 'GMT',
+                'Europe/Paris': 'CET', 'Europe/Berlin': 'CET', 'Europe/Rome': 'CET',
+                'Europe/Moscow': 'MSK', 'Asia/Dubai': 'GST', 'Asia/Kolkata': 'IST',
+                'Asia/Shanghai': 'CST', 'Asia/Tokyo': 'JST', 'Australia/Sydney': 'AEST',
+                'Pacific/Honolulu': 'HST', 'America/Anchorage': 'AKST'
+            };
+            return abbrevMap[timezone] || 'UTC';
         }
 
         // Fetch 7-day forecast using Open-Meteo API (free, no key needed)
@@ -751,12 +916,17 @@
             }
         }
 
-        // Fetch Air Quality Index using OpenWeatherMap Air Pollution API
+        // Fetch Air Quality Index using your serverless function
         async fetchAirQuality() {
             try {
                 const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}`
+                    `/api/air-quality?lat=${this.lat}&lon=${this.lon}`
                 );
+                
+                if (!response.ok) {
+                    throw new Error('Air quality data not available');
+                }
+                
                 const data = await response.json();
                 
                 const current = data.list[0];
@@ -781,7 +951,15 @@
                 return aqiData;
             } catch (error) {
                 console.error('Error fetching air quality:', error);
-                throw error;
+                // Return placeholder data if AQI fails
+                this.weatherData.airQuality = {
+                    aqi: 0,
+                    status: 'UNKNOWN',
+                    statusColor: '#6b7280',
+                    description: 'Air quality information not available',
+                    pm25: 0, pm10: 0, o3: 0, no2: 0, so2: 0, co: 0
+                };
+                return this.weatherData.airQuality;
             }
         }
 
@@ -905,15 +1083,15 @@
                     this.fetchHourlyForecast(),
                     this.fetchDailyForecast(),
                     this.fetchAirQuality(),
-                    this.fetchSunTimes()
+                    this.fetchSunTimes(),
+                    this.fetchTimezone()
                 ];
                 
                 const results = await Promise.allSettled(promises);
-                
                 // Log any failed requests
                 results.forEach((result, index) => {
                     if (result.status === 'rejected') {
-                        const names = ['hourly forecast', 'daily forecast', 'air quality', 'sun times'];
+                        const names = ['hourly forecast', 'daily forecast', 'air quality', 'sun times', 'timezone'];
                         console.warn(`Failed to fetch ${names[index]}:`, result.reason);
                     }
                 });
@@ -1044,12 +1222,16 @@
         displayLocalTime() {
             const container = document.createElement('div');
             container.className = 'local-time-container';
-            const currentTime = new Date().toLocaleString();
+            
+            const timezone = this.weatherData.timezone;
+            const localTime = timezone ? timezone.localTime.toLocaleString() : new Date().toLocaleString();
+            const timezoneName = timezone ? timezone.timeZoneName : 'Auto-detected';
+            
             container.innerHTML = `
                 <div style="background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(0, 212, 255, 0.4); border-radius: 16px; padding: 16px; text-align: center; margin-bottom: 24px;">
                     <h2 style="color: #00d4ff; font-size: 32px; font-weight: bold; margin-bottom: 8px;">${this.city.toUpperCase()}</h2>
-                    <div style="color: #9ca3af; font-size: 16px;">📍 Local Time: ${currentTime}</div>
-                    <div style="color: #9ca3af; font-size: 14px;">Timezone: ${this.weatherData.localTime || 'Auto-detected'}</div>
+                    <div style="color: #9ca3af; font-size: 16px;">📍 Local Time: ${localTime}</div>
+                    <div style="color: #9ca3af; font-size: 14px;">Timezone: ${timezoneName}</div>
                 </div>
             `;
             return container;
@@ -1077,7 +1259,7 @@
 
     // Initialize and run the weather fetcher
     async function initWeatherApp() {
-        const weatherFetcher = new WeatherDataFetcher(city, apiKey);
+        const weatherFetcher = new WeatherDataFetcher(city);
         
         try {
             // Show loading message
