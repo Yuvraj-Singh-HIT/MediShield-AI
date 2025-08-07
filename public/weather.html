@@ -428,7 +428,7 @@
         </div>
         <div class="hidden md:flex space-x-8 pr-4">
             <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
-            <a href="weather.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">WEATHER</a>
+            <a href="weather.html" onclick="app.navigateToChat(); return false;" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">WEATHER</a>
             <a href="chatbot.html" onclick="app.navigateToChat(); return false;" class="nav-link text-gray-300 hover:text-purple-400 font-bold text-lg">CHATBOT</a>
             <a href="about.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">ABOUT</a>
             <a href="contact.html" class="nav-link text-gray-300 hover:text-blue-400 font-bold text-lg">CONTACT</a>
@@ -824,28 +824,35 @@
             }
         }
 
-      getLocationFromParams() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const locationParam = urlParams.get('location');
-        
-        if (locationParam) {
-            this.location = decodeURIComponent(locationParam);
-            console.log('Location from URL:', this.location); // Debug log
-        } else {
-            // Only use localStorage if no URL parameter exists
-            try {
-                const savedData = localStorage.getItem('climabot_weather_data');
-                if (savedData) {
-                    const data = JSON.parse(savedData);
-                    this.location = data.location || data.name;
-                    console.log('Location from localStorage:', this.location); // Debug log
+        getLocationFromParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const locationParam = urlParams.get('location');
+            
+            if (locationParam) {
+                this.location = decodeURIComponent(locationParam);
+                console.log('Location from URL:', this.location); // Debug log
+                
+                // Clear any stale localStorage data when URL param is present
+                try {
+                    localStorage.removeItem('climabot_weather_data');
+                } catch (error) {
+                    console.warn('Could not clear localStorage');
                 }
-            } catch (error) {
-                console.warn('localStorage not available, using fallback');
-                this.location = null;
+            } else {
+                // Only use localStorage if no URL parameter exists
+                try {
+                    const savedData = localStorage.getItem('climabot_weather_data');
+                    if (savedData) {
+                        const data = JSON.parse(savedData);
+                        this.location = data.location || data.name;
+                        console.log('Location from localStorage:', this.location); // Debug log
+                    }
+                } catch (error) {
+                    console.warn('localStorage not available, using fallback');
+                    this.location = null;
+                }
             }
         }
-    }
 
        async loadWeatherData() {
             try {
