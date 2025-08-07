@@ -33,11 +33,23 @@ Built using **HTML**, **Tailwind CSS**, and **JavaScript**, and deployed seamles
   - Tailwind CSS  
   - JavaScript  
 
-- **API Integration**:  
-  - OpenWeatherMap API (current weather + historical data)
+### 🌐 API Integration
 
-- **Deployment**:  
-  - Vercel (serverless functions to hide API key)
+#### 🌦️ OpenWeatherMap API
+- Provides **current weather**, **next 7-day forecast**, **24-hour trends**, **sunrise/sunset**, and **air quality index**.
+- Includes **geocoding** to convert user-entered locations to coordinates.
+- Enables **real-time weather context** for the AI chatbot.
+
+#### 🤖 AI Chatbot (Gemini / GPT / Claude Integrated)
+- The chatbot receives **live weather data as context**.
+- Users can ask follow-up questions about the current weather (e.g., *“Is it safe to go out now?”* or *“What does the air quality mean?”*).
+- **Personalized responses** are generated using the provided weather data.
+
+
+### 🚀 Deployment
+
+#### 📦 Vercel
+- Deployed using **Vercel** for fast, global delivery.
 
 ---
 
@@ -46,18 +58,18 @@ Built using **HTML**, **Tailwind CSS**, and **JavaScript**, and deployed seamles
 ```bash
 climabot/
 ├── public/
-│   ├── index.html              # Main frontend HTML + JS
+│   ├── index.html              # Home page
 │   ├── chatbot.html            # Chatbot UI page
 │   ├── about.html              # About page
 │   ├── contact.html            # Contact page
-│   └── weather.html            # NEW: Weather trends and air quality page
+│   └── weather.html            # Weather trends and air quality page
 │
 ├── api/
 │   ├── weather.js              # Serverless function for weather fetch
 │   ├── air-quality.js          # NEW: Serverless function for air quality index
 │   └── chat.js                 # Serverless function for chatbot backend
 │
-├── .env                        # API keys (OpenWeather, AirVisual, etc.)
+├── .env                        # API keys (OpenWeather & Chatbot)
 ├── package.json                # Project metadata and dependencies
 ├── README.md                   # Project documentation
 ```
@@ -70,7 +82,7 @@ climabot/
 1. **Clone the repo**  
    ```bash
    git clone https://github.com/Arijit166/climabot.git
-   cd climabot
+   cd Climabot
    
 ## 📦 Install Dependencies
 
@@ -84,6 +96,7 @@ Create a `.env` file in the root directory:
 
 ```ini
 OPENWEATHER_API_KEY=your_api_key_here
+GEMINI_API_KEY=your_api_key_here
 ```
 
 ## 🧪 Run Locally with Vercel
