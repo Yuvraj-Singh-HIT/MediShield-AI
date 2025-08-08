@@ -65,22 +65,24 @@
         }
 
         .shape:nth-child(1) { 
-            width: 100px; height: 100px; 
-            top: 20%; left: 10%; 
+            width: 100px; height: 100px;
+            top: 20%; left: 10%;
             background: linear-gradient(45deg, var(--cyber-blue), var(--primary-glow));
             border-radius: 50%;
             animation: float-1 20s infinite linear;
         }
+
         .shape:nth-child(2) { 
-            width: 60px; height: 60px; 
-            top: 70%; left: 80%; 
+            width: 60px; height: 60px;
+            top: 70%; left: 80%;
             background: linear-gradient(135deg, var(--neon-green), var(--secondary-glow));
             transform: rotate(45deg);
             animation: float-2 25s infinite linear;
         }
+
         .shape:nth-child(3) { 
-            width: 80px; height: 80px; 
-            top: 85%; left: 20%; 
+            width: 80px; height: 80px;
+            top: 85%; left: 20%;
             background: linear-gradient(90deg, var(--accent-glow), var(--electric-purple));
             border-radius: 20px;
             animation: float-3 30s infinite linear;
@@ -91,11 +93,13 @@
             50% { transform: translateY(-30vh) rotate(180deg); opacity: 0.12; }
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
+
         @keyframes float-2 {
             0% { transform: translateY(0px) rotate(45deg); opacity: 0.06; }
             50% { transform: translateY(-35vh) rotate(225deg); opacity: 0.14; }
             100% { transform: translateY(-100vh) rotate(405deg); opacity: 0; }
         }
+
         @keyframes float-3 {
             0% { transform: translateY(0px) rotate(0deg); opacity: 0.07; }
             50% { transform: translateY(-25vh) rotate(270deg); opacity: 0.13; }
@@ -104,11 +108,11 @@
 
         /* Ultra-modern gradient text */
         .ultra-gradient {
-            background: linear-gradient(135deg, 
-                #00d4ff 0%, 
-                #6366f1 25%, 
-                #a855f7 50%, 
-                #ec4899 75%, 
+            background: linear-gradient(135deg,
+                #00d4ff 0%,
+                #6366f1 25%,
+                #a855f7 50%,
+                #ec4899 75%,
                 #39ff14 100%);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -125,8 +129,8 @@
 
         /* Quantum card design */
         .quantum-card {
-            background: linear-gradient(135deg, 
-                rgba(0, 0, 0, 0.95) 0%, 
+            background: linear-gradient(135deg,
+                rgba(0, 0, 0, 0.95) 0%,
                 rgba(13, 17, 23, 0.9) 50%,
                 rgba(0, 0, 0, 0.95) 100%);
             backdrop-filter: blur(30px) saturate(200%);
@@ -160,8 +164,8 @@
 
         /* Weather cards */
         .weather-holo {
-            background: linear-gradient(135deg, 
-                rgba(0, 0, 0, 0.85) 0%, 
+            background: linear-gradient(135deg,
+                rgba(0, 0, 0, 0.85) 0%,
                 rgba(21, 32, 43, 0.7) 50%,
                 rgba(0, 0, 0, 0.85) 100%);
             backdrop-filter: blur(20px) saturate(200%);
@@ -180,10 +184,10 @@
             width: 200%;
             height: 200%;
             background: conic-gradient(
-                transparent, 
-                rgba(0, 212, 255, 0.1), 
-                transparent, 
-                rgba(57, 255, 20, 0.1), 
+                transparent,
+                rgba(0, 212, 255, 0.1),
+                transparent,
+                rgba(57, 255, 20, 0.1),
                 transparent);
             animation: hologram-rotate 8s linear infinite;
             opacity: 0;
@@ -209,8 +213,8 @@
 
         /* Holographic text effects */
         .holo-text {
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.95) 0%, 
+            background: linear-gradient(135deg,
+                rgba(0, 212, 255, 0.95) 0%,
                 rgba(255, 255, 255, 1) 50%,
                 rgba(57, 255, 20, 0.95) 100%);
             -webkit-background-clip: text;
@@ -272,8 +276,8 @@
 
         /* Chart container */
         .chart-container {
-            background: linear-gradient(135deg, 
-                rgba(0, 0, 0, 0.9) 0%, 
+            background: linear-gradient(135deg,
+                rgba(0, 0, 0, 0.9) 0%,
                 rgba(13, 17, 23, 0.8) 50%,
                 rgba(0, 0, 0, 0.9) 100%);
             backdrop-filter: blur(25px);
@@ -329,77 +333,76 @@
             0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
             50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.8); }
         }
+
         /* Holographic navbar */
-      .holo-nav {
-          background: rgba(0, 0, 0, 0.85);
-          backdrop-filter: blur(25px) saturate(200%);
-          border-bottom: 2px solid transparent;
-          background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
-                           linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
-          background-origin: border-box;
-          background-clip: content-box, border-box;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-          position: relative;
-      }
+        .holo-nav {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(25px) saturate(200%);
+            border-bottom: 2px solid transparent;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                              linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
 
-      .holo-nav::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent 0%, var(--cyber-blue) 50%, transparent 100%);
-          animation: scan-line 3s ease-in-out infinite;
-      }
+        .holo-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--cyber-blue) 50%, transparent 100%);
+            animation: scan-line 3s ease-in-out infinite;
+        }
 
-      @keyframes scan-line {
-          0%, 100% { opacity: 0; transform: scaleX(0); }
-          50% { opacity: 1; transform: scaleX(1); }
-      }
-      /* Nav links */
-      .nav-link {
-          position: relative;
-          transition: all 0.3s ease;
-          padding: 8px 0;
-      }
+        @keyframes scan-line {
+            0%, 100% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
 
-      .nav-link::before {
-          content: '';
-          position: absolute;
-          bottom: -3px;
-          left: 50%;
-          width: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
-          transition: all 0.3s ease;
-          transform: translateX(-50%);
-          border-radius: 1px;
-      }
+        /* Nav links */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
 
-      .nav-link:hover::before {
-          width: 100%;
-      }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
 
-      .nav-link:hover {
-          transform: translateY(-2px);
-          text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
-      }
+        .nav-link:hover::before {
+            width: 100%;
+        }
 
+        .nav-link:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+        }
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Advanced background -->
+
     <div class="cyber-bg"></div>
-    
-    <!-- Floating geometric shapes -->
+ 
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-
-    <!-- Holographic Navbar -->
+ 
     <nav class="holo-nav py-6 px-6 md:px-13 flex justify-between items-center sticky top-0 z-50">
         <div class="flex items-center space-x-4">
             <div class="logo-quantum">
@@ -440,10 +443,8 @@
         </button>
     </nav>
 
-    <!-- Weather Details Section -->
     <main class="weather-results py-12 px-4 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <!-- Location Header -->
+        <div class="max-w-7xl mx-auto"> 
             <div class="text-center mb-12 ultra-smooth">
                 <h1 class="text-5xl md:text-7xl font-black mb-4">
                     <span class="ultra-gradient" id="location-title">LOADING LOCATION...</span>
@@ -453,9 +454,7 @@
                 </p>
             </div>
 
-            <!-- Current Weather Overview -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <!-- Main Weather Card -->
                 <div class="lg:col-span-2 quantum-card p-8 ultra-smooth">
                     <div class="flex flex-col lg:flex-row items-center justify-between">
                         <div class="text-center lg:text-left mb-6 lg:mb-0">
@@ -485,7 +484,6 @@
                     </div>
                 </div>
 
-                <!-- Sun Times Card -->
                 <div class="quantum-card p-8 ultra-smooth">
                     <h3 class="text-2xl font-black holo-text mb-6 text-center">🌅 SUN & MOON</h3>
                     <div class="space-y-6">
@@ -506,13 +504,12 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Hourly Forecast -->
+ 
             <div class="quantum-card p-8 mb-12 ultra-smooth">
                 <h3 class="text-3xl font-black holo-text mb-8 text-center">⏰ 24-HOUR QUANTUM FORECAST</h3>
                 <div class="hourly-scroll overflow-x-auto pb-4">
                     <div class="flex space-x-4 min-w-max" id="hourly-forecast">
-                        <!-- Loading states -->
+                         Loading states 
                         <div class="weather-holo p-4 text-center min-w-[120px]">
                             <div class="quantum-loading mx-auto mb-3"></div>
                             <div class="text-sm text-gray-400">Loading...</div>
@@ -521,11 +518,10 @@
                 </div>
             </div>
 
-            <!-- 7-Day Forecast -->
             <div class="quantum-card p-8 mb-12 ultra-smooth">
                 <h3 class="text-3xl font-black holo-text mb-8 text-center">📅 7-DAY WEATHER TREND</h3>
                 <div class="space-y-4" id="weekly-forecast">
-                    <!-- Loading state -->
+                     Loading state 
                     <div class="weather-holo p-6 flex items-center justify-between">
                         <div class="quantum-loading"></div>
                         <div class="text-gray-400">Loading weekly forecast...</div>
@@ -534,7 +530,6 @@
                 </div>
             </div>
 
-            <!-- Air Quality Index -->
             <div class="quantum-card p-8 mb-12 ultra-smooth">
                 <h3 class="text-3xl font-black holo-text mb-8 text-center">🌬️ AIR QUALITY INDEX</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -563,7 +558,6 @@
                 </div>
             </div>
 
-            <!-- Error Display -->
             <div id="error-container" class="hidden">
                 <div class="error-holo p-8 rounded-2xl text-center">
                     <div class="text-4xl mb-4">⚠️</div>
@@ -578,70 +572,66 @@
     </main>
 
 <script>
-    // Replace the getLocationFromSources function in weather.html with this:
+    // Cache management
+    const weatherCache = {
+        get: (key) => {
+            try {
+                const cached = localStorage.getItem(`weather_cache_${key}`);
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    const now = Date.now();
+                    // Cache expires after 30 minutes
+                    if (now - data.timestamp < 1800000) {
+                        return data.weather;
+                    }
+                    localStorage.removeItem(`weather_cache_${key}`);
+                }
+            } catch (e) {}
+            return null;
+        },
+        set: (key, data) => {
+            try {
+                localStorage.setItem(`weather_cache_${key}`, JSON.stringify({
+                    weather: data,
+                    timestamp: Date.now()
+                }));
+            } catch (e) {}
+        }
+    };
+
+    // Location management
     function getLocationFromSources() {
-        // 1. Check URL parameters first (from your navigateToWeatherDetails function)
         const urlParams = new URLSearchParams(window.location.search);
         const urlLocation = urlParams.get('location') || urlParams.get('city');
         
         if (urlLocation) {
-            console.log('Location from URL:', urlLocation);
             return decodeURIComponent(urlLocation);
         }
         
-        // 2. Check localStorage for the weather data saved by index.html
         try {
-            // Check for the exact key that index.html uses when navigating to chatbot
             const savedWeatherData = localStorage.getItem('climabot_weather_data');
             if (savedWeatherData) {
                 const weatherData = JSON.parse(savedWeatherData);
                 const location = weatherData.location || weatherData.name;
-                if (location) {
-                    console.log('Location from climabot_weather_data:', location);
-                    return location;
-                }
+                if (location) return location;
             }
-        } catch (error) {
-            console.warn('Error reading climabot_weather_data from localStorage:', error);
-        }
-        
-        // 3. Check for location stored directly (in case index.html stores it)
-        try {
-            const directLocation = localStorage.getItem('searchedLocation') || 
-                                localStorage.getItem('climabot_location') ||
+            
+            const directLocation = localStorage.getItem('searchedLocation') ||
+                                 localStorage.getItem('climabot_location') ||
                                 localStorage.getItem('weather_location') ||
                                 localStorage.getItem('currentLocation');
-            if (directLocation) {
-                console.log('Location from direct localStorage:', directLocation);
-                return directLocation;
-            }
+            if (directLocation) return directLocation;
         } catch (error) {
-            console.warn('localStorage not available');
+            console.warn('localStorage error:', error);
         }
         
-        // 4. Check if there's a global variable set by index.html
         if (typeof window.currentLocation !== 'undefined' && window.currentLocation) {
-            console.log('Location from global variable:', window.currentLocation);
             return window.currentLocation;
         }
         
-        // 5. Check document referrer to see if we came from index.html with weather data
-        if (document.referrer && document.referrer.includes('index.html')) {
-            // Try to get the last searched location from any available source
-            const lastLocation = sessionStorage.getItem('lastSearchedLocation') ||
-                            localStorage.getItem('lastWeatherLocation');
-            if (lastLocation) {
-                console.log('Location from session/last search:', lastLocation);
-                return lastLocation;
-            }
-        }
-        
-        // 6. Fallback to default
-        console.warn('No location found, using default location');
         return "London";
     }
 
-    // Also add this function to help store location data when weather.html loads successfully
     function storeCurrentLocation(locationName) {
         try {
             localStorage.setItem('currentLocation', locationName);
@@ -651,26 +641,27 @@
             console.warn('Could not store location:', error);
         }
     }
-    const city = getLocationFromSources();
-    // API key removed - now using serverless function
 
     class WeatherDataFetcher {
         constructor(cityName) {
             this.city = cityName;
             this.lat = null;
             this.lon = null;
-            this.weatherData = {
-                hourly: [],
-                daily: [],
-                airQuality: null,
-                sunTimes: null,
-                localTime: null
-            };
+            this.cacheKey = cityName.toLowerCase().replace(/\s+/g, '_');
         }
 
-        // Get coordinates from city name using your serverless function
         async getCoordinates() {
             try {
+                // Check cache first
+                const cachedData = weatherCache.get(this.cacheKey);
+                if (cachedData) {
+                    console.log('Using cached weather data for', this.city);
+                    this.lat = cachedData.coord.lat;
+                    this.lon = cachedData.coord.lon;
+                    await this.updateCurrentWeather(cachedData);
+                    return { lat: this.lat, lon: this.lon };
+                }
+
                 const response = await fetch(`/api/weather?q=${encodeURIComponent(this.city)}`);
                 const data = await response.json();
                 
@@ -681,7 +672,12 @@
                 this.lat = data.coord.lat;
                 this.lon = data.coord.lon;
                 
-                console.log(`Coordinates for ${this.city}: ${this.lat}, ${this.lon}`);
+                // Cache the data
+                weatherCache.set(this.cacheKey, data);
+                
+                // Update UI immediately
+                await this.updateCurrentWeather(data);
+                
                 return { lat: this.lat, lon: this.lon };
             } catch (error) {
                 console.error('Error fetching coordinates:', error);
@@ -689,341 +685,325 @@
             }
         }
 
-        // Fetch 24-hour hourly forecast using Open-Meteo API (no key needed)
+        async updateCurrentWeather(data) {
+        // Update location title
+        document.getElementById('location-title').textContent = `${data.name.toUpperCase()}`;
+        
+        // Calculate location's local time based on timezone offset
+        const timezoneOffsetMinutes = Math.round(this.lon / 15) * 60; // Approximate timezone offset in minutes
+        const utcNow = new Date();
+        const locationTime = new Date(utcNow.getTime() + (timezoneOffsetMinutes * 60 * 1000));
+        
+        // Format the local time for that location
+        const locationTimeString = locationTime.toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+            timeZone: 'UTC' // We're already calculating the offset manually
+        });
+        
+        // Update current time with location info
+        document.getElementById('current-time').textContent = `📍 ${data.name}, ${locationTimeString}`;
+        
+        // Update main weather
+        document.getElementById('main-weather-icon').textContent = this.getWeatherIcon(data.weather[0].main);
+        document.getElementById('main-temperature').textContent = `${Math.round(data.main.temp)}°C`;
+        document.getElementById('main-condition').textContent = data.weather[0].description;
+        document.getElementById('feels-like-temp').textContent = `Feels like ${Math.round(data.main.feels_like)}°C`;
+        
+        // Update weather details
+        document.getElementById('humidity-value').textContent = `${data.main.humidity}%`;
+        document.getElementById('pressure-value').textContent = `${data.main.pressure} hPa`;
+        document.getElementById('wind-value').textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
+        document.getElementById('visibility-value').textContent = `${(data.visibility / 1000).toFixed(1)} km`;
+    }
+
         async fetchHourlyForecast() {
             try {
+                const cacheKey = `hourly_${this.cacheKey}`;
+                const cached = weatherCache.get(cacheKey);
+                
+                if (cached) {
+                    document.getElementById('hourly-forecast').innerHTML = cached;
+                    return;
+                }
+
                 const response = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto&forecast_hours=24`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&hourly=temperature_2m,weather_code&timezone=auto&forecast_hours=24`
                 );
                 const data = await response.json();
                 
-                // Take first 8 entries (24 hours worth of 3-hour intervals)
-                const hourlyData = data.hourly.time.slice(0, 8).map((time, index) => ({
-                    time: new Date(time).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
-                    temp: Math.round(data.hourly.temperature_2m[index]),
-                    feelsLike: Math.round(data.hourly.temperature_2m[index]), // approximation
-                    condition: this.getWeatherConditionFromCode(data.hourly.weather_code[index]),
-                    description: this.getWeatherConditionFromCode(data.hourly.weather_code[index]),
-                    icon: this.getWeatherIconFromCode(data.hourly.weather_code[index]),
-                    humidity: data.hourly.relative_humidity_2m[index],
-                    windSpeed: Math.round(data.hourly.wind_speed_10m[index]),
-                    pop: 0 // Open-Meteo doesn't provide this in free tier
-                }));
+                const hourlyHTML = data.hourly.time.slice(0, 8).map((time, index) => {
+                    const localTime = new Date(time);
+                    const hour = localTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+                    
+                    const temp = Math.round(data.hourly.temperature_2m[index]);
+                    const icon = this.getWeatherIconFromCode(data.hourly.weather_code[index]);
+                    const condition = this.getWeatherConditionFromCode(data.hourly.weather_code[index]);
+                    
+                    return `
+                        <div class="weather-holo p-4 text-center min-w-[120px] flex-shrink-0">
+                            <div class="text-cyan-400 text-sm font-bold mb-2">${hour}</div>
+                            <div class="weather-icon text-3xl mb-2">${icon}</div>
+                            <div class="text-xl font-black holo-text mb-1">${temp}°C</div>
+                            <div class="text-xs text-gray-400">${condition}</div>
+                        </div>
+                    `;
+                }).join('');
                 
-                this.weatherData.hourly = hourlyData;
-                console.log('Hourly forecast fetched:', hourlyData.length, 'entries');
-                return hourlyData;
+                document.getElementById('hourly-forecast').innerHTML = hourlyHTML;
+                weatherCache.set(cacheKey, hourlyHTML);
             } catch (error) {
                 console.error('Error fetching hourly forecast:', error);
-                throw error;
             }
         }
 
-        //fetchTimeZone()
-        async fetchTimezone() {
-            try {
-                // First, determine the timezone based on coordinates using a comprehensive mapping
-                const detectedTimezone = this.getTimezoneFromCoordinates(this.lat, this.lon);
-                
-                // Fetch the actual time for that timezone using WorldTimeAPI
-                const response = await fetch(
-                    `https://worldtimeapi.org/api/timezone/${detectedTimezone}`
-                );
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    
-                    const timezoneData = {
-                        timeZoneId: data.timezone,
-                        timeZoneName: data.timezone.split('/').pop().replace(/_/g, ' '), // e.g., "Los Angeles" from "America/Los_Angeles"
-                        dstOffset: data.dst ? 3600 : 0,
-                        rawOffset: data.raw_offset,
-                        localTime: new Date(data.datetime),
-                        utcOffset: data.utc_offset,
-                        abbreviation: data.abbreviation // e.g., "PST", "EST"
-                    };
-                    
-                    this.weatherData.timezone = timezoneData;
-                    console.log(`Timezone data for ${this.city} fetched from WorldTimeAPI:`, timezoneData);
-                    return timezoneData;
-                } else {
-                    throw new Error(`Failed to get timezone data for ${detectedTimezone}`);
-                }
-                
-            } catch (error) {
-                console.error('Error fetching timezone from WorldTimeAPI:', error);
-                
-                // Enhanced fallback: Try to estimate timezone from coordinates
-                try {
-                    const estimatedTimezone = this.getTimezoneFromCoordinates(this.lat, this.lon);
-                    
-                    // Calculate local time based on UTC offset estimation
-                    const utcOffsetHours = this.getUTCOffsetFromTimezone(estimatedTimezone);
-                    const now = new Date();
-                    const localTime = new Date(now.getTime() + (utcOffsetHours * 60 * 60 * 1000));
-                    
-                    this.weatherData.timezone = {
-                        timeZoneId: estimatedTimezone,
-                        timeZoneName: estimatedTimezone.split('/').pop().replace(/_/g, ' '),
-                        dstOffset: 0, // Cannot determine DST without API
-                        rawOffset: utcOffsetHours * 3600,
-                        localTime: localTime,
-                        utcOffset: `${utcOffsetHours >= 0 ? '+' : ''}${String(Math.floor(Math.abs(utcOffsetHours))).padStart(2, '0')}:00`,
-                        abbreviation: this.getTimezoneAbbreviation(estimatedTimezone)
-                    };
-                    
-                    console.log(`Using coordinate-based timezone for ${this.city}:`, this.weatherData.timezone);
-                    return this.weatherData.timezone;
-                    
-                } catch (fallbackError) {
-                    console.error('Coordinate-based fallback failed:', fallbackError);
-                    
-                    // Final fallback
-                    const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                    const now = new Date();
-                    
-                    this.weatherData.timezone = {
-                        timeZoneId: browserTimezone,
-                        timeZoneName: browserTimezone.split('/').pop().replace(/_/g, ' '),
-                        dstOffset: 0,
-                        rawOffset: now.getTimezoneOffset() * -60,
-                        localTime: now,
-                        utcOffset: now.toTimeString().match(/GMT([+-]\d{4})/)?.[1] || '+0000',
-                        abbreviation: 'LOCAL'
-                    };
-                    
-                    console.log('Using browser timezone as final fallback:', this.weatherData.timezone);
-                    return this.weatherData.timezone;
-                }
-            }
-        }
-
-        // Helper method to determine timezone from coordinates
-        getTimezoneFromCoordinates(lat, lon) {
-            // Comprehensive timezone mapping based on coordinates
-            const timezoneMap = [
-                // North America
-                { name: 'America/Los_Angeles', bounds: { latMin: 32, latMax: 49, lonMin: -125, lonMax: -114 } }, // Pacific
-                { name: 'America/Denver', bounds: { latMin: 31, latMax: 49, lonMin: -114, lonMax: -104 } }, // Mountain
-                { name: 'America/Chicago', bounds: { latMin: 25, latMax: 49, lonMin: -104, lonMax: -87 } }, // Central
-                { name: 'America/New_York', bounds: { latMin: 25, latMax: 47, lonMin: -87, lonMax: -67 } }, // Eastern
-                { name: 'America/Anchorage', bounds: { latMin: 54, latMax: 72, lonMin: -180, lonMax: -130 } }, // Alaska
-                { name: 'Pacific/Honolulu', bounds: { latMin: 18, latMax: 23, lonMin: -162, lonMax: -154 } }, // Hawaii
-                
-                // South America
-                { name: 'America/Sao_Paulo', bounds: { latMin: -35, latMax: 5, lonMin: -75, lonMax: -30 } },
-                { name: 'America/Argentina/Buenos_Aires', bounds: { latMin: -55, latMax: -21, lonMin: -75, lonMax: -53 } },
-                
-                // Europe
-                { name: 'Europe/London', bounds: { latMin: 49, latMax: 61, lonMin: -11, lonMax: 2 } },
-                { name: 'Europe/Paris', bounds: { latMin: 42, latMax: 51, lonMin: -5, lonMax: 8 } },
-                { name: 'Europe/Berlin', bounds: { latMin: 47, latMax: 55, lonMin: 5, lonMax: 15 } },
-                { name: 'Europe/Rome', bounds: { latMin: 35, latMax: 47, lonMin: 6, lonMax: 19 } },
-                { name: 'Europe/Moscow', bounds: { latMin: 55, latMax: 68, lonMin: 27, lonMax: 180 } },
-                
-                // Asia
-                { name: 'Asia/Dubai', bounds: { latMin: 22, latMax: 27, lonMin: 51, lonMax: 57 } },
-                { name: 'Asia/Kolkata', bounds: { latMin: 6, latMax: 37, lonMin: 68, lonMax: 97 } },
-                { name: 'Asia/Shanghai', bounds: { latMin: 18, latMax: 54, lonMin: 97, lonMax: 125 } },
-                { name: 'Asia/Tokyo', bounds: { latMin: 30, latMax: 46, lonMin: 125, lonMax: 146 } },
-                { name: 'Asia/Seoul', bounds: { latMin: 33, latMax: 43, lonMin: 124, lonMax: 132 } },
-                
-                // Australia & Oceania
-                { name: 'Australia/Sydney', bounds: { latMin: -44, latMax: -10, lonMin: 140, lonMax: 180 } },
-                { name: 'Australia/Perth', bounds: { latMin: -35, latMax: -13, lonMin: 112, lonMax: 129 } },
-                { name: 'Pacific/Auckland', bounds: { latMin: -47, latMax: -34, lonMin: 166, lonMax: 179 } },
-                
-                // Africa
-                { name: 'Africa/Cairo', bounds: { latMin: 22, latMax: 32, lonMin: 24, lonMax: 37 } },
-                { name: 'Africa/Johannesburg', bounds: { latMin: -35, latMax: -22, lonMin: 16, lonMax: 33 } },
-            ];
-            
-            // Find matching timezone
-            for (const timezone of timezoneMap) {
-                const { bounds } = timezone;
-                if (lat >= bounds.latMin && lat <= bounds.latMax && 
-                    lon >= bounds.lonMin && lon <= bounds.lonMax) {
-                    return timezone.name;
-                }
-            }
-            
-            // Fallback: rough estimation based on longitude
-            if (lon >= -125 && lon < -114) return 'America/Los_Angeles';
-            if (lon >= -114 && lon < -104) return 'America/Denver';
-            if (lon >= -104 && lon < -87) return 'America/Chicago';
-            if (lon >= -87 && lon < -67) return 'America/New_York';
-            if (lon >= -11 && lon < 20) return 'Europe/London';
-            if (lon >= 20 && lon < 40) return 'Europe/Berlin';
-            if (lon >= 68 && lon < 97) return 'Asia/Kolkata';
-            if (lon >= 97 && lon < 125) return 'Asia/Shanghai';
-            if (lon >= 125 && lon <= 146) return 'Asia/Tokyo';
-            
-            return 'UTC'; // Ultimate fallback
-        }
-
-        // Helper method to get UTC offset from timezone
-        getUTCOffsetFromTimezone(timezone) {
-            const offsetMap = {
-                'America/Los_Angeles': -8, 'America/Denver': -7, 'America/Chicago': -6,
-                'America/New_York': -5, 'America/Sao_Paulo': -3, 'Europe/London': 0,
-                'Europe/Paris': 1, 'Europe/Berlin': 1, 'Europe/Rome': 1,
-                'Europe/Moscow': 3, 'Asia/Dubai': 4, 'Asia/Kolkata': 5.5,
-                'Asia/Shanghai': 8, 'Asia/Tokyo': 9, 'Australia/Sydney': 10,
-                'Pacific/Honolulu': -10, 'America/Anchorage': -9
-            };
-            return offsetMap[timezone] || 0;
-        }
-
-        // Helper method to get timezone abbreviation
-        getTimezoneAbbreviation(timezone) {
-            const abbrevMap = {
-                'America/Los_Angeles': 'PST', 'America/Denver': 'MST', 'America/Chicago': 'CST',
-                'America/New_York': 'EST', 'America/Sao_Paulo': 'BRT', 'Europe/London': 'GMT',
-                'Europe/Paris': 'CET', 'Europe/Berlin': 'CET', 'Europe/Rome': 'CET',
-                'Europe/Moscow': 'MSK', 'Asia/Dubai': 'GST', 'Asia/Kolkata': 'IST',
-                'Asia/Shanghai': 'CST', 'Asia/Tokyo': 'JST', 'Australia/Sydney': 'AEST',
-                'Pacific/Honolulu': 'HST', 'America/Anchorage': 'AKST'
-            };
-            return abbrevMap[timezone] || 'UTC';
-        }
-
-        // Fetch 7-day forecast using Open-Meteo API (free, no key needed)
         async fetchDailyForecast() {
             try {
+                const cacheKey = `daily_${this.cacheKey}`;
+                const cached = weatherCache.get(cacheKey);
+                
+                if (cached) {
+                    document.getElementById('weekly-forecast').innerHTML = cached;
+                    return;
+                }
+
                 const response = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_sum,wind_speed_10m_max&timezone=auto&forecast_days=7`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto&forecast_days=7`
                 );
                 const data = await response.json();
                 
-                const dailyData = data.daily.time.map((date, index) => ({
-                    date: new Date(date).toLocaleDateString('en-US', {weekday: 'long', month: 'short', day: 'numeric'}),
-                    maxTemp: Math.round(data.daily.temperature_2m_max[index]),
-                    minTemp: Math.round(data.daily.temperature_2m_min[index]),
-                    weatherCode: data.daily.weather_code[index],
-                    condition: this.getWeatherConditionFromCode(data.daily.weather_code[index]),
-                    icon: this.getWeatherIconFromCode(data.daily.weather_code[index]),
-                    precipitation: data.daily.precipitation_sum[index],
-                    windSpeed: Math.round(data.daily.wind_speed_10m_max[index])
-                }));
+                const dailyHTML = data.daily.time.map((date, index) => {
+                    const dayName = new Date(date).toLocaleDateString('en-US', {weekday: 'long', month: 'short', day: 'numeric'});
+                    const maxTemp = Math.round(data.daily.temperature_2m_max[index]);
+                    const minTemp = Math.round(data.daily.temperature_2m_min[index]);
+                    const icon = this.getWeatherIconFromCode(data.daily.weather_code[index]);
+                    const condition = this.getWeatherConditionFromCode(data.daily.weather_code[index]);
+                    
+                    return `
+                        <div class="weather-holo p-6 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="weather-icon text-3xl">${icon}</div>
+                                <div>
+                                    <div class="text-lg font-bold text-gray-200">${dayName}</div>
+                                    <div class="text-sm text-gray-400">${condition}</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-black holo-text">${maxTemp}° / ${minTemp}°</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
                 
-                this.weatherData.daily = dailyData;
-                this.weatherData.localTime = data.timezone; // Get timezone info
-                console.log('Daily forecast fetched:', dailyData.length, 'days');
-                return dailyData;
+                document.getElementById('weekly-forecast').innerHTML = dailyHTML;
+                weatherCache.set(cacheKey, dailyHTML);
             } catch (error) {
                 console.error('Error fetching daily forecast:', error);
-                throw error;
             }
         }
 
-        // Fetch Air Quality Index using your serverless function
-        async fetchAirQuality() {
+        // COMPLETELY REWRITTEN: Simple and reliable sunrise/sunset fetching
+        async fetchSunTimes() {
             try {
+                const cacheKey = `sun_times_${this.cacheKey}`;
+                const cached = weatherCache.get(cacheKey);
+                
+                if (cached) {
+                    this.updateSunTimesUI(cached);
+                    return;
+                }
+
+                console.log(`Fetching sun times for ${this.city} at coordinates: ${this.lat}, ${this.lon}`);
+
+                // Method 1: Try Open-Meteo API (most reliable for local times)
+                let sunData = await this.fetchSunTimesFromOpenMeteo();
+
+                if (sunData) {
+                    // Cache the data
+                    weatherCache.set(cacheKey, sunData);
+                    // Update UI
+                    this.updateSunTimesUI(sunData);
+                    console.log(`✅ Sun times successfully fetched for ${this.city}:`, sunData);
+                } else {
+                    throw new Error('All sun time APIs failed');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error fetching sun times:', error);
+                // Show error state
+                document.getElementById('sunrise-time').textContent = 'Unavailable';
+                document.getElementById('sunset-time').textContent = 'Unavailable';
+                document.getElementById('sunrise-local').textContent = 'Service Error';
+                document.getElementById('sunset-local').textContent = 'Service Error';
+                document.getElementById('moon-phase').textContent = '🌙';
+            }
+        }
+
+        // Method 1: Open-Meteo API (handles timezone automatically)
+        async fetchSunTimesFromOpenMeteo() {
+            try {
+                const today = new Date().toISOString().split('T')[0];
                 const response = await fetch(
-                    `/api/air-quality?lat=${this.lat}&lon=${this.lon}`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=sunrise,sunset&timezone=auto&start_date=${today}&end_date=${today}`,
+                    { 
+                        method: 'GET',
+                        headers: { 'Accept': 'application/json' }
+                    }
                 );
                 
                 if (!response.ok) {
-                    throw new Error('Air quality data not available');
+                    throw new Error(`Open-Meteo API error: ${response.status}`);
                 }
                 
                 const data = await response.json();
                 
+                if (!data.daily || !data.daily.sunrise || !data.daily.sunset) {
+                    throw new Error('Invalid Open-Meteo response format');
+                }
+
+                const sunriseTime = new Date(data.daily.sunrise[0]);
+                const sunsetTime = new Date(data.daily.sunset[0]);
+                const moonPhase = this.calculateMoonPhase(new Date());
+
+                return {
+                    sunrise: {
+                        formatted: sunriseTime.toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        })
+                    },
+                    sunset: {
+                        formatted: sunsetTime.toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        })
+                    },
+                    moonPhase: moonPhase,
+                    source: 'Open-Meteo API',
+                    timezone: data.timezone || 'Local Time'
+                };
+            } catch (error) {
+                console.warn('Open-Meteo API failed:', error.message);
+                return null;
+            }
+        }
+
+        // Helper method to convert 24-hour to 12-hour format
+        convertTo12Hour(timeString) {
+            try {
+                // Handle different time formats
+                let time = timeString;
+                
+                // If it's already in 12-hour format, return as is
+                if (time.includes('AM') || time.includes('PM')) {
+                    return time;
+                }
+                
+                // Parse 24-hour format
+                const [hours, minutes] = time.split(':');
+                const hour24 = parseInt(hours);
+                const hour12 = hour24 === 0 ? 12 : hour24 > 12 ? hour24 - 12 : hour24;
+                const ampm = hour24 >= 12 ? 'PM' : 'AM';
+                
+                return `${hour12}:${minutes} ${ampm}`;
+            } catch (error) {
+                console.warn('Time conversion error:', error);
+                return timeString; // Return original if conversion fails
+            }
+        }
+
+        // Helper method to update the sun times UI
+        updateSunTimesUI(sunData) {
+            document.getElementById('sunrise-time').textContent = sunData.sunrise.formatted;
+            document.getElementById('sunset-time').textContent = sunData.sunset.formatted;
+            document.getElementById('sunrise-local').textContent = sunData.timezone || 'Local Time';
+            document.getElementById('sunset-local').textContent = sunData.timezone || 'Local Time';
+            document.getElementById('moon-phase').textContent = sunData.moonPhase.emoji;
+            
+            console.log(`🌅 UI Updated - Sunrise: ${sunData.sunrise.formatted}, Sunset: ${sunData.sunset.formatted} (${sunData.source})`);
+        }
+
+        // Helper method to calculate moon phase
+        calculateMoonPhase(date) {
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            
+            // Simplified moon phase calculation
+            const c = Math.floor(year / 100);
+            const e = 2 * (year - c * 100);
+            const f = Math.floor(c / 4);
+            
+            let jd = 365.25 * year + 30.6001 * (month + 1) + day + f + 2 - c;
+            
+            // Days since known new moon (Jan 6, 2000)
+            const daysSinceNewMoon = jd - 2451549.5;
+            
+            // Moon cycle is approximately 29.53 days
+            const moonCycle = 29.530588853;
+            const phase = (daysSinceNewMoon % moonCycle) / moonCycle;
+            
+            if (phase < 0.03 || phase > 0.97) {
+                return { name: 'New Moon', emoji: '🌑' };
+            } else if (phase < 0.22) {
+                return { name: 'Waxing Crescent', emoji: '🌒' };
+            } else if (phase < 0.28) {
+                return { name: 'First Quarter', emoji: '🌓' };
+            } else if (phase < 0.47) {
+                return { name: 'Waxing Gibbous', emoji: '🌔' };
+            } else if (phase < 0.53) {
+                return { name: 'Full Moon', emoji: '🌕' };
+            } else if (phase < 0.72) {
+                return { name: 'Waning Gibbous', emoji: '🌖' };
+            } else if (phase < 0.78) {
+                return { name: 'Last Quarter', emoji: '🌗' };
+            } else {
+                return { name: 'Waning Crescent', emoji: '🌘' };
+            }
+        }
+
+        async fetchAirQuality() {
+            try {
+                const response = await fetch(`/api/air-quality?lat=${this.lat}&lon=${this.lon}`);
+                if (!response.ok) throw new Error('AQI not available');
+                
+                const data = await response.json();
                 const current = data.list[0];
                 const components = current.components;
                 const aqi = current.main.aqi;
                 
-                const aqiData = {
-                    aqi: aqi,
-                    status: this.getAQIStatus(aqi),
-                    statusColor: this.getAQIColor(aqi),
-                    description: this.getAQIDescription(aqi),
-                    pm25: components.pm2_5 ? Math.round(components.pm2_5) : 0,
-                    pm10: components.pm10 ? Math.round(components.pm10) : 0,
-                    o3: components.o3 ? Math.round(components.o3) : 0,
-                    no2: components.no2 ? Math.round(components.no2) : 0,
-                    so2: components.so2 ? Math.round(components.so2) : 0,
-                    co: components.co ? (components.co / 1000).toFixed(1) : 0
-                };
+                document.getElementById('aqi-value').textContent = aqi;
+                document.getElementById('aqi-status').textContent = this.getAQIStatus(aqi);
+                document.getElementById('pm25-value').textContent = `${Math.round(components.pm2_5 || 0)} μg/m³`;
+                document.getElementById('pm10-value').textContent = `${Math.round(components.pm10 || 0)} μg/m³`;
+                document.getElementById('o3-value').textContent = `${Math.round(components.o3 || 0)} μg/m³`;
+                document.getElementById('aqi-description').textContent = this.getAQIDescription(aqi);
                 
-                this.weatherData.airQuality = aqiData;
-                console.log('Air quality fetched:', aqiData);
-                return aqiData;
+                // Update AQI card styling
+                const aqiCard = document.getElementById('aqi-main');
+                aqiCard.className = `weather-holo p-6 text-center aqi-${this.getAQIClass(aqi)}`;
             } catch (error) {
                 console.error('Error fetching air quality:', error);
-                // Return placeholder data if AQI fails
-                this.weatherData.airQuality = {
-                    aqi: 0,
-                    status: 'UNKNOWN',
-                    statusColor: '#6b7280',
-                    description: 'Air quality information not available',
-                    pm25: 0, pm10: 0, o3: 0, no2: 0, so2: 0, co: 0
-                };
-                return this.weatherData.airQuality;
+                document.getElementById('aqi-value').textContent = 'N/A';
+                document.getElementById('aqi-status').textContent = 'UNKNOWN';
+                document.getElementById('aqi-description').textContent = 'Air quality data not available';
             }
         }
 
-        // Fetch sunrise and sunset times using Sunrise Sunset API
-        async fetchSunTimes() {
-            try {
-                const response = await fetch(
-                    `https://api.sunrise-sunset.org/json?lat=${this.lat}&lng=${this.lon}&formatted=0`
-                );
-                const data = await response.json();
-                
-                const sunTimes = {
-                    sunrise: new Date(data.results.sunrise).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
-                    sunset: new Date(data.results.sunset).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
-                    dayLength: data.results.day_length,
-                    solarNoon: new Date(data.results.solar_noon).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
-                };
-                
-                this.weatherData.sunTimes = sunTimes;
-                console.log('Sun times fetched:', sunTimes);
-                return sunTimes;
-            } catch (error) {
-                console.error('Error fetching sun times:', error);
-                throw error;
-            }
-        }
-
-        // Helper methods for weather condition mapping
+        // Helper methods
         getWeatherIcon(condition) {
             const iconMap = {
-                'Clear': '☀️',
-                'Clouds': '☁️',
-                'Rain': '🌧️',
-                'Drizzle': '🌦️',
-                'Thunderstorm': '⛈️',
-                'Snow': '❄️',
-                'Mist': '🌫️',
-                'Fog': '🌫️',
-                'Haze': '🌫️'
+                'Clear': '☀️', 'Clouds': '☁️', 'Rain': '🌧️', 'Drizzle': '🌦️',
+                'Thunderstorm': '⛈️', 'Snow': '❄️', 'Mist': '🌫️', 'Fog': '🌫️'
             };
             return iconMap[condition] || '☁️';
-        }
-
-        getWeatherConditionFromCode(code) {
-            const conditionMap = {
-                0: 'Clear sky',
-                1: 'Mainly clear',
-                2: 'Partly cloudy',
-                3: 'Overcast',
-                45: 'Fog',
-                48: 'Depositing rime fog',
-                51: 'Light drizzle',
-                53: 'Moderate drizzle',
-                55: 'Dense drizzle',
-                61: 'Slight rain',
-                63: 'Moderate rain',
-                65: 'Heavy rain',
-                71: 'Slight snow',
-                73: 'Moderate snow',
-                75: 'Heavy snow',
-                95: 'Thunderstorm',
-                96: 'Thunderstorm with hail'
-            };
-            return conditionMap[code] || 'Unknown';
         }
 
         getWeatherIconFromCode(code) {
@@ -1033,277 +1013,88 @@
             if (code >= 51 && code <= 55) return '🌦️';
             if (code >= 61 && code <= 65) return '🌧️';
             if (code >= 71 && code <= 75) return '❄️';
-            if (code >= 95 && code <= 96) return '⛈️';
+            if (code >= 95) return '⛈️';
             return '☁️';
         }
 
-        getAQIStatus(aqi) {
-            const statuses = {
-                1: 'GOOD',
-                2: 'FAIR',
-                3: 'MODERATE',
-                4: 'POOR',
-                5: 'VERY POOR'
+        getWeatherConditionFromCode(code) {
+            const conditionMap = {
+                0: 'Clear', 1: 'Mostly Clear', 2: 'Partly Cloudy', 3: 'Overcast',
+                45: 'Fog', 51: 'Light Drizzle', 61: 'Light Rain', 71: 'Light Snow', 95: 'Thunderstorm'
             };
+            return conditionMap[code] || 'Unknown';
+        }
+
+        getAQIStatus(aqi) {
+            const statuses = { 1: 'GOOD', 2: 'FAIR', 3: 'MODERATE', 4: 'POOR', 5: 'VERY POOR' };
             return statuses[aqi] || 'UNKNOWN';
         }
 
-        getAQIColor(aqi) {
-            const colors = {
-                1: '#22c55e', // green
-                2: '#84cc16', // lime
-                3: '#eab308', // yellow
-                4: '#f97316', // orange
-                5: '#ef4444'  // red
-            };
-            return colors[aqi] || '#6b7280';
+        getAQIClass(aqi) {
+            const classes = { 1: 'good', 2: 'good', 3: 'moderate', 4: 'unhealthy', 5: 'hazardous' };
+            return classes[aqi] || 'moderate';
         }
 
         getAQIDescription(aqi) {
             const descriptions = {
-                1: 'Air quality is excellent. Perfect for outdoor activities.',
-                2: 'Air quality is fair. Good for most outdoor activities.',
-                3: 'Air quality is moderate. Sensitive individuals should limit prolonged outdoor exertion.',
-                4: 'Air quality is poor. Everyone may experience health effects.',
-                5: 'Air quality is very poor. Health warnings of emergency conditions.'
+                1: 'Air quality is excellent for outdoor activities.',
+                2: 'Air quality is good for most outdoor activities.',
+                3: 'Air quality is moderate. Sensitive individuals should limit exposure.',
+                4: 'Air quality is poor. Everyone should limit outdoor activities.',
+                5: 'Air quality is hazardous. Avoid outdoor activities.'
             };
             return descriptions[aqi] || 'Air quality information not available.';
         }
 
-        // Main method to fetch all data
         async fetchAllWeatherData() {
             try {
-                console.log(`Fetching weather data for ${this.city}...`);
+                console.log(`🌍 Fetching weather data for ${this.city}...`);
                 
-                // First get coordinates
+                // Get coordinates and update current weather (uses cache if available)
                 await this.getCoordinates();
                 
-                // Fetch all data in parallel
-                const promises = [
+                // Store the location
+                storeCurrentLocation(this.city);
+                
+                // Fetch additional data in parallel (uses cache where available)
+                Promise.all([
                     this.fetchHourlyForecast(),
                     this.fetchDailyForecast(),
-                    this.fetchAirQuality(),
                     this.fetchSunTimes(),
-                    this.fetchTimezone()
-                ];
-                
-                const results = await Promise.allSettled(promises);
-                // Log any failed requests
-                results.forEach((result, index) => {
-                    if (result.status === 'rejected') {
-                        const names = ['hourly forecast', 'daily forecast', 'air quality', 'sun times', 'timezone'];
-                        console.warn(`Failed to fetch ${names[index]}:`, result.reason);
-                    }
+                    this.fetchAirQuality()
+                ]).catch(error => {
+                    console.warn('Some weather data could not be fetched:', error);
                 });
                 
-                return this.weatherData;
             } catch (error) {
                 console.error('Error fetching weather data:', error);
-                throw error;
+                this.showError(error.message);
             }
         }
 
-        // Display methods
-        displayHourlyForecast() {
-            const container = document.createElement('div');
-            container.className = 'hourly-forecast-container';
-            container.innerHTML = `
-                <h3 style="color: #00d4ff; font-size: 24px; font-weight: bold; margin-bottom: 16px;">
-                    ⏰ 24-HOUR FORECAST
-                </h3>
-                <div style="display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px;">
-                    ${this.weatherData.hourly.map(hour => `
-                        <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(0, 212, 255, 0.4); border-radius: 16px; padding: 16px; text-align: center; min-width: 120px; flex-shrink: 0;">
-                            <div style="color: #9ca3af; font-size: 14px; margin-bottom: 8px;">${hour.time}</div>
-                            <div style="font-size: 24px; margin-bottom: 8px;">${hour.icon}</div>
-                            <div style="color: #00d4ff; font-size: 18px; font-weight: bold; margin-bottom: 4px;">${hour.temp}°C</div>
-                            <div style="color: #9ca3af; font-size: 12px; margin-bottom: 4px;">${hour.condition}</div>
-                            <div style="color: #9ca3af; font-size: 11px;">💧 ${hour.humidity}%</div>
-                            <div style="color: #9ca3af; font-size: 11px;">💨 ${hour.windSpeed}km/h</div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            return container;
-        }
-
-        displayDailyForecast() {
-            const container = document.createElement('div');
-            container.className = 'daily-forecast-container';
-            container.innerHTML = `
-                <h3 style="color: #a855f7; font-size: 24px; font-weight: bold; margin-bottom: 16px;">
-                    📅 7-DAY FORECAST
-                </h3>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    ${this.weatherData.daily.map(day => `
-                        <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(168, 85, 247, 0.4); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <div style="font-size: 24px;">${day.icon}</div>
-                                <div>
-                                    <div style="color: #ffffff; font-size: 16px; font-weight: bold;">${day.date}</div>
-                                    <div style="color: #9ca3af; font-size: 14px;">${day.condition}</div>
-                                    <div style="color: #9ca3af; font-size: 12px;">💨 ${day.windSpeed}km/h • 💧 ${day.precipitation}mm</div>
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="color: #a855f7; font-size: 20px; font-weight: bold;">${day.maxTemp}° / ${day.minTemp}°</div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            return container;
-        }
-
-        displayAirQuality() {
-            const aqiData = this.weatherData.airQuality;
-            if (!aqiData) return document.createElement('div');
-
-            const container = document.createElement('div');
-            container.className = 'air-quality-container';
-            container.innerHTML = `
-                <h3 style="color: #ec4899; font-size: 24px; font-weight: bold; margin-bottom: 16px;">
-                    🌬️ AIR QUALITY INDEX
-                </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px;">
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid ${aqiData.statusColor}; border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #ec4899; font-size: 16px; font-weight: bold; margin-bottom: 8px;">AQI INDEX</div>
-                        <div style="color: #ffffff; font-size: 32px; font-weight: bold; margin-bottom: 8px;">${aqiData.aqi}</div>
-                        <div style="color: ${aqiData.statusColor}; font-size: 14px; font-weight: bold;">${aqiData.status}</div>
-                    </div>
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(239, 68, 68, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #ef4444; font-size: 16px; font-weight: bold; margin-bottom: 8px;">PM2.5</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${aqiData.pm25} μg/m³</div>
-                    </div>
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(251, 191, 36, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #fbbf24; font-size: 16px; font-weight: bold; margin-bottom: 8px;">PM10</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${aqiData.pm10} μg/m³</div>
-                    </div>
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(34, 197, 94, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #22c55e; font-size: 16px; font-weight: bold; margin-bottom: 8px;">O3</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${aqiData.o3} μg/m³</div>
-                    </div>
-                </div>
-                <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(156, 163, 175, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                    <div style="color: #9ca3af; font-size: 14px;">${aqiData.description}</div>
-                </div>
-            `;
-            return container;
-        }
-
-        displaySunTimes() {
-            const sunTimes = this.weatherData.sunTimes;
-            if (!sunTimes) return document.createElement('div');
-
-            const container = document.createElement('div');
-            container.className = 'sun-times-container';
-            container.innerHTML = `
-                <h3 style="color: #fbbf24; font-size: 24px; font-weight: bold; margin-bottom: 16px;">
-                    🌅 SUN TIMES
-                </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(251, 191, 36, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #fbbf24; font-size: 16px; font-weight: bold; margin-bottom: 8px;">☀️ SUNRISE</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${sunTimes.sunrise}</div>
-                    </div>
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(251, 146, 60, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #fb923c; font-size: 16px; font-weight: bold; margin-bottom: 8px;">🌅 SUNSET</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${sunTimes.sunset}</div>
-                    </div>
-                    <div style="background: rgba(0, 0, 0, 0.8); border: 2px solid rgba(168, 85, 247, 0.4); border-radius: 16px; padding: 16px; text-align: center;">
-                        <div style="color: #a855f7; font-size: 16px; font-weight: bold; margin-bottom: 8px;">🌞 SOLAR NOON</div>
-                        <div style="color: #ffffff; font-size: 20px; font-weight: bold;">${sunTimes.solarNoon}</div>
-                    </div>
-                </div>
-            `;
-            return container;
-        }
-
-        displayLocalTime() {
-            const container = document.createElement('div');
-            container.className = 'local-time-container';
-            
-            const timezone = this.weatherData.timezone;
-            const localTime = timezone ? timezone.localTime.toLocaleString() : new Date().toLocaleString();
-            const timezoneName = timezone ? timezone.timeZoneName : 'Auto-detected';
-            
-            container.innerHTML = `
-                <div style="background: rgba(0, 0, 0, 0.9); border: 2px solid rgba(0, 212, 255, 0.4); border-radius: 16px; padding: 16px; text-align: center; margin-bottom: 24px;">
-                    <h2 style="color: #00d4ff; font-size: 32px; font-weight: bold; margin-bottom: 8px;">${this.city.toUpperCase()}</h2>
-                    <div style="color: #9ca3af; font-size: 16px;">📍 Local Time: ${localTime}</div>
-                    <div style="color: #9ca3af; font-size: 14px;">Timezone: ${timezoneName}</div>
-                </div>
-            `;
-            return container;
-        }
-
-        // Render all data to the weather-results
-        renderWeatherData() {
-            const weatherSection = document.querySelector('.weather-results');
-            if (!weatherSection) {
-                console.error('Element with id="weather-results" not found!');
-                return;
-            }
-
-            // Clear existing content
-            weatherSection.innerHTML = '';
-
-            // Add all sections
-            weatherSection.appendChild(this.displayLocalTime());
-            weatherSection.appendChild(this.displayHourlyForecast());
-            weatherSection.appendChild(this.displayDailyForecast());
-            weatherSection.appendChild(this.displayAirQuality());
-            weatherSection.appendChild(this.displaySunTimes());
+        showError(message) {
+            document.getElementById('location-title').textContent = 'ERROR LOADING WEATHER';
+            document.getElementById('current-time').textContent = `⚠️ ${message}`;
+            document.getElementById('error-container').classList.remove('hidden');
+            document.getElementById('error-message').textContent = message;
         }
     }
 
-    // Initialize and run the weather fetcher
+    // Initialize weather app
     async function initWeatherApp() {
+        const city = getLocationFromSources();
         const weatherFetcher = new WeatherDataFetcher(city);
         
         try {
-            // Show loading message
-            const weatherSection = document.getElementById('weather-results');
-            if (weatherSection) {
-                weatherSection.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #00d4ff; font-size: 18px;">
-                        <div style="font-size: 32px; margin-bottom: 16px;">🌤️</div>
-                        <div>Loading weather data for ${city}...</div>
-                        <div style="margin-top: 8px; font-size: 14px; color: #9ca3af;">Please wait while we fetch the latest information</div>
-                    </div>
-                `;
-            }
-            
-            // Fetch all data
             await weatherFetcher.fetchAllWeatherData();
-            
-            // Render the results
-            weatherFetcher.renderWeatherData();
-            
-            console.log('Weather app initialized successfully!');
+            console.log('✅ Weather app initialized successfully!');
         } catch (error) {
-            console.error('Failed to initialize weather app:', error);
-            
-            // Show error message
-            const weatherSection = document.getElementById('weather-results');
-            if (weatherSection) {
-                weatherSection.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #ef4444; font-size: 18px;">
-                        <div style="font-size: 32px; margin-bottom: 16px;">⚠️</div>
-                        <div>Failed to load weather data for ${city}</div>
-                        <div style="margin-top: 8px; font-size: 14px; color: #9ca3af;">
-                            ${error.message || 'Please check your API key and internet connection'}
-                        </div>
-                        <button onclick="initWeatherApp()" style="margin-top: 16px; padding: 12px 24px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">
-                            Try Again
-                        </button>
-                    </div>
-                `;
-            }
+            console.error('❌ Failed to initialize weather app:', error);
+            weatherFetcher.showError(error.message || 'Failed to load weather data');
         }
     }
 
-    // Auto-initialize when DOM is ready
+    // Auto-initialize
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initWeatherApp);
     } else {
