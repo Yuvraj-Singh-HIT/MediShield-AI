@@ -16,7 +16,6 @@
           --neon-green: #39ff14;
           --electric-purple: #bf00ff;
       }
-
       body {
           font-family: 'Space Grotesk', sans-serif;
           background: #000000;
@@ -24,7 +23,6 @@
           overflow-x: hidden;
           cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIgZmlsbD0iIzAwZDRmZiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+'), auto;
       }
-
       /* Advanced animated background */
       .cyber-bg {
           position: fixed;
@@ -41,13 +39,11 @@
               linear-gradient(135deg, #000000 0%, #0d1117 25%, #161b22 50%, #0d1117 75%, #000000 100%);
           animation: cosmic-drift 30s ease-in-out infinite alternate;
       }
-
       @keyframes cosmic-drift {
           0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
           50% { transform: scale(1.05) rotate(0.5deg); filter: hue-rotate(180deg); }
           100% { transform: scale(1.02) rotate(-0.3deg); filter: hue-rotate(360deg); }
       }
-
       /* Floating shapes */
       .floating-shapes {
           position: fixed;
@@ -58,35 +54,32 @@
           pointer-events: none;
           z-index: -2;
       }
-
       .shape {
           position: absolute;
           opacity: 0.08;
           filter: blur(1px);
       }
-
-      .shape:nth-child(1) { 
-          width: 100px; height: 100px; 
-          top: 20%; left: 10%; 
+      .shape:nth-child(1) {
+          width: 100px; height: 100px;
+          top: 20%; left: 10%;
           background: linear-gradient(45deg, var(--cyber-blue), var(--primary-glow));
           border-radius: 50%;
           animation: float-1 20s infinite linear;
       }
-      .shape:nth-child(2) { 
-          width: 60px; height: 60px; 
-          top: 70%; left: 80%; 
+      .shape:nth-child(2) {
+          width: 60px; height: 60px;
+          top: 70%; left: 80%;
           background: linear-gradient(135deg, var(--neon-green), var(--secondary-glow));
           transform: rotate(45deg);
           animation: float-2 25s infinite linear;
       }
-      .shape:nth-child(3) { 
-          width: 80px; height: 80px; 
-          top: 85%; left: 20%; 
+      .shape:nth-child(3) {
+          width: 80px; height: 80px;
+          top: 85%; left: 20%;
           background: linear-gradient(90deg, var(--accent-glow), var(--electric-purple));
           border-radius: 20px;
           animation: float-3 30s infinite linear;
       }
-
       @keyframes float-1 {
           0% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
           50% { transform: translateY(-30vh) rotate(180deg); opacity: 0.12; }
@@ -102,20 +95,18 @@
           50% { transform: translateY(-25vh) rotate(270deg); opacity: 0.13; }
           100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
       }
-
       /* Holographic navbar */
       .holo-nav {
           background: rgba(0, 0, 0, 0.85);
           backdrop-filter: blur(25px) saturate(200%);
           border-bottom: 2px solid transparent;
-          background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
-                           linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
+          background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                            linear-gradient(90deg, var(--cyber-blue), var(--neon-green), var(--accent-glow));
           background-origin: border-box;
           background-clip: content-box, border-box;
           box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
           position: relative;
       }
-
       .holo-nav::before {
           content: '';
           position: absolute;
@@ -126,19 +117,17 @@
           background: linear-gradient(90deg, transparent 0%, var(--cyber-blue) 50%, transparent 100%);
           animation: scan-line 3s ease-in-out infinite;
       }
-
       @keyframes scan-line {
           0%, 100% { opacity: 0; transform: scaleX(0); }
           50% { opacity: 1; transform: scaleX(1); }
       }
-
       /* Ultra-modern gradient text */
       .ultra-gradient {
-          background: linear-gradient(135deg, 
-              #00d4ff 0%, 
-              #6366f1 25%, 
-              #a855f7 50%, 
-              #ec4899 75%, 
+          background: linear-gradient(135deg,
+              #00d4ff 0%,
+              #6366f1 25%,
+              #a855f7 50%,
+              #ec4899 75%,
               #39ff14 100%);
           background-size: 300% 300%;
           -webkit-background-clip: text;
@@ -147,16 +136,14 @@
           animation: rainbow-shift 4s ease-in-out infinite;
           filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
       }
-
       @keyframes rainbow-shift {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
       }
-
-      /* Quantum card design */
+      /* Quantum card design - WITH HOVER EFFECTS */
       .quantum-card {
-          background: linear-gradient(135deg, 
-              rgba(0, 0, 0, 0.95) 0%, 
+          background: linear-gradient(135deg,
+              rgba(0, 0, 0, 0.95) 0%,
               rgba(13, 17, 23, 0.9) 50%,
               rgba(0, 0, 0, 0.95) 100%);
           backdrop-filter: blur(30px) saturate(200%);
@@ -169,9 +156,9 @@
               0 0 0 1px rgba(0, 212, 255, 0.3);
           position: relative;
           overflow: hidden;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
       }
-
       .quantum-card::before {
           content: '';
           position: absolute;
@@ -183,21 +170,20 @@
           transition: left 0.8s ease;
           z-index: 1;
       }
-
+      /* Quantum card hover effects */
       .quantum-card:hover {
-          transform: translateY(-15px) scale(1.02);
+          transform: translateY(-3px) scale(1.005);
           box-shadow: 
-              0 40px 80px rgba(0, 0, 0, 0.95),
-              0 0 100px rgba(0, 212, 255, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.25);
-          border-color: rgba(0, 212, 255, 0.6);
+              0 35px 70px rgba(0, 0, 0, 0.9),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2),
+              0 0 0 1px rgba(0, 212, 255, 0.5),
+              0 0 30px rgba(0, 212, 255, 0.2);
+          border: 2px solid rgba(0, 212, 255, 0.4);
       }
-
       .quantum-card:hover::before {
           left: 100%;
       }
-
-      /* Holographic input field */
+      /* Holographic input field - WITH HOVER EFFECTS */
       .holo-input {
           background: rgba(0, 0, 0, 0.8);
           backdrop-filter: blur(15px);
@@ -207,27 +193,32 @@
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
       }
-
       .holo-input::placeholder {
           color: rgba(0, 212, 255, 0.7);
           font-weight: 600;
       }
-
+      .holo-input:hover {
+          border-color: rgba(0, 212, 255, 0.6);
+          box-shadow: 
+              0 0 0 1px rgba(0, 212, 255, 0.3),
+              0 0 15px rgba(0, 212, 255, 0.2);
+          background: rgba(0, 0, 0, 0.9);
+          transform: translateY(-1px);
+      }
       .holo-input:focus {
           border-color: var(--neon-green);
           box-shadow: 
               0 0 0 3px rgba(57, 255, 20, 0.25),
               0 0 30px rgba(57, 255, 20, 0.4);
-          transform: scale(1.02);
           background: rgba(0, 0, 0, 0.95);
           outline: none;
+          transform: translateY(-2px);
       }
-
-      /* Quantum button */
+      /* Regular buttons - WITH SUBTLE HOVER EFFECTS */
       .quantum-btn {
-          background: linear-gradient(135deg, 
-              var(--cyber-blue) 0%, 
-              var(--primary-glow) 50%, 
+          background: linear-gradient(135deg,
+              var(--cyber-blue) 0%,
+              var(--primary-glow) 50%,
               var(--neon-green) 100%);
           background-size: 300% 300%;
           animation: quantum-pulse 3s ease-in-out infinite;
@@ -238,9 +229,9 @@
           letter-spacing: 2px;
           position: relative;
           overflow: hidden;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
       }
-
       .quantum-btn::before {
           content: '';
           position: absolute;
@@ -251,37 +242,69 @@
           background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
           transition: left 0.6s ease;
       }
-
       .quantum-btn:hover {
-          transform: scale(1.05) translateY(-3px);
+          transform: translateY(-1px) scale(1.01);
           box-shadow: 
-              0 15px 30px rgba(0, 212, 255, 0.6),
-              0 0 50px rgba(57, 255, 20, 0.4);
+              0 5px 15px rgba(0, 212, 255, 0.3),
+              0 0 20px rgba(57, 255, 20, 0.2);
       }
-
       .quantum-btn:hover::before {
           left: 100%;
       }
-
+      /* Special buttons with hover effects - ONLY FOR SPECIFIC BUTTONS */
+      .quantum-btn-special {
+          background: linear-gradient(135deg,
+              var(--cyber-blue) 0%,
+              var(--primary-glow) 50%,
+              var(--neon-green) 100%);
+          background-size: 300% 300%;
+          animation: quantum-pulse 3s ease-in-out infinite;
+          border: none;
+          font-family: 'JetBrains Mono', monospace;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .quantum-btn-special::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+          transition: left 0.6s ease;
+      }
+      .quantum-btn-special:hover {
+          transform: scale(1.02) translateY(-1px);
+          box-shadow: 
+              0 8px 20px rgba(0, 212, 255, 0.4),
+              0 0 30px rgba(57, 255, 20, 0.3);
+      }
+      .quantum-btn-special:hover::before {
+          left: 100%;
+      }
       @keyframes quantum-pulse {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
       }
-
-      /* Weather cards */
+      /* Weather cards - SUBTLE HOVER EFFECTS */
       .weather-holo {
-          background: linear-gradient(135deg, 
-              rgba(0, 0, 0, 0.85) 0%, 
+          background: linear-gradient(135deg,
+              rgba(0, 0, 0, 0.85) 0%,
               rgba(21, 32, 43, 0.7) 50%,
               rgba(0, 0, 0, 0.85) 100%);
           backdrop-filter: blur(20px) saturate(200%);
           border: 2px solid rgba(0, 212, 255, 0.4);
           border-radius: 1.5rem;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
           overflow: hidden;
+          cursor: pointer;
       }
-
       .weather-holo::before {
           content: '';
           position: absolute;
@@ -290,54 +313,44 @@
           width: 200%;
           height: 200%;
           background: conic-gradient(
-              transparent, 
-              rgba(0, 212, 255, 0.1), 
-              transparent, 
-              rgba(57, 255, 20, 0.1), 
+              transparent,
+              rgba(0, 212, 255, 0.1),
+              transparent,
+              rgba(57, 255, 20, 0.1),
               transparent);
           animation: hologram-rotate 8s linear infinite;
           opacity: 0;
           transition: opacity 0.4s ease;
       }
-
-      .weather-holo:hover::before {
-          opacity: 1;
-      }
-
+      /* Subtle hover effect for weather cards */
       .weather-holo:hover {
-          transform: translateY(-10px) scale(1.05);
+          transform: translateY(-2px) scale(1.01);
           box-shadow: 
-              0 25px 50px rgba(0, 0, 0, 0.9),
-              0 0 60px rgba(0, 212, 255, 0.3);
-          border-color: rgba(57, 255, 20, 0.6);
+              0 10px 25px rgba(0, 0, 0, 0.8),
+              0 0 20px rgba(0, 212, 255, 0.2);
+          border-color: rgba(0, 212, 255, 0.6);
       }
-
+      .weather-holo:hover::before {
+          opacity: 0.6;
+      }
       @keyframes hologram-rotate {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
       }
-
-      /* Logo styling */
+      /* Logo styling - NO HOVER EFFECTS */
       .logo-quantum {
           filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
           animation: logo-pulse 3s ease-in-out infinite alternate;
           transition: all 0.3s ease;
       }
-
-      .logo-quantum:hover {
-          transform: scale(1.1) rotate(5deg);
-          filter: drop-shadow(0 0 30px rgba(0, 212, 255, 1));
-      }
-
       @keyframes logo-pulse {
           0% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8)); }
           100% { filter: drop-shadow(0 0 35px rgba(57, 255, 20, 0.6)); }
       }
-
       /* Holographic text effects */
       .holo-text {
-          background: linear-gradient(135deg, 
-              rgba(0, 212, 255, 0.95) 0%, 
+          background: linear-gradient(135deg,
+              rgba(0, 212, 255, 0.95) 0%,
               rgba(255, 255, 255, 1) 50%,
               rgba(57, 255, 20, 0.95) 100%);
           -webkit-background-clip: text;
@@ -345,13 +358,16 @@
           background-clip: text;
           filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
           animation: holo-shimmer 2s ease-in-out infinite alternate;
+          transition: all 0.3s ease;
       }
-
+      /* Hover effect for holographic text inside quantum card */
+      .quantum-card:hover .holo-text {
+          filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.8));
+      }
       @keyframes holo-shimmer {
           0% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
           100% { filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.7)); }
       }
-
       /* Loading animation */
       .quantum-loading {
           display: inline-block;
@@ -363,29 +379,24 @@
           animation: quantum-spin 1s ease-in-out infinite;
           filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.8));
       }
-
       @keyframes quantum-spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
       }
-
       /* Smooth animations */
       .ultra-smooth {
           animation: ultra-fade-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
-
       @keyframes ultra-fade-in {
           from { opacity: 0; transform: translateY(30px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
       }
-
-      /* Nav links */
+      /* Nav links - ACTIVE STATE STYLING */
       .nav-link {
           position: relative;
           transition: all 0.3s ease;
           padding: 8px 0;
       }
-
       .nav-link::before {
           content: '';
           position: absolute;
@@ -398,34 +409,58 @@
           transform: translateX(-50%);
           border-radius: 1px;
       }
-
-      .nav-link:hover::before {
+      /* Active navigation state */
+      .nav-link.active {
+          color: var(--cyber-blue) !important;
+          text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+          font-weight: 800;
+      }
+      .nav-link.active::before {
           width: 100%;
+          background: linear-gradient(90deg, var(--cyber-blue), var(--neon-green));
+          box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
       }
-
-      .nav-link:hover {
-          transform: translateY(-2px);
-          text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
-      }
-
-      /* Weather icons */
+      /* Weather icons - SUBTLE HOVER EFFECTS */
       .weather-icon {
           font-size: 3.5rem;
           filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
           animation: icon-float 3s ease-in-out infinite alternate;
           transition: all 0.3s ease;
       }
-
-      .weather-icon:hover {
-          transform: scale(1.15) rotate(8deg);
-          filter: drop-shadow(0 0 25px rgba(57, 255, 20, 0.8));
+      /* Subtle hover effect for weather icons */
+      .weather-holo:hover .weather-icon {
+          transform: scale(1.05) rotate(2deg);
+          filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
       }
-
+      /* Subtle hover effect for weather text elements */
+      .weather-holo:hover .holo-text {
+          filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.7));
+      }
+      .weather-holo:hover .text-cyan-400 {
+          text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+      }
+      .weather-holo:hover .text-purple-400 {
+          text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+      }
+      .weather-holo:hover .text-pink-400 {
+          text-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+      }
       @keyframes icon-float {
           0% { transform: translateY(0px) rotate(0deg); }
           100% { transform: translateY(-10px) rotate(3deg); }
       }
-
+      /* Search container hover effects */
+      .search-container {
+          transition: all 0.3s ease;
+      }
+      .quantum-card:hover .search-container {
+          transform: translateY(-1px);
+      }
+      /* Hero title hover effect when quantum card is hovered */
+      .quantum-card:hover ~ * .hero-title,
+      .quantum-card:hover .hero-title {
+          filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.6));
+      }
       /* Error and success messages */
       .error-holo {
           background: rgba(220, 38, 38, 0.15);
@@ -433,24 +468,20 @@
           backdrop-filter: blur(15px);
           animation: error-pulse 2s ease-in-out infinite;
       }
-
       @keyframes error-pulse {
           0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
           50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.8); }
       }
-
       .success-holo {
           background: rgba(34, 197, 94, 0.15);
           border: 2px solid rgba(34, 197, 94, 0.6);
           backdrop-filter: blur(15px);
           animation: success-pulse 2s ease-in-out infinite;
       }
-
       @keyframes success-pulse {
           0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
           50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.8); }
       }
-
       /* Mobile enhancements */
       @media (max-width: 768px) {
           .hero-title { font-size: 3rem; }
@@ -458,7 +489,6 @@
           .weather-holo { padding: 1rem; }
           .weather-icon { font-size: 2.5rem; }
       }
-
       .mobile-menu {
           background: rgba(0, 0, 0, 0.95);
           backdrop-filter: blur(30px);
@@ -468,12 +498,10 @@
           opacity: 0;
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
-
       .mobile-menu.active {
           transform: translateY(0) scale(1);
           opacity: 1;
       }
-
       /* Scrollbar styling */
       ::-webkit-scrollbar {
           width: 6px;
@@ -485,42 +513,35 @@
           background: linear-gradient(135deg, var(--cyber-blue), var(--neon-green));
           border-radius: 3px;
       }
-
       /* Weather details navigation */
-        .quantum-card.bg-gradient-to-r {
-            display: none; /* Initially hidden */
-            animation: ultra-fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        #view-details-btn {
-            background: linear-gradient(135deg, 
-                var(--cyber-blue) 0%, 
-                var(--electric-purple) 50%, 
-                var(--accent-glow) 100%);
-            background-size: 200% 200%;
-            animation: quantum-pulse 2s ease-in-out infinite;
-        }
-
-        #view-details-btn:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 
-                0 12px 25px rgba(0, 212, 255, 0.6),
-                0 0 40px rgba(236, 72, 153, 0.4);
-        }
+      .quantum-card.bg-gradient-to-r {
+          display: none; /* Initially hidden */
+          animation: ultra-fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      /* View details button - SPECIAL HOVER EFFECT */
+      #view-details-btn {
+          background: linear-gradient(135deg,
+              var(--cyber-blue) 0%,
+              var(--electric-purple) 50%,
+              var(--accent-glow) 100%);
+          background-size: 200% 200%;
+          animation: quantum-pulse 2s ease-in-out infinite;
+      }
+      #view-details-btn:hover {
+          transform: scale(1.02) translateY(-1px);
+          box-shadow: 
+              0 8px 20px rgba(0, 212, 255, 0.4),
+              0 0 30px rgba(236, 72, 153, 0.3);
+      }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
-  <!-- Advanced background -->
   <div class="cyber-bg"></div>
-  
-  <!-- Floating geometric shapes -->
   <div class="floating-shapes">
       <div class="shape"></div>
       <div class="shape"></div>
       <div class="shape"></div>
   </div>
-
-  <!-- Holographic Navbar -->
   <nav class="holo-nav py-6 px-6 md:px-13 flex justify-between items-center sticky top-0 z-50">
       <div class="flex items-center space-x-4">
           <div class="logo-quantum">
@@ -560,8 +581,6 @@
           </svg>
       </button>
   </nav>
-
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-20 right-6 z-40 p-6 space-y-4">
       <a href="index.html" class="nav-link text-gray-300 hover:text-cyan-400 font-bold text-lg">HOME</a>
       <a href="weather.html" class="block text-gray-300 hover:text-cyan-400 font-bold">WEATHER</a>
@@ -569,8 +588,6 @@
       <a href="about.html" class="block text-gray-300 hover:text-pink-400 font-bold">ABOUT</a>
       <a href="contact.html" class="nav-link text-gray-300 hover:text-pink-400 font-bold text-lg">CONTACT</a>
   </div>
-
-  <!-- Hero Section -->
   <main class="flex-grow flex items-center justify-center py-20 px-4 relative" id="weather">
       <div class="text-center max-w-6xl w-full relative z-10">
           <h1 class="hero-title text-6xl md:text-8xl font-black leading-tight mb-8 ultra-smooth">
@@ -579,10 +596,8 @@
           <p class="text-xl md:text-2xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed ultra-smooth font-medium">
               🚀 Experience the <span class="holo-text font-bold">quantum leap</span> in weather forecasting with AI-powered insights
           </p>
-
-          <!-- Quantum Weather Interface -->
           <div class="quantum-card p-10 mx-auto max-w-4xl ultra-smooth">
-              <div class="flex flex-col lg:flex-row gap-6 mb-10">
+              <div class="flex flex-col lg:flex-row gap-6 mb-10 search-container">
                   <input
                       type="text"
                       id="location-input"
@@ -597,8 +612,6 @@
                       <span id="button-loading" class="quantum-loading hidden"></span>
                   </button>
               </div>
-
-              <!-- Weather Display -->
               <div id="weather-results" class="text-left text-gray-200">
                   <h2 class="text-5xl font-black mb-10 text-center">
                       🌐 QUANTUM SCAN: <span id="display-location" class="ultra-gradient">STANDBY</span>
@@ -623,15 +636,13 @@
                           <p class="text-sm text-gray-400 font-mono">WIND: <span id="wind">--</span> km/h</p>
                       </div>
                   </div>
-
                   <div id="message-container" class="mt-8"></div>
               </div>
-              <!-- Weather Details Navigation -->
                 <div class="text-center mt-8 ultra-smooth">
                     <div class="quantum-card p-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 border-cyan-400/50">
                         <h3 class="text-xl font-bold holo-text mb-3">🔍 WANT MORE DETAILS?</h3>
                         <p class="text-gray-300 mb-4">Get comprehensive weather analysis, hourly forecasts, air quality data, and more!</p>
-                        <button id="view-details-btn" class="quantum-btn text-black font-black py-3 px-6 rounded-xl transition-all duration-400 text-base shadow-2xl">
+                        <button id="view-details-btn" class="quantum-btn-special text-black font-black py-3 px-6 rounded-xl transition-all duration-400 text-base shadow-2xl">
                             📊 VIEW DETAILED WEATHER REPORT
                         </button>
                     </div>
@@ -639,8 +650,6 @@
           </div>
       </div>
   </main>
-
-  <!-- Footer -->
   <footer class="holo-nav text-gray-400 py-10 px-6 md:px-12 text-center border-t-2 border-cyan-500/30">
       <div class="max-w-4xl mx-auto">
           <p class="text-xl mb-6 font-bold">
@@ -667,527 +676,527 @@
   </footer>
   <script>
     // Enhanced Weather App - Fixed API Issues
-        class QuantumWeatherApp {
-            constructor() {
-                this.baseUrl = '/api/weather'; // Updated to match Vercel/Netlify structure
-                this.isLoading = false;
-                this.init();
-            }
+    
+    class QuantumWeatherApp {
+        constructor() {
+            this.baseUrl = '/api/weather'; // Updated to match Vercel/Netlify structure
+            this.isLoading = false;
+            this.init();
+        }
 
-            init() {
-                this.bindEvents();
-                this.createParticleSystem();
-            }
+        init() {
+            this.bindEvents();
+            this.createParticleSystem();
+        }
 
-            bindEvents() {
-                const searchButton = document.getElementById('search-button');
-                const locationInput = document.getElementById('location-input');
-                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
+        bindEvents() {
+            const searchButton = document.getElementById('search-button');
+            const locationInput = document.getElementById('location-input');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-                searchButton.addEventListener('click', () => this.searchWeather());
-                locationInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.searchWeather();
-                    const viewDetailsBtn = document.getElementById('view-details-btn');
-                    if (viewDetailsBtn) {
-                        viewDetailsBtn.addEventListener('click', () => this.navigateToWeatherDetails());
+            searchButton.addEventListener('click', () => this.searchWeather());
+            locationInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.searchWeather();
+                const viewDetailsBtn = document.getElementById('view-details-btn');
+                if (viewDetailsBtn) {
+                    viewDetailsBtn.addEventListener('click', () => this.navigateToWeatherDetails());
+                }
+            });
+
+            // Mobile menu toggle
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => mobileMenu.classList.add('active'), 10);
+                    } else {
+                        mobileMenu.classList.remove('active');
                     }
                 });
 
-                // Mobile menu toggle
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('hidden');
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            setTimeout(() => mobileMenu.classList.add('active'), 10);
-                        } else {
-                            mobileMenu.classList.remove('active');
-                        }
-                    });
-
-                    // Close mobile menu when clicking outside
-                    document.addEventListener('click', (e) => {
-                        if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                            mobileMenu.classList.add('hidden');
-                            mobileMenu.classList.remove('active');
-                        }
-                    });
-                }
-
-                // Input focus effects
-                locationInput.addEventListener('focus', () => {
-                    this.addGlitchEffect(locationInput);
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('active');
+                    }
                 });
             }
-            // Add this updated function to your QuantumWeatherApp class in index.html:
 
-            navigateToWeatherDetails() {
-                if (this.currentWeatherData) {
-                    const location = this.currentWeatherData.location || this.currentWeatherData.name;
-                    
-                    // Store in multiple ways to ensure weather.html can find it
-                    try {
-                        localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
-                        localStorage.setItem('currentLocation', location);
-                        localStorage.setItem('weather_location', location);
-                        sessionStorage.setItem('lastSearchedLocation', location);
-                    } catch (error) {
-                        console.warn('Could not store weather data:', error);
-                    }
-                    
-                    // Navigate with URL parameter as backup
-                    const params = new URLSearchParams({
-                        location: location
-                    });
-                    
-                    window.location.href = `weather.html?${params.toString()}`;
-                } else {
-                    this.showMessage('⚠️ Please search for weather first', 'error');
-                }
-            }
+            // Input focus effects
+            locationInput.addEventListener('focus', () => {
+                this.addGlitchEffect(locationInput);
+            });
+        }
 
-            navigateToChat() {
-                // Store current weather data in localStorage for chatbot access
-                if (this.currentWeatherData) {
+        // Add this updated function to your QuantumWeatherApp class in index.html:
+        navigateToWeatherDetails() {
+            if (this.currentWeatherData) {
+                const location = this.currentWeatherData.location || this.currentWeatherData.name;
+                
+                // Store in multiple ways to ensure weather.html can find it
+                try {
                     localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
-                    
-                    // Also pass via URL parameters as backup
-                    const params = new URLSearchParams({
-                        location: this.currentWeatherData.location || this.currentWeatherData.name,
-                        temp: this.currentWeatherData.temperature || Math.round(this.currentWeatherData.main?.temp || 0),
-                        condition: this.currentWeatherData.condition || this.currentWeatherData.weather?.[0]?.main || 'Clear'
-                    });
-                    window.location.href = `chatbot.html?${params.toString()}`;
-                } else {
-                    window.location.href = 'chatbot.html';
+                    localStorage.setItem('currentLocation', location);
+                    localStorage.setItem('weather_location', location);
+                    sessionStorage.setItem('lastSearchedLocation', location);
+                } catch (error) {
+                    console.warn('Could not store weather data:', error);
                 }
+                
+                // Navigate with URL parameter as backup
+                const params = new URLSearchParams({
+                    location: location
+                });
+                
+                window.location.href = `weather.html?${params.toString()}`;
+            } else {
+                this.showMessage('⚠️ Please search for weather first', 'error');
+            }
+        }
+
+        navigateToChat() {
+            // Store current weather data in localStorage for chatbot access
+            if (this.currentWeatherData) {
+                localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
+                
+                // Also pass via URL parameters as backup
+                const params = new URLSearchParams({
+                    location: this.currentWeatherData.location || this.currentWeatherData.name,
+                    temp: this.currentWeatherData.temperature || Math.round(this.currentWeatherData.main?.temp || 0),
+                    condition: this.currentWeatherData.condition || this.currentWeatherData.weather?.[0]?.main || 'Clear'
+                });
+                window.location.href = `chatbot.html?${params.toString()}`;
+            } else {
+                window.location.href = 'chatbot.html';
+            }
+        }
+
+        createParticleSystem() {
+            // Create periodic floating particles
+            setInterval(() => {
+                this.createRandomParticle();
+            }, 3000);
+        }
+
+        createRandomParticle() {
+            const shapes = document.querySelector('.floating-shapes');
+            if (!shapes) return;
+
+            const particle = document.createElement('div');
+            particle.className = 'shape';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: ${this.getRandomColor()};
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: 100%;
+                opacity: 0.6;
+                animation: float-particle 6s linear forwards;
+            `;
+            
+            shapes.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.remove();
+                }
+            }, 6000);
+        }
+
+        getRandomColor() {
+            const colors = [
+                'rgba(0, 212, 255, 0.8)',
+                'rgba(57, 255, 20, 0.8)',
+                'rgba(236, 72, 153, 0.8)',
+                'rgba(168, 85, 247, 0.8)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        addGlitchEffect(element) {
+            element.style.animation = 'none';
+            element.offsetHeight; // Trigger reflow
+            element.style.animation = 'glitch 0.3s ease-in-out';
+            setTimeout(() => {
+                element.style.animation = '';
+            }, 300);
+        }
+
+        async searchWeather() {
+            const location = document.getElementById('location-input').value.trim();
+            
+            if (!location) {
+                this.showMessage('⚠️ PLEASE ENTER QUANTUM COORDINATES', 'error');
+                this.addGlitchEffect(document.getElementById('location-input'));
+                return;
             }
 
-            createParticleSystem() {
-                // Create periodic floating particles
-                setInterval(() => {
-                    this.createRandomParticle();
-                }, 3000);
+            if (this.isLoading) return;
+            this.setLoadingState(true);
+            
+            try {
+                const weatherData = await this.fetchWeatherData(location);
+                this.displayWeather(weatherData);
+                this.showMessage('✅ QUANTUM SCAN COMPLETE', 'success');
+            } catch (error) {
+                this.handleError(error);
+            } finally {
+                this.setLoadingState(false);
             }
+        }
 
-            createRandomParticle() {
-                const shapes = document.querySelector('.floating-shapes');
-                if (!shapes) return;
+        async fetchWeatherData(location) {
+            try {
+                // Clean and validate the location input
+                const cleanLocation = location.trim().replace(/[^\w\s,-]/g, '');
+                
+                if (!cleanLocation) {
+                    throw new Error('Invalid location format');
+                }
 
-                const particle = document.createElement('div');
-                particle.className = 'shape';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: ${this.getRandomColor()};
-                    border-radius: 50%;
-                    left: ${Math.random() * 100}%;
-                    top: 100%;
-                    opacity: 0.6;
-                    animation: float-particle 6s linear forwards;
+                // Build the URL with proper encoding - using 'q' parameter to match backend
+                const params = new URLSearchParams({
+                    q: cleanLocation
+                });
+                
+                const url = `${this.baseUrl}?${params.toString()}`;
+                
+                console.log('API Request URL:', url); // Debug log
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                console.log('Response status:', response.status); // Debug log
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    const errorMessage = errorData.error || `HTTP ${response.status}: ${response.statusText}`;
+                    
+                    if (response.status === 404) {
+                        throw new Error(`Location "${location}" not found. Please check the spelling and try again.`);
+                    } else if (response.status === 401) {
+                        throw new Error('Invalid API key. Please check your OpenWeatherMap API key.');
+                    } else if (response.status === 429) {
+                        throw new Error('API rate limit exceeded. Please wait a moment and try again.');
+                    } else {
+                        throw new Error(errorMessage);
+                    }
+                }
+                
+                const data = await response.json();
+                console.log('API Response:', data); // Debug log
+                
+                return data;
+                
+            } catch (error) {
+                console.error('Fetch error details:', error);
+                
+                // If it's a network error or API is down, fallback to demo data
+                if (error.name === 'TypeError' && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
+                    console.log('Network error, falling back to demo data');
+                    await this.simulateAPICall();
+                    return this.generateDemoWeatherData(location);
+                }
+                
+                throw error; // Re-throw other errors to be handled by the calling function
+            }
+        }
+
+        async simulateAPICall() {
+            return new Promise(resolve => {
+                setTimeout(resolve, 1200 + Math.random() * 800);
+            });
+        }
+
+        generateDemoWeatherData(location) {
+            const temps = [-5, 8, 18, 25, 32];
+            const conditions = [
+                { condition: 'Clear', icon: '☀️' },
+                { condition: 'Clouds', icon: '☁️' },
+                { condition: 'Rain', icon: '🌧️' },
+                { condition: 'Thunderstorm', icon: '⛈️' },
+                { condition: 'Snow', icon: '❄️' },
+                { condition: 'Mist', icon: '🌫️' }
+            ];
+
+            const baseTemp = temps[Math.floor(Math.random() * temps.length)];
+            const weatherCondition = conditions[Math.floor(Math.random() * conditions.length)];
+
+            return {
+                name: location.charAt(0).toUpperCase() + location.slice(1).toLowerCase(),
+                main: {
+                    temp: baseTemp,
+                    feels_like: baseTemp + (Math.random() * 4 - 2),
+                    humidity: Math.floor(Math.random() * 40) + 35,
+                    pressure: Math.floor(Math.random() * 50) + 1000
+                },
+                weather: [{
+                    main: weatherCondition.condition,
+                    description: weatherCondition.condition.toLowerCase(),
+                    icon: weatherCondition.icon
+                }],
+                wind: {
+                    speed: Math.floor(Math.random() * 25) + 5
+                }
+            };
+        }
+
+        displayWeather(data) {
+            // Store the complete weather data for chatbot access
+            this.currentWeatherData = {
+                location: data.name || 'Unknown Location',
+                name: data.name || 'Unknown Location',  // Make sure both keys exist
+                temperature: Math.round(data.main?.temp || 0),
+                condition: data.weather?.[0]?.main || 'Clear',
+                timestamp: new Date().toISOString(),
+                main: data.main,
+                weather: data.weather,
+                wind: data.wind,
+                coord: data.coord
+            };
+
+            // Update location
+            const locationName = data.name || 'Unknown Location';
+            const locationElement = document.getElementById('display-location');
+            if (locationElement) {
+                locationElement.textContent = locationName.toUpperCase();
+            }
+            
+            // Update main weather data
+            const temp = data.main?.temp || 0;
+            const feelsLike = data.main?.feels_like || temp;
+            const humidity = data.main?.humidity || 50;
+            const pressure = data.main?.pressure || 1013;
+            const windSpeed = data.wind?.speed || 0;
+            
+            // Weather condition handling
+            const weatherMain = data.weather?.[0]?.main || 'Clear';
+            const weatherIcon = this.getWeatherIcon(weatherMain, data.weather?.[0]?.icon);
+            
+            // Update DOM elements safely
+            this.updateElement('temperature', Math.round(temp));
+            this.updateElement('feels-like', Math.round(feelsLike));
+            this.updateElement('humidity', Math.round(humidity));
+            this.updateElement('pressure', Math.round(pressure));
+            this.updateElement('conditions', weatherMain);
+            this.updateElement('wind', Math.round(windSpeed * 3.6)); // Convert m/s to km/h
+            this.updateElement('condition-icon', weatherIcon);
+
+            // Add animation effects
+            this.animateWeatherCards();
+            
+            // Add chat button after weather is displayed
+            this.addChatButton();
+
+            const detailsSection = document.querySelector('.quantum-card.bg-gradient-to-r');
+                if (detailsSection) {
+                    detailsSection.style.display = 'block';
+                    detailsSection.classList.add('ultra-smooth');
+                }
+             
+            try {
+                localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
+                localStorage.setItem('currentLocation', this.currentWeatherData.location);
+            } catch (error) {
+                console.warn('Could not store weather data:', error);
+            }
+        }
+
+        // Add this new function to add the chat button
+        addChatButton() {
+            const resultsContainer = document.getElementById('weather-results');
+            if (resultsContainer && !document.querySelector('.chat-button-container')) {
+                const chatButton = document.createElement('div');
+                chatButton.className = 'text-center mt-8 chat-button-container';
+                chatButton.innerHTML = `
+                    <button onclick="app.navigateToChat()" class="quantum-btn-special text-black font-black py-4 px-8 rounded-xl transition-all duration-400 text-lg shadow-2xl">
+                        🤖 ASK CLIMABOT AI ABOUT THIS WEATHER
+                    </button>
                 `;
-                
-                shapes.appendChild(particle);
-                
+                resultsContainer.appendChild(chatButton);
+            }
+        }
+
+        updateElement(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = value;
+            }
+        }
+
+        getWeatherIcon(condition, apiIcon) {
+            const iconMap = {
+                'Clear': '☀️',
+                'Clouds': '☁️',
+                'Rain': '🌧️',
+                'Drizzle': '🌦️',
+                'Thunderstorm': '⛈️',
+                'Snow': '❄️',
+                'Mist': '🌫️',
+                'Fog': '🌫️',
+                'Haze': '🌫️',
+                'Dust': '🌪️',
+                'Sand': '🌪️',
+                'Ash': '🌋',
+                'Squall': '💨',
+                'Tornado': '🌪️'
+            };
+            return iconMap[condition] || (apiIcon ? this.mapApiIcon(apiIcon) : '☁️');
+        }
+
+        mapApiIcon(apiIcon) {
+            const apiIconMap = {
+                '01d': '☀️', '01n': '🌙',
+                '02d': '⛅', '02n': '☁️',
+                '03d': '☁️', '03n': '☁️',
+                '04d': '☁️', '04n': '☁️',
+                '09d': '🌧️', '09n': '🌧️',
+                '10d': '🌦️', '10n': '🌧️',
+                '11d': '⛈️', '11n': '⛈️',
+                '13d': '❄️', '13n': '❄️',
+                '50d': '🌫️', '50n': '🌫️'
+            };
+            return apiIconMap[apiIcon] || '☁️';
+        }
+
+        animateWeatherCards() {
+            const cards = document.querySelectorAll('.weather-holo');
+            cards.forEach((card, index) => {
                 setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.remove();
-                    }
-                }, 6000);
-            }
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = 'ultra-fade-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                }, index * 150);
+            });
+        }
 
-            getRandomColor() {
-                const colors = [
-                    'rgba(0, 212, 255, 0.8)',
-                    'rgba(57, 255, 20, 0.8)',
-                    'rgba(236, 72, 153, 0.8)',
-                    'rgba(168, 85, 247, 0.8)'
-                ];
-                return colors[Math.floor(Math.random() * colors.length)];
-            }
+        setLoadingState(loading) {
+            this.isLoading = loading;
+            const buttonText = document.getElementById('button-text');
+            const buttonLoading = document.getElementById('button-loading');
+            const searchButton = document.getElementById('search-button');
 
-            addGlitchEffect(element) {
-                element.style.animation = 'none';
-                element.offsetHeight; // Trigger reflow
-                element.style.animation = 'glitch 0.3s ease-in-out';
-                setTimeout(() => {
-                    element.style.animation = '';
-                }, 300);
-            }
-
-            async searchWeather() {
-                const location = document.getElementById('location-input').value.trim();
-                
-                if (!location) {
-                    this.showMessage('⚠️ PLEASE ENTER QUANTUM COORDINATES', 'error');
-                    this.addGlitchEffect(document.getElementById('location-input'));
-                    return;
+            if (loading) {
+                if (buttonText) buttonText.classList.add('hidden');
+                if (buttonLoading) buttonLoading.classList.remove('hidden');
+                if (searchButton) {
+                    searchButton.disabled = true;
+                    searchButton.classList.add('opacity-75');
                 }
-
-                if (this.isLoading) return;
-
-                this.setLoadingState(true);
-                
-                try {
-                    const weatherData = await this.fetchWeatherData(location);
-                    this.displayWeather(weatherData);
-                    this.showMessage('✅ QUANTUM SCAN COMPLETE', 'success');
-                } catch (error) {
-                    this.handleError(error);
-                } finally {
-                    this.setLoadingState(false);
-                }
-            }
-
-            async fetchWeatherData(location) {
-                try {
-                    // Clean and validate the location input
-                    const cleanLocation = location.trim().replace(/[^\w\s,-]/g, '');
-                    
-                    if (!cleanLocation) {
-                        throw new Error('Invalid location format');
-                    }
-
-                    // Build the URL with proper encoding - using 'q' parameter to match backend
-                    const params = new URLSearchParams({
-                        q: cleanLocation
-                    });
-                    
-                    const url = `${this.baseUrl}?${params.toString()}`;
-                    
-                    console.log('API Request URL:', url); // Debug log
-                    
-                    const response = await fetch(url, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                    
-                    console.log('Response status:', response.status); // Debug log
-                    
-                    if (!response.ok) {
-                        const errorData = await response.json().catch(() => ({}));
-                        const errorMessage = errorData.error || `HTTP ${response.status}: ${response.statusText}`;
-                        
-                        if (response.status === 404) {
-                            throw new Error(`Location "${location}" not found. Please check the spelling and try again.`);
-                        } else if (response.status === 401) {
-                            throw new Error('Invalid API key. Please check your OpenWeatherMap API key.');
-                        } else if (response.status === 429) {
-                            throw new Error('API rate limit exceeded. Please wait a moment and try again.');
-                        } else {
-                            throw new Error(errorMessage);
-                        }
-                    }
-                    
-                    const data = await response.json();
-                    console.log('API Response:', data); // Debug log
-                    
-                    return data;
-                    
-                } catch (error) {
-                    console.error('Fetch error details:', error);
-                    
-                    // If it's a network error or API is down, fallback to demo data
-                    if (error.name === 'TypeError' && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
-                        console.log('Network error, falling back to demo data');
-                        await this.simulateAPICall();
-                        return this.generateDemoWeatherData(location);
-                    }
-                    
-                    throw error; // Re-throw other errors to be handled by the calling function
-                }
-            }
-
-            async simulateAPICall() {
-                return new Promise(resolve => {
-                    setTimeout(resolve, 1200 + Math.random() * 800);
-                });
-            }
-
-            generateDemoWeatherData(location) {
-                const temps = [-5, 8, 18, 25, 32];
-                const conditions = [
-                    { condition: 'Clear', icon: '☀️' },
-                    { condition: 'Clouds', icon: '☁️' },
-                    { condition: 'Rain', icon: '🌧️' },
-                    { condition: 'Thunderstorm', icon: '⛈️' },
-                    { condition: 'Snow', icon: '❄️' },
-                    { condition: 'Mist', icon: '🌫️' }
-                ];
-
-                const baseTemp = temps[Math.floor(Math.random() * temps.length)];
-                const weatherCondition = conditions[Math.floor(Math.random() * conditions.length)];
-
-                return {
-                    name: location.charAt(0).toUpperCase() + location.slice(1).toLowerCase(),
-                    main: {
-                        temp: baseTemp,
-                        feels_like: baseTemp + (Math.random() * 4 - 2),
-                        humidity: Math.floor(Math.random() * 40) + 35,
-                        pressure: Math.floor(Math.random() * 50) + 1000
-                    },
-                    weather: [{
-                        main: weatherCondition.condition,
-                        description: weatherCondition.condition.toLowerCase(),
-                        icon: weatherCondition.icon
-                    }],
-                    wind: {
-                        speed: Math.floor(Math.random() * 25) + 5
-                    }
-                };
-            }
-
-            displayWeather(data) {
-                // Store the complete weather data for chatbot access
-                this.currentWeatherData = {
-                    location: data.name || 'Unknown Location',
-                    name: data.name || 'Unknown Location',  // Make sure both keys exist
-                    temperature: Math.round(data.main?.temp || 0),
-                    condition: data.weather?.[0]?.main || 'Clear',
-                    timestamp: new Date().toISOString(),
-                    main: data.main,
-                    weather: data.weather,
-                    wind: data.wind,
-                    coord: data.coord
-                };
-
-                // Update location
-                const locationName = data.name || 'Unknown Location';
-                const locationElement = document.getElementById('display-location');
-                if (locationElement) {
-                    locationElement.textContent = locationName.toUpperCase();
-                }
-                
-                // Update main weather data
-                const temp = data.main?.temp || 0;
-                const feelsLike = data.main?.feels_like || temp;
-                const humidity = data.main?.humidity || 50;
-                const pressure = data.main?.pressure || 1013;
-                const windSpeed = data.wind?.speed || 0;
-                
-                // Weather condition handling
-                const weatherMain = data.weather?.[0]?.main || 'Clear';
-                const weatherIcon = this.getWeatherIcon(weatherMain, data.weather?.[0]?.icon);
-                
-                // Update DOM elements safely
-                this.updateElement('temperature', Math.round(temp));
-                this.updateElement('feels-like', Math.round(feelsLike));
-                this.updateElement('humidity', Math.round(humidity));
-                this.updateElement('pressure', Math.round(pressure));
-                this.updateElement('conditions', weatherMain);
-                this.updateElement('wind', Math.round(windSpeed * 3.6)); // Convert m/s to km/h
-                this.updateElement('condition-icon', weatherIcon);
-
-                // Add animation effects
-                this.animateWeatherCards();
-                
-                // Add chat button after weather is displayed
-                this.addChatButton();
-
-                const detailsSection = document.querySelector('.quantum-card.bg-gradient-to-r');
-                    if (detailsSection) {
-                        detailsSection.style.display = 'block';
-                        detailsSection.classList.add('ultra-smooth');
-                    }
-                     try {
-                        localStorage.setItem('climabot_weather_data', JSON.stringify(this.currentWeatherData));
-                        localStorage.setItem('currentLocation', this.currentWeatherData.location);
-                    } catch (error) {
-                        console.warn('Could not store weather data:', error);
-                    }
-            }
-
-            // Add this new function to add the chat button
-            addChatButton() {
-                const resultsContainer = document.getElementById('weather-results');
-                if (resultsContainer && !document.querySelector('.chat-button-container')) {
-                    const chatButton = document.createElement('div');
-                    chatButton.className = 'text-center mt-8 chat-button-container';
-                    chatButton.innerHTML = `
-                        <button onclick="app.navigateToChat()" class="quantum-btn text-black font-black py-4 px-8 rounded-xl transition-all duration-400 text-lg shadow-2xl">
-                            🤖 ASK CLIMABOT AI ABOUT THIS WEATHER
-                        </button>
-                    `;
-                    resultsContainer.appendChild(chatButton);
-                }
-            }
-
-            updateElement(id, value) {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.textContent = value;
-                }
-            }
-
-            getWeatherIcon(condition, apiIcon) {
-                const iconMap = {
-                    'Clear': '☀️',
-                    'Clouds': '☁️',
-                    'Rain': '🌧️',
-                    'Drizzle': '🌦️',
-                    'Thunderstorm': '⛈️',
-                    'Snow': '❄️',
-                    'Mist': '🌫️',
-                    'Fog': '🌫️',
-                    'Haze': '🌫️',
-                    'Dust': '🌪️',
-                    'Sand': '🌪️',
-                    'Ash': '🌋',
-                    'Squall': '💨',
-                    'Tornado': '🌪️'
-                };
-
-                return iconMap[condition] || (apiIcon ? this.mapApiIcon(apiIcon) : '☁️');
-            }
-
-            mapApiIcon(apiIcon) {
-                const apiIconMap = {
-                    '01d': '☀️', '01n': '🌙',
-                    '02d': '⛅', '02n': '☁️',
-                    '03d': '☁️', '03n': '☁️',
-                    '04d': '☁️', '04n': '☁️',
-                    '09d': '🌧️', '09n': '🌧️',
-                    '10d': '🌦️', '10n': '🌧️',
-                    '11d': '⛈️', '11n': '⛈️',
-                    '13d': '❄️', '13n': '❄️',
-                    '50d': '🌫️', '50n': '🌫️'
-                };
-                return apiIconMap[apiIcon] || '☁️';
-            }
-
-            animateWeatherCards() {
-                const cards = document.querySelectorAll('.weather-holo');
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.animation = 'none';
-                        card.offsetHeight;
-                        card.style.animation = 'ultra-fade-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                    }, index * 150);
-                });
-            }
-
-            setLoadingState(loading) {
-                this.isLoading = loading;
-                const buttonText = document.getElementById('button-text');
-                const buttonLoading = document.getElementById('button-loading');
-                const searchButton = document.getElementById('search-button');
-
-                if (loading) {
-                    if (buttonText) buttonText.classList.add('hidden');
-                    if (buttonLoading) buttonLoading.classList.remove('hidden');
-                    if (searchButton) {
-                        searchButton.disabled = true;
-                        searchButton.classList.add('opacity-75');
-                    }
-                } else {
-                    if (buttonText) buttonText.classList.remove('hidden');
-                    if (buttonLoading) buttonLoading.classList.add('hidden');
-                    if (searchButton) {
-                        searchButton.disabled = false;
-                        searchButton.classList.remove('opacity-75');
-                    }
-                }
-            }
-
-            showMessage(message, type = 'info') {
-                const container = document.getElementById('message-container');
-                if (!container) return;
-                
-                container.innerHTML = '';
-                
-                const messageEl = document.createElement('div');
-                messageEl.className = `text-center text-lg font-bold rounded-xl p-5 transition-all duration-400 ${
-                    type === 'error' ? 'error-holo' : 
-                    type === 'success' ? 'success-holo' : 
-                    'bg-blue-500/20 border-2 border-blue-500/50'
-                }`;
-                messageEl.textContent = message;
-                
-                container.appendChild(messageEl);
-                
-                setTimeout(() => {
-                    messageEl.style.opacity = '0';
-                    messageEl.style.transform = 'translateY(-15px)';
-                    setTimeout(() => {
-                        if (container.contains(messageEl)) {
-                            container.removeChild(messageEl);
-                        }
-                    }, 400);
-                }, 3500);
-            }
-
-            handleError(error) {
-                console.error('Weather fetch error:', error);
-                
-                let errorMessage = '⚠️ QUANTUM INTERFERENCE DETECTED. PLEASE RETRY.';
-                
-                if (error.message.includes('not found') || error.message.includes('404')) {
-                    errorMessage = '🗺️ LOCATION NOT FOUND. CHECK COORDINATES.';
-                } else if (error.message.includes('Invalid API key') || error.message.includes('401')) {
-                    errorMessage = '🔑 API KEY AUTHENTICATION FAILED.';
-                } else if (error.message.includes('rate limit') || error.message.includes('429')) {
-                    errorMessage = '⏱️ API RATE LIMIT EXCEEDED. WAIT A MOMENT.';
-                } else if (error.message.includes('network') || error.message.includes('fetch') || error.name === 'TypeError') {
-                    errorMessage = '🌐 NETWORK CONNECTION FAILED.';
-                } else if (error.message.includes('Invalid location format')) {
-                    errorMessage = '🔤 INVALID LOCATION FORMAT. USE CITY NAMES.';
-                }
-                
-                this.showMessage(errorMessage, 'error');
-                
-                const quantumCard = document.querySelector('.quantum-card');
-                if (quantumCard) {
-                    this.addGlitchEffect(quantumCard);
+            } else {
+                if (buttonText) buttonText.classList.remove('hidden');
+                if (buttonLoading) buttonLoading.classList.add('hidden');
+                if (searchButton) {
+                    searchButton.disabled = false;
+                    searchButton.classList.remove('opacity-75');
                 }
             }
         }
 
-        // Add glitch animation and particle styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes glitch {
-                0%, 100% { transform: translate(0); }
-                20% { transform: translate(-1px, 1px); }
-                40% { transform: translate(-1px, -1px); }
-                60% { transform: translate(1px, 1px); }
-                80% { transform: translate(1px, -1px); }
-            }
-            @keyframes float-particle {
-                0% { transform: translateY(0px) scale(0); opacity: 0; }
-                10% { opacity: 0.6; transform: translateY(-10vh) scale(1); }
-                90% { opacity: 0.3; transform: translateY(-90vh) scale(0.8); }
-                100% { transform: translateY(-100vh) scale(0); opacity: 0; }
-            }
-            @keyframes ultra-fade-in {
-                0% { opacity: 0; transform: translateY(20px) scale(0.9); }
-                100% { opacity: 1; transform: translateY(0) scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize the app
-        let app
-        document.addEventListener('DOMContentLoaded', () => {
-            app=new QuantumWeatherApp();
+        showMessage(message, type = 'info') {
+            const container = document.getElementById('message-container');
+            if (!container) return;
             
-            // Smooth scrolling for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+            container.innerHTML = '';
+            
+            const messageEl = document.createElement('div');
+            messageEl.className = `text-center text-lg font-bold rounded-xl p-5 transition-all duration-400 ${
+                type === 'error' ? 'error-holo' :
+                type === 'success' ? 'success-holo' :
+                'bg-blue-500/20 border-2 border-blue-500/50'
+            }`;
+            messageEl.textContent = message;
+            
+            container.appendChild(messageEl);
+            
+            setTimeout(() => {
+                messageEl.style.opacity = '0';
+                messageEl.style.transform = 'translateY(-15px)';
+                setTimeout(() => {
+                    if (container.contains(messageEl)) {
+                        container.removeChild(messageEl);
                     }
-                });
+                }, 400);
+            }, 3500);
+        }
+
+        handleError(error) {
+            console.error('Weather fetch error:', error);
+            
+            let errorMessage = '⚠️ QUANTUM INTERFERENCE DETECTED. PLEASE RETRY.';
+            
+            if (error.message.includes('not found') || error.message.includes('404')) {
+                errorMessage = '🗺️ LOCATION NOT FOUND. CHECK COORDINATES.';
+            } else if (error.message.includes('Invalid API key') || error.message.includes('401')) {
+                errorMessage = '🔑 API KEY AUTHENTICATION FAILED.';
+            } else if (error.message.includes('rate limit') || error.message.includes('429')) {
+                errorMessage = '⏱️ API RATE LIMIT EXCEEDED. WAIT A MOMENT.';
+            } else if (error.message.includes('network') || error.message.includes('fetch') || error.name === 'TypeError') {
+                errorMessage = '🌐 NETWORK CONNECTION FAILED.';
+            } else if (error.message.includes('Invalid location format')) {
+                errorMessage = '🔤 INVALID LOCATION FORMAT. USE CITY NAMES.';
+            }
+            
+            this.showMessage(errorMessage, 'error');
+            
+            const quantumCard = document.querySelector('.quantum-card');
+            if (quantumCard) {
+                this.addGlitchEffect(quantumCard);
+            }
+        }
+    }
+
+    // Add glitch animation and particle styles
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(-1px, -1px); }
+            60% { transform: translate(1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+        }
+        @keyframes float-particle {
+            0% { transform: translateY(0px) scale(0); opacity: 0; }
+            10% { opacity: 0.6; transform: translateY(-10vh) scale(1); }
+            90% { opacity: 0.3; transform: translateY(-90vh) scale(0.8); }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+        @keyframes ultra-fade-in {
+            0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize the app
+    let app
+    document.addEventListener('DOMContentLoaded', () => {
+        app=new QuantumWeatherApp();
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
+    });
   </script>
 </body>
 </html>
