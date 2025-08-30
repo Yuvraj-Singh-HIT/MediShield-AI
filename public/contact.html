@@ -18,12 +18,20 @@
           --electric-purple: #bf00ff;
       }
       body {
-          font-family: 'Space Grotesk', sans-serif;
-          background: #000000;
-          color: #ffffff;
-          overflow-x: hidden;
-          cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIgZmlsbD0iIzAwZDRmZiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+'), auto;
-      }
+           font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+           background: #000000;
+           color: #ffffff;
+           overflow-x: hidden;
+           overflow-y: auto;
+           -ms-overflow-style: none;
+           scrollbar-width: none;
+           cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIgZmlsbD0iIzAwZDRmZiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+'), auto;
+       }
+
+       /* Hide scrollbar but keep functionality */
+       body::-webkit-scrollbar {
+           display: none;
+       }
       /* Advanced animated background */
       .cyber-bg {
           position: fixed;
@@ -190,7 +198,7 @@
           backdrop-filter: blur(15px);
           border: 2px solid rgba(0, 212, 255, 0.4);
           color: #ffffff;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
       }
@@ -209,14 +217,14 @@
       }
       /* Quantum button */
       .quantum-btn {
-          background: linear-gradient(135deg, 
+          background: linear-gradient(135deg,
               var(--cyber-blue) 0%,
               var(--primary-glow) 50%,
               var(--neon-green) 100%);
           background-size: 300% 300%;
           animation: quantum-pulse 3s ease-in-out infinite;
           border: none;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -359,7 +367,7 @@
           backdrop-filter: blur(15px);
           border: 2px solid rgba(0, 212, 255, 0.4);
           color: #ffffff;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           resize: vertical;
           min-height: 120px;
@@ -463,7 +471,7 @@
   <nav class="holo-nav py-6 px-6 md:px-13 flex justify-between items-center sticky top-0 z-50">
       <div class="flex items-center space-x-4">
           <div class="logo-quantum">
-              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="50" height="50" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M36 20C36 16.6863 33.3137 14 30 14C29.3372 14 28.7142 14.1431 28.1538 14.4016C27.1507 12.0648 24.8082 10.5 22.08 10.5C18.6994 10.5 15.9 13.2994 15.9 16.68" fill="url(#quantumGradient1)"/>
                   <path d="M24 29L19 37H24L22.5 42L28.5 34H23L24 29Z" fill="url(#quantumGradient2)"/>
                   <circle cx="12" cy="15" r="1.5" fill="url(#quantumGradient3)" opacity="0.8"/>
